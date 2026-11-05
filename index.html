@@ -327,11 +327,10 @@
   .stop { position: relative; z-index: 1; text-align: center; padding: 22px 16px 24px; transition: transform .4s cubic-bezier(.34,1.56,.64,1), background .4s; }
   .stop:hover { transform: translateY(-8px) rotate(1deg); }
   .flag { width: 78px; height: 78px; margin: -84px auto 14px; border-radius: 50%; display: grid; place-items: center; font-size: 38px; background: var(--surface); border: 4px solid; box-shadow: var(--shadow); }
-  /* Viền cờ theo màu quốc kỳ */
-  .stop .flag { border-color: transparent; }
-  .stop:nth-child(1) .flag, .stop:nth-child(3) .flag { background: linear-gradient(var(--surface), var(--surface)) padding-box, conic-gradient(#da251d 0 25%, #ffcd00 25% 50%, #da251d 50% 75%, #ffcd00 75%) border-box; }
-  .stop:nth-child(2) .flag { background: linear-gradient(var(--surface), var(--surface)) padding-box, conic-gradient(#010066 0 33%, #cc0001 33% 66%, #ffcc00 66%) border-box; }
-  .stop:nth-child(4) .flag { background: linear-gradient(var(--surface), var(--surface)) padding-box, conic-gradient(#fe0000 0 50%, #000095 50%) border-box; }
+  /* Viền cờ: một màu nổi bật lấy từ quốc kỳ */
+  .stop:nth-child(1) .flag, .stop:nth-child(3) .flag { border-color: #e53935; }
+  .stop:nth-child(2) .flag { border-color: #f5b301; }
+  .stop:nth-child(4) .flag { border-color: #2f4fd1; }
   .stop .yr { display: inline-block; font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 999px; background: var(--brand-soft); color: var(--brand); }
   .stop .ttl { font-weight: 800; margin: 10px 0 4px; font-size: 16px; line-height: 1.35; }
   .stop .plc { color: var(--muted); font-size: 14px; }
