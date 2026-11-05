@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xuân Ánh ✨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script>
+  document.documentElement.classList.add('js');
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+</script>
+<style>
+  :root {
+    --bg: #fff7f2;
+    --surface: #ffffff;
+    --surface-2: #fdeff4;
+    --text: #2a1b3d;
+    --muted: #6e6280;
+    --line: #f3e3ec;
+    --pink: #ff4d8d;
+    --orange: #ff8a3d;
+    --purple: #8b5cf6;
+    --yellow: #ffc93c;
+    --teal: #1fc3a5;
+    --blue: #4d8dff;
+    --brand: #e83e8c;
+    --brand-soft: #ffe4ef;
+    --g: linear-gradient(120deg, #ff4d8d, #ff8a3d 50%, #8b5cf6);
+    --g2: linear-gradient(135deg, #8b5cf6, #ff4d8d);
+    --shadow: 0 14px 40px rgba(139, 92, 246, .12);
+    --shadow-pop: 0 20px 50px rgba(255, 77, 141, .25);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #140d20;
+      --surface: #1f1630;
+      --surface-2: #2a1d40;
+      --text: #f6eefc;
+      --muted: #b4a6c9;
+      --line: #35274d;
+      --brand: #ff6ea5;
+      --brand-soft: #3a1f3f;
+      --shadow: 0 14px 40px rgba(0, 0, 0, .4);
+      --shadow-pop: 0 20px 50px rgba(255, 77, 141, .25);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #140d20;
+    --surface: #1f1630;
+    --surface-2: #2a1d40;
+    --text: #f6eefc;
+    --muted: #b4a6c9;
+    --line: #35274d;
+    --brand: #ff6ea5;
+    --brand-soft: #3a1f3f;
+    --shadow: 0 14px 40px rgba(0, 0, 0, .4);
+    --shadow-pop: 0 20px 50px rgba(255, 77, 141, .25);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    overflow-x: hidden;
+    transition: background .4s, color .4s;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .grad-text {
+    background: var(--g); background-size: 200% 200%;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: shift 6s ease-in-out infinite;
+  }
+  @keyframes shift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+  /* ---------- Menu dạng viên thuốc nổi ---------- */
+  .nav {
+    position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 50;
+    width: min(1060px, calc(100% - 24px));
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 8px 8px 18px; border-radius: 999px;
+    background: color-mix(in srgb, var(--surface) 75%, transparent);
+    backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4);
+    border: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
+    box-shadow: 0 8px 30px rgba(139, 92, 246, .12);
+    transition: background .4s, border-color .4s;
+  }
+  .logo { font-weight: 900; font-size: 19px; text-decoration: none; white-space: nowrap; }
+  .menu { display: flex; gap: 2px; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
+  .menu::-webkit-scrollbar { display: none; }
+  .menu a {
+    display: inline-flex; align-items: center; gap: 6px;
+    text-decoration: none; font-size: 14px; font-weight: 600; color: var(--muted);
+    padding: 8px 13px; border-radius: 999px; white-space: nowrap; transition: all .25s;
+  }
+  .menu a:hover { color: var(--brand); background: var(--brand-soft); }
+  .menu a.active { color: #fff; background: var(--g); box-shadow: 0 6px 16px rgba(255, 77, 141, .35); }
+  .nav-actions { display: flex; gap: 6px; }
+  .icon-btn {
+    width: 40px; height: 40px; flex: 0 0 40px; border-radius: 50%; cursor: pointer; font-size: 17px;
+    display: grid; place-items: center; border: 1px solid var(--line); background: var(--surface); color: var(--text);
+    transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+  }
+  .icon-btn:hover { transform: rotate(-15deg) scale(1.12); }
+  .lang-btn { font: inherit; font-size: 13px; font-weight: 900; color: #fff; border: 0; background: var(--g); }
+  .progress { position: fixed; top: 0; left: 0; height: 4px; width: 0; z-index: 60; background: var(--g); }
+
+  /* ---------- Phần mở đầu ---------- */
+  .hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; overflow: hidden; padding: 120px 0 80px; }
+  .mesh { position: absolute; inset: -20%; z-index: 0; filter: blur(60px); opacity: .55; }
+  .mesh i { position: absolute; border-radius: 50%; animation: drift 16s ease-in-out infinite; }
+  .mesh i:nth-child(1) { width: 46vw; height: 46vw; background: #ffb3cf; left: 5%; top: 5%; }
+  .mesh i:nth-child(2) { width: 40vw; height: 40vw; background: #ffd29e; right: 8%; top: 18%; animation-delay: -4s; }
+  .mesh i:nth-child(3) { width: 38vw; height: 38vw; background: #cdb8ff; left: 35%; bottom: 0; animation-delay: -8s; }
+  :root[data-theme="dark"] .mesh { opacity: .28; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .mesh { opacity: .28; } }
+  @keyframes drift {
+    0%,100% { transform: translate(0,0) scale(1); }
+    33% { transform: translate(6%, -5%) scale(1.1); }
+    66% { transform: translate(-5%, 6%) scale(.92); }
+  }
+  .shape { position: absolute; z-index: 1; pointer-events: none; transition: transform .2s ease-out; }
+  .shape > * { animation: bob 6s ease-in-out infinite; }
+  .s1 { top: 18%; left: 6%; }   .s1 > * { width: 54px; height: 54px; border-radius: 50%; background: var(--g); display: block; }
+  .s2 { top: 86%; left: 2%; }  .s2 > * { width: 70px; height: 70px; border-radius: 50%; border: 10px solid var(--yellow); display: block; animation-delay: -2s; }
+  .s3 { top: 14%; right: 8%; font-size: 40px; color: var(--purple); } .s3 > * { animation-delay: -1s; }
+  .s4 { bottom: 12%; right: 6%; } .s4 > * { width: 0; height: 0; border-left: 30px solid transparent; border-right: 30px solid transparent; border-bottom: 52px solid var(--teal); display: block; animation-delay: -3s; }
+  .s5 { top: 46%; left: 46%; font-size: 26px; color: var(--orange); } .s5 > * { animation-delay: -4s; }
+  .s6 { top: 13%; left: 36%; } .s6 > * { display: block; animation-delay: -2.5s; }
+  @keyframes bob { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-16px) rotate(12deg); } }
+
+  .hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; }
+  .hi-chip {
+    display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px;
+    background: var(--surface); box-shadow: var(--shadow); font-weight: 700; font-size: 15px;
+  }
+  .wave { display: inline-block; animation: wave 2.4s ease-in-out infinite; transform-origin: 70% 70%; }
+  @keyframes wave { 0%,60%,100% { transform: rotate(0); } 10%,30% { transform: rotate(16deg); } 20% { transform: rotate(-8deg); } }
+  .hero h1 { font-size: clamp(48px, 9vw, 104px); line-height: 1; font-weight: 900; letter-spacing: -2px; margin: 18px 0 8px; white-space: nowrap; }
+  .hero h1 .spark { display: inline-block; -webkit-text-fill-color: initial; animation: twinkle 2s ease-in-out infinite; }
+  @keyframes twinkle { 0%,100% { transform: scale(1) rotate(0); } 50% { transform: scale(1.25) rotate(20deg); } }
+  .fullname { font-size: 20px; font-weight: 700; }
+  .fullname small { font-weight: 500; color: var(--muted); margin-left: 6px; }
+  /* Dòng vai trò đổi chữ: chiều cao cố định để trang không bị giật */
+  .typed { margin-top: 14px; font-size: clamp(18px, 2.4vw, 24px); font-weight: 700; height: 1.6em; line-height: 1.6em; overflow: hidden; white-space: nowrap; }
+  .typed .word { display: inline-block; color: var(--brand); transition: transform .45s cubic-bezier(.34,1.3,.64,1), opacity .35s; }
+  .typed .word.out { transform: translateY(-110%); opacity: 0; }
+  .typed .word.below { transform: translateY(110%); opacity: 0; transition: none; }
+  .lead { margin-top: 14px; max-width: 540px; color: var(--muted); font-size: 16.5px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; cursor: pointer; border: 0;
+    font: inherit; font-weight: 700; font-size: 15px; text-decoration: none;
+    padding: 14px 24px; border-radius: 999px;
+    transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+  }
+  .btn:hover { transform: translateY(-3px) scale(1.04); }
+  .btn:active { transform: scale(.96); }
+  .btn-main { color: #fff; background: var(--g); background-size: 200% 200%; animation: shift 6s ease-in-out infinite; box-shadow: var(--shadow-pop); }
+  .btn-soft { background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
+  .btn-line { background: transparent; color: var(--text); border: 2px dashed var(--line); }
+
+  .avatar-zone { position: relative; width: min(380px, 80vw); aspect-ratio: 1; margin: 0 auto; }
+  .blob {
+    position: absolute; inset: 8%; background: var(--g); background-size: 200% 200%;
+    animation: morph 9s ease-in-out infinite, shift 6s ease-in-out infinite;
+    box-shadow: var(--shadow-pop);
+    display: grid; place-items: center; color: #fff; font-weight: 900; font-size: clamp(64px, 10vw, 104px); letter-spacing: 2px;
+  }
+  .blob::after {
+    content: ""; position: absolute; inset: 0; border-radius: inherit;
+    background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.45), transparent 45%);
+  }
+  @keyframes morph {
+    0%,100% { border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; }
+    33% { border-radius: 63% 37% 42% 58% / 55% 38% 62% 45%; }
+    66% { border-radius: 37% 63% 51% 49% / 38% 60% 40% 62%; }
+  }
+  .orbit { position: absolute; inset: 0; border: 2px dashed color-mix(in srgb, var(--purple) 40%, transparent); border-radius: 50%; animation: spin 30s linear infinite; }
+  .orbit::before { content: "⭐"; position: absolute; top: -14px; left: 50%; font-size: 22px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .sticker {
+    position: absolute; z-index: 3; padding: 9px 15px; border-radius: 16px; white-space: nowrap;
+    background: var(--surface); box-shadow: var(--shadow); font-weight: 800; font-size: 14px;
+    border: 2px solid var(--line); animation: bob 5s ease-in-out infinite;
+  }
+  .sticker.k1 { top: 4%; right: -6%; transform: rotate(6deg); }
+  .sticker.k2 { bottom: 16%; left: -10%; animation-delay: -1.6s; }
+  .sticker.k3 { bottom: -2%; right: 4%; animation-delay: -3.2s; }
+  .sticker.k1 b { color: var(--pink); } .sticker.k2 b { color: var(--purple); } .sticker.k3 b { color: var(--orange); }
+
+  /* Ô truy cập nhanh */
+  .tiles { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: -40px; }
+  .tile {
+    text-decoration: none; border-radius: 26px; padding: 22px 18px; color: #2a1b3d; cursor: pointer;
+    display: flex; flex-direction: column; gap: 6px; border: 0; font: inherit; text-align: left;
+    box-shadow: var(--shadow); transition: transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+  }
+  .tile:hover { transform: translateY(-8px) rotate(-2deg); box-shadow: var(--shadow-pop); }
+  .tile .ic { font-size: 36px; display: inline-block; transition: transform .4s cubic-bezier(.34,1.56,.64,1); }
+  .tile:hover .ic { transform: scale(1.25) rotate(-12deg); }
+  .tile b { font-size: 17px; font-weight: 800; }
+  .tile span.d { font-size: 13px; opacity: .75; }
+  .t1 { background: linear-gradient(135deg, #ffd6e6, #ffb3cf); }
+  .t2 { background: linear-gradient(135deg, #ffe7c7, #ffc98f); }
+  .t3 { background: linear-gradient(135deg, #e5dbff, #c9b5ff); }
+  .t4 { background: linear-gradient(135deg, #d0f5ec, #9fe8d6); }
+  .t5 { background: var(--g); color: #fff; }
+
+  /* Dải chữ chạy */
+  .marquee { margin: 90px 0 0; transform: rotate(-2deg); background: var(--g); color: #fff; overflow: hidden; padding: 14px 0; box-shadow: var(--shadow-pop); }
+  .marquee .track { display: flex; width: max-content; animation: scroll 32s linear infinite; }
+  .marquee span { font-weight: 800; font-size: 20px; white-space: nowrap; padding: 0 22px; }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+
+  /* ---------- Phần chung ---------- */
+  section.block { padding: 100px 0; scroll-margin-top: 80px; }
+  .head-row { text-align: center; margin-bottom: 44px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 800;
+    padding: 6px 14px; border-radius: 999px; background: var(--brand-soft); color: var(--brand);
+  }
+  .heading { font-size: clamp(30px, 4.6vw, 48px); font-weight: 900; line-height: 1.15; margin: 14px 0 10px; letter-spacing: -1px; }
+  .sub { color: var(--muted); max-width: 620px; margin: 0 auto; font-size: 16.5px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 26px; box-shadow: var(--shadow); transition: background .4s, border-color .4s; }
+
+  /* Giới thiệu dạng ô ghép */
+  .bento { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(150px, auto); gap: 18px; }
+  .bento .card { padding: 26px; position: relative; overflow: hidden; transition: transform .4s cubic-bezier(.34,1.56,.64,1), background .4s; }
+  .bento .card:hover { transform: translateY(-6px); }
+  .b-intro { grid-column: span 2; grid-row: span 2; }
+  .b-intro::before { content: ""; position: absolute; inset: 0; padding: 3px; border-radius: inherit; background: var(--g); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+  .b-intro h3 { font-size: 26px; font-weight: 900; line-height: 1.25; margin-bottom: 14px; }
+  .b-intro p { color: var(--muted); }
+  .b-intro .emo { font-size: 46px; margin-bottom: 8px; }
+  .stat .num { font-size: 50px; font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; }
+  .stat .label { margin-top: 8px; font-weight: 600; color: var(--muted); font-size: 14px; }
+  .stat .bg-emo { position: absolute; right: -6px; bottom: -14px; font-size: 76px; opacity: .18; transform: rotate(-12deg); }
+  .c-pink .num { color: var(--pink); } .c-orange .num { color: var(--orange); } .c-purple .num { color: var(--purple); } .c-teal .num { color: var(--teal); }
+  .b-now { grid-column: span 2; display: flex; flex-direction: column; justify-content: center; }
+  .live { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 800; color: var(--teal); text-transform: uppercase; letter-spacing: 1px; }
+  .live i { width: 10px; height: 10px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 0 rgba(31,195,165,.6); animation: livepulse 1.8s infinite; }
+  @keyframes livepulse { to { box-shadow: 0 0 0 12px rgba(31,195,165,0); } }
+  .b-now .r { font-weight: 800; font-size: 18px; margin-top: 6px; }
+  .b-now .o { color: var(--muted); font-size: 14px; }
+
+  /* Kinh nghiệm */
+  .filters { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 34px; }
+  .chip {
+    font: inherit; font-size: 15px; font-weight: 700; cursor: pointer;
+    padding: 10px 20px; border-radius: 999px; background: var(--surface); color: var(--muted);
+    border: 2px solid var(--line); transition: all .3s cubic-bezier(.34,1.56,.64,1);
+  }
+  .chip:hover { transform: translateY(-2px); color: var(--brand); border-color: var(--brand); }
+  .chip.on { color: #fff; background: var(--g); border-color: transparent; box-shadow: var(--shadow-pop); transform: scale(1.05); }
+  .jobs { display: grid; gap: 16px; max-width: 860px; margin: 0 auto; }
+  .job.hide { display: none; }
+  .job .card { transition: transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .3s, background .4s; }
+  .job:hover .card { transform: translateY(-4px) rotate(-.4deg); box-shadow: var(--shadow-pop); }
+  .job-head {
+    width: 100%; text-align: left; font: inherit; color: inherit; cursor: pointer; background: none; border: 0;
+    padding: 20px 22px; display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center;
+  }
+  .bubble { width: 58px; height: 58px; border-radius: 18px; display: grid; place-items: center; font-size: 28px; transform: rotate(-6deg); transition: transform .4s cubic-bezier(.34,1.56,.64,1); }
+  .job:hover .bubble { transform: rotate(6deg) scale(1.08); }
+  .job[data-cat="day"] .bubble { background: linear-gradient(135deg, #ffd6e6, #ffb3cf); }
+  .job[data-cat="vp"] .bubble { background: linear-gradient(135deg, #e5dbff, #c9b5ff); }
+  .job[data-cat="kd"] .bubble { background: linear-gradient(135deg, #ffe7c7, #ffc98f); }
+  .job-title { font-size: 18px; font-weight: 800; }
+  .job-org { color: var(--muted); font-size: 15px; }
+  .job-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+  .tag { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--brand-soft); color: var(--brand); }
+  .tag.time { background: color-mix(in srgb, var(--purple) 15%, transparent); color: var(--purple); }
+  .plus { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-size: 22px; font-weight: 700; color: #fff; background: var(--g); transition: transform .4s cubic-bezier(.34,1.56,.64,1); }
+  .job.open .plus { transform: rotate(135deg); }
+  .job-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s ease; }
+  .job.open .job-body { grid-template-rows: 1fr; }
+  .job-body > div { overflow: hidden; }
+  .job-body ul { margin: 0 24px 22px 98px; color: var(--muted); list-style: none; }
+  .job-body li { margin: 8px 0; padding-left: 26px; position: relative; }
+  .job-body li::before { content: "✦"; position: absolute; left: 0; color: var(--pink); }
+
+  /* Học vấn */
+  .journey { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; position: relative; }
+  .journey svg.path { position: absolute; top: 30px; left: 10%; width: 80%; height: 60px; z-index: 0; overflow: visible; }
+  .journey svg.path path { stroke: var(--pink); stroke-width: 3; fill: none; stroke-dasharray: 10 10; animation: dash 1.5s linear infinite; }
+  @keyframes dash { to { stroke-dashoffset: -20; } }
+  .stop { position: relative; z-index: 1; text-align: center; padding: 22px 16px 24px; transition: transform .4s cubic-bezier(.34,1.56,.64,1), background .4s; }
+  .stop:hover { transform: translateY(-8px) rotate(1deg); }
+  .flag { width: 78px; height: 78px; margin: -54px auto 14px; border-radius: 50%; display: grid; place-items: center; font-size: 38px; background: var(--surface); border: 4px solid; box-shadow: var(--shadow); }
+  .stop:nth-child(2) .flag { border-color: var(--pink); }
+  .stop:nth-child(3) .flag { border-color: var(--orange); }
+  .stop:nth-child(4) .flag { border-color: var(--teal); }
+  .stop:nth-child(5) .flag { border-color: var(--purple); }
+  .stop .yr { display: inline-block; font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 999px; background: var(--brand-soft); color: var(--brand); }
+  .stop .ttl { font-weight: 800; margin: 10px 0 4px; font-size: 16px; line-height: 1.35; }
+  .stop .plc { color: var(--muted); font-size: 14px; }
+  .stop.now { background: var(--g2); color: #fff; border-color: transparent; }
+  .stop.now .plc { color: rgba(255,255,255,.85); }
+  .stop.now .yr { background: rgba(255,255,255,.25); color: #fff; }
+  .journey-wrap { padding-top: 40px; }
+
+  /* Thành tích: thẻ lật */
+  .flip-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 18px; }
+  .flip { perspective: 1000px; height: 240px; cursor: pointer; }
+  .flip-inner { position: relative; width: 100%; height: 100%; transition: transform .8s cubic-bezier(.34,1.4,.64,1); transform-style: preserve-3d; }
+  .flip.flipped .flip-inner { transform: rotateY(180deg); }
+  @media (hover: hover) { .flip:hover .flip-inner { transform: rotateY(180deg); } }
+  .face { position: absolute; inset: 0; border-radius: 26px; padding: 24px; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; justify-content: center; }
+  .front { color: #2a1b3d; box-shadow: var(--shadow); }
+  .flip:nth-child(5n+1) .front { background: linear-gradient(135deg, #ffd6e6, #ffb3cf); }
+  .flip:nth-child(5n+2) .front { background: linear-gradient(135deg, #ffe7c7, #ffc98f); }
+  .flip:nth-child(5n+3) .front { background: linear-gradient(135deg, #e5dbff, #c9b5ff); }
+  .flip:nth-child(5n+4) .front { background: linear-gradient(135deg, #fff1bf, #ffd96b); }
+  .flip:nth-child(5n+5) .front { background: linear-gradient(135deg, #d0f5ec, #9fe8d6); }
+  .front .big { font-size: 48px; margin-bottom: 10px; }
+  .front .t { font-weight: 800; font-size: 17px; line-height: 1.35; }
+  .front .s { font-size: 13px; font-weight: 700; margin-top: 8px; opacity: .65; }
+  .back { transform: rotateY(180deg); color: #fff; background: var(--g); box-shadow: var(--shadow-pop); }
+  .back .k { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85; }
+  .back .v { font-weight: 800; font-size: 19px; margin: 6px 0; line-height: 1.3; }
+  .back .d { font-size: 14px; opacity: .92; }
+  .flip-tip { text-align: center; color: var(--muted); font-size: 14px; margin-top: -26px; margin-bottom: 26px; }
+  .vol { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 22px; }
+  .vol .card { padding: 22px; display: flex; gap: 16px; align-items: center; transition: transform .4s cubic-bezier(.34,1.56,.64,1), background .4s; }
+  .vol .card:hover { transform: translateY(-5px) rotate(-1deg); }
+  .vol .e { font-size: 30px; width: 58px; height: 58px; flex: 0 0 58px; border-radius: 18px; display: grid; place-items: center; background: var(--brand-soft); }
+  .vol .t { font-weight: 800; }
+  .vol .s { color: var(--muted); font-size: 14px; }
+
+  /* Kỹ năng */
+  .lang-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .lang { padding: 30px 20px; text-align: center; transition: transform .4s cubic-bezier(.34,1.56,.64,1), background .4s; }
+  .lang:hover { transform: translateY(-6px); }
+  .ring { width: 140px; height: 140px; margin: 0 auto 14px; position: relative; }
+  .ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .ring .bg { stroke: var(--surface-2); }
+  .ring .fg { stroke: url(#grad); stroke-linecap: round; transition: stroke-dashoffset 1.8s cubic-bezier(.34,1.2,.64,1); }
+  .ring .mid { position: absolute; inset: 0; display: grid; place-items: center; font-size: 40px; }
+  .lang .n { font-weight: 800; font-size: 19px; }
+  .lang .lv { display: inline-block; margin-top: 4px; font-weight: 800; font-size: 13px; padding: 3px 12px; border-radius: 999px; background: var(--brand-soft); color: var(--brand); }
+  .lang .ex { color: var(--muted); font-size: 13px; margin-top: 6px; }
+  .tools { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 30px; }
+  .tool {
+    display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 18px;
+    font-weight: 700; font-size: 15px; color: #2a1b3d; cursor: default;
+    transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+  }
+  .tool:nth-child(4n+1) { background: #ffd6e6; } .tool:nth-child(4n+2) { background: #ffe1bd; }
+  .tool:nth-child(4n+3) { background: #e2d6ff; } .tool:nth-child(4n+4) { background: #c9f1e6; }
+  .tool:hover { transform: translateY(-5px) rotate(-3deg) scale(1.05); }
+  .tool i { font-style: normal; font-size: 20px; }
+
+  /* Kết trang */
+  .closing { position: relative; overflow: hidden; margin: 40px 24px 24px; border-radius: 36px; padding: 80px 24px; text-align: center; color: #fff; background: var(--g); background-size: 200% 200%; animation: shift 8s ease-in-out infinite; }
+  .closing::before, .closing::after { content: ""; position: absolute; border-radius: 50%; background: rgba(255,255,255,.14); }
+  .closing::before { width: 260px; height: 260px; top: -90px; left: -60px; }
+  .closing::after { width: 180px; height: 180px; bottom: -60px; right: 6%; }
+  .closing h3 { position: relative; font-size: clamp(24px, 3.6vw, 38px); font-weight: 900; max-width: 760px; margin: 0 auto 12px; line-height: 1.25; }
+  .closing p { position: relative; opacity: .9; }
+  .closing .cta { justify-content: center; position: relative; }
+  .closing .btn-soft { color: #2a1b3d; background: #fff; }
+
+  .to-top { position: fixed; right: 26px; bottom: 92px; z-index: 40; width: 46px; height: 46px; border-radius: 50%; border: 0; cursor: pointer; background: var(--surface); color: var(--brand); font-size: 20px; font-weight: 800; box-shadow: var(--shadow); opacity: 0; transform: translateY(20px); pointer-events: none; transition: all .3s; }
+  .to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+
+  /* Hiệu ứng con chuột: chấm sáng, vòng tròn đi theo và vệt lấp lánh */
+  .cur-dot, .cur-ring, .spark-p, .click-ring { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 100; }
+  .cur-dot { width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 12px var(--pink); transition: width .2s, height .2s, margin .2s, opacity .2s; }
+  .cur-ring {
+    width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 50%;
+    border: 2.5px solid var(--purple);
+    transition: width .3s cubic-bezier(.34,1.56,.64,1), height .3s cubic-bezier(.34,1.56,.64,1), margin .3s cubic-bezier(.34,1.56,.64,1), border-color .3s, background .3s, opacity .2s;
+  }
+  .cur-ring.big { width: 64px; height: 64px; margin: -32px 0 0 -32px; border-color: var(--pink); background: color-mix(in srgb, var(--pink) 12%, transparent); }
+  .cur-ring.down { width: 28px; height: 28px; margin: -14px 0 0 -14px; border-color: var(--orange); }
+  .cur-hidden .cur-dot, .cur-hidden .cur-ring { opacity: 0; }
+  .spark-p { font-size: 12px; line-height: 1; margin: -6px 0 0 -6px; }
+  .click-ring { width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; border: 3px solid var(--orange); }
+  @media (hover: none), (pointer: coarse) { .cur-dot, .cur-ring { display: none; } }
+
+  /* Pháo giấy */
+  .confetti { position: fixed; z-index: 90; pointer-events: none; width: 10px; height: 14px; border-radius: 3px; }
+
+  /* Hiện dần khi cuộn: nảy lên */
+  .js .reveal { opacity: 0; transform: translateY(40px) scale(.94); transition: opacity .7s ease, transform .9s cubic-bezier(.34,1.56,.64,1); }
+  .js .reveal.shown { opacity: 1; transform: none; }
+  .js .reveal.d1 { transition-delay: .08s; } .js .reveal.d2 { transition-delay: .16s; } .js .reveal.d3 { transition-delay: .24s; } .js .reveal.d4 { transition-delay: .32s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; }
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ---------- Trợ lý ảo (chatbot) ---------- */
+  .chat-fab {
+    position: fixed; right: 20px; bottom: 20px; z-index: 60;
+    display: inline-flex; align-items: center; gap: 10px; height: 58px; padding: 0 22px 0 18px;
+    border: 0; border-radius: 999px; cursor: pointer; font: inherit; font-weight: 800; font-size: 15px; color: #fff;
+    background: var(--g); background-size: 200% 200%; animation: shift 6s ease-in-out infinite;
+    box-shadow: var(--shadow-pop); transition: transform .35s cubic-bezier(.34,1.56,.64,1), opacity .25s;
+  }
+  .chat-fab:hover { transform: translateY(-3px) scale(1.05); }
+  .chat-fab .em { font-size: 22px; display: inline-block; animation: wave 3s ease-in-out infinite; }
+  .chat-open .chat-fab { opacity: 0; pointer-events: none; transform: scale(.8); }
+  .chat {
+    position: fixed; right: 20px; bottom: 20px; z-index: 70; width: 390px; height: min(620px, calc(100vh - 40px));
+    display: flex; flex-direction: column; overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: 28px;
+    box-shadow: 0 30px 70px rgba(80, 30, 120, .3);
+    opacity: 0; transform: translateY(30px) scale(.9); transform-origin: bottom right; pointer-events: none;
+    transition: opacity .3s, transform .45s cubic-bezier(.34,1.56,.64,1);
+  }
+  .chat-open .chat { opacity: 1; transform: none; pointer-events: auto; }
+  .chat-head { display: flex; align-items: center; gap: 12px; padding: 16px 16px 16px 18px; color: #fff; background: var(--g); }
+  .chat-ava { width: 44px; height: 44px; flex: 0 0 44px; border-radius: 50%; position: relative; display: grid; place-items: center; font-weight: 900; font-size: 15px; background: #fff; }
+  .chat-ava span { color: var(--pink); }
+  .chat-ava::after { content: ""; position: absolute; right: 0; bottom: 0; width: 12px; height: 12px; border-radius: 50%; background: #22c55e; border: 2px solid #fff; }
+  .chat-title { font-weight: 800; font-size: 15px; line-height: 1.3; }
+  .chat-sub { font-size: 12px; opacity: .85; }
+  .chat-x { margin-left: auto; width: 36px; height: 36px; border-radius: 50%; border: 0; cursor: pointer; background: rgba(255,255,255,.22); color: #fff; font-size: 17px; transition: transform .3s; }
+  .chat-x:hover { transform: rotate(90deg); }
+  .chat-body { flex: 1; overflow-y: auto; padding: 18px 14px 8px; display: flex; flex-direction: column; gap: 10px; background: var(--bg); }
+  .msg { max-width: 86%; padding: 11px 15px; border-radius: 20px; font-size: 14.5px; line-height: 1.55; animation: pop .4s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes pop { from { opacity: 0; transform: translateY(10px) scale(.9); } to { opacity: 1; transform: none; } }
+  .msg.bot { align-self: flex-start; background: var(--surface); border: 1px solid var(--line); border-bottom-left-radius: 6px; }
+  .msg.me { align-self: flex-end; color: #fff; background: var(--g2); border-bottom-right-radius: 6px; }
+  .msg ul { margin: 6px 0 2px 18px; }
+  .msg li { margin: 3px 0; }
+  .msg b { font-weight: 800; }
+  .msg .go { display: inline-block; margin-top: 6px; font-size: 13px; font-weight: 700; color: var(--brand); text-decoration: none; }
+  .msg .go:hover { text-decoration: underline; }
+  .typing { display: inline-flex; gap: 4px; padding: 14px 16px; }
+  .typing i { width: 8px; height: 8px; border-radius: 50%; background: var(--pink); animation: dot 1.2s infinite; }
+  .typing i:nth-child(2) { background: var(--orange); animation-delay: .15s; }
+  .typing i:nth-child(3) { background: var(--purple); animation-delay: .3s; }
+  @keyframes dot { 0%, 60%, 100% { opacity: .35; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-5px); } }
+  .sugg { display: flex; gap: 8px; overflow-x: auto; padding: 10px 14px; scrollbar-width: none; background: var(--bg); border-top: 1px solid var(--line); }
+  .sugg::-webkit-scrollbar { display: none; }
+  .sugg button { flex: 0 0 auto; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; padding: 7px 13px; border-radius: 999px; white-space: nowrap; background: var(--surface); color: var(--brand); border: 2px solid var(--line); transition: all .25s; }
+  .sugg button:hover { border-color: var(--brand); background: var(--brand-soft); transform: translateY(-2px); }
+  .chat-form { display: flex; gap: 8px; padding: 12px 14px 14px; background: var(--surface); border-top: 1px solid var(--line); }
+  .chat-form input { flex: 1; min-width: 0; font: inherit; font-size: 15px; color: var(--text); padding: 12px 16px; border-radius: 999px; border: 2px solid var(--line); background: var(--bg); outline: none; }
+  .chat-form input:focus { border-color: var(--pink); }
+  .chat-form button { width: 46px; height: 46px; flex: 0 0 46px; border: 0; border-radius: 50%; cursor: pointer; color: #fff; font-size: 18px; background: var(--g); transition: transform .3s cubic-bezier(.34,1.56,.64,1); }
+  .chat-form button:hover { transform: scale(1.1) rotate(-10deg); }
+
+  /* ---------- Máy tính bảng ---------- */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .hero-inner > div:first-child { order: 2; }
+    .lead { margin-left: auto; margin-right: auto; }
+    .cta { justify-content: center; }
+    .avatar-zone { width: min(300px, 70vw); }
+    .tiles { grid-template-columns: repeat(3, 1fr); margin-top: 0; }
+    .bento { grid-template-columns: 1fr 1fr; }
+    .b-intro, .b-now { grid-column: span 2; grid-row: auto; }
+    .journey { grid-template-columns: 1fr 1fr; row-gap: 60px; }
+    .journey svg.path { display: none; }
+    .lang-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+    .vol { grid-template-columns: 1fr; }
+    section.block { padding: 76px 0; }
+  }
+  /* ---------- Điện thoại ---------- */
+  @media (max-width: 560px) {
+    .wrap { padding: 0 16px; }
+    .nav { padding: 6px 6px 6px 14px; gap: 4px; }
+    .menu a { padding: 7px 6px; font-size: 17px; }
+    .nav-actions { gap: 4px; }
+    #printTop { display: none; }
+    .menu a .t { display: none; }
+    .icon-btn { width: 36px; height: 36px; flex-basis: 36px; font-size: 15px; }
+    .logo { font-size: 15px; }
+    .hero { padding: 100px 0 56px; }
+    .hero h1 { letter-spacing: -1px; }
+    .sticker { font-size: 12px; padding: 6px 10px; }
+    .sticker.k1 { right: -4%; } .sticker.k2 { left: -6%; }
+    .tiles { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .tile { padding: 18px 14px; border-radius: 22px; }
+    .tile .ic { font-size: 30px; }
+    .t5 { grid-column: span 2; }
+    .marquee { margin-top: 60px; }
+    .marquee span { font-size: 16px; }
+    .bento .card { padding: 20px; }
+    .stat .num { font-size: 38px; }
+    .job-head { grid-template-columns: auto 1fr; gap: 14px; padding: 16px; }
+    .bubble { width: 48px; height: 48px; font-size: 24px; border-radius: 14px; }
+    .plus { grid-column: 2; justify-self: start; width: 32px; height: 32px; font-size: 18px; }
+    .job-body ul { margin: 0 16px 18px 16px; }
+    .journey { grid-template-columns: 1fr; }
+    .flip { height: 210px; }
+    .closing { margin: 24px 12px 12px; padding: 60px 18px; border-radius: 28px; }
+    .chat { right: 0; bottom: 0; width: 100%; height: 88vh; height: 88svh; border-radius: 28px 28px 0 0; }
+    .chat-fab { right: 16px; bottom: 16px; width: 58px; padding: 0; justify-content: center; }
+    .chat-fab .lbl { display: none; }
+    .to-top { right: 22px; bottom: 86px; }
+  }
+
+  /* ---------- Khi in ---------- */
+  @media print {
+    :root, :root[data-theme="dark"] { --bg: #fff; --surface: #fff; --surface-2: #f6eef6; --text: #2a1b3d; --muted: #4b4060; --line: #e8d9e6; --shadow: none; --shadow-pop: none; }
+    .nav, .progress, .to-top, .chat-fab, .chat, .cur-dot, .cur-ring, .spark-p, .click-ring, .mesh, .shape, .orbit, .tiles, .marquee, .filters, .flip-tip, .cta, .sticker { display: none !important; }
+    .hero { min-height: auto; padding: 20px 0; }
+    .hero-inner { grid-template-columns: 1fr 200px; }
+    .avatar-zone { width: 180px; }
+    section.block { padding: 24px 0; }
+    .js .reveal { opacity: 1 !important; transform: none !important; }
+    .job.hide { display: block; }
+    .job-body { grid-template-rows: 1fr !important; }
+    .plus { display: none; }
+    .flip { height: auto; break-inside: avoid; }
+    .flip-inner { transform: none !important; }
+    .face { position: static; backface-visibility: visible; }
+    .back { transform: none; margin-top: 6px; }
+    .journey svg.path { display: none; }
+    .closing { margin: 20px 0; padding: 30px; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    *, *::before, *::after { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff4d8d"/>
+      <stop offset=".5" stop-color="#ff8a3d"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div class="progress" id="progress"></div>
+
+<header class="nav" id="nav">
+  <a class="logo grad-text" href="#top" data-en="Xuan Anh ✨">Xuân Ánh ✨</a>
+  <nav class="menu" id="menu">
+    <a href="#gioi-thieu"><span>👋</span><span class="t" data-en="About">Giới thiệu</span></a>
+    <a href="#kinh-nghiem"><span>💼</span><span class="t" data-en="Experience">Kinh nghiệm</span></a>
+    <a href="#hoc-van"><span>🎓</span><span class="t" data-en="Education">Học vấn</span></a>
+    <a href="#thanh-tich"><span>🏆</span><span class="t" data-en="Achievements">Thành tích</span></a>
+    <a href="#ky-nang"><span>🌍</span><span class="t" data-en="Skills">Kỹ năng</span></a>
+  </nav>
+  <div class="nav-actions">
+    <button class="icon-btn lang-btn" id="langBtn" type="button" title="English / Tiếng Việt" aria-label="Đổi ngôn ngữ">EN</button>
+    <button class="icon-btn" id="themeBtn" type="button" title="Đổi nền sáng / tối" aria-label="Đổi nền sáng / tối">🌙</button>
+    <button class="icon-btn" id="printTop" type="button" title="In hoặc lưu PDF" aria-label="In hoặc lưu PDF">🖨️</button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="mesh" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="shape s1" data-depth="18" aria-hidden="true"><span></span></div>
+  <div class="shape s2" data-depth="-14" aria-hidden="true"><span></span></div>
+  <div class="shape s3" data-depth="22" aria-hidden="true"><span>✦</span></div>
+  <div class="shape s4" data-depth="-20" aria-hidden="true"><span></span></div>
+  <div class="shape s5" data-depth="10" aria-hidden="true"><span>✸</span></div>
+  <div class="shape s6" data-depth="-12" aria-hidden="true"><svg width="90" height="26" viewBox="0 0 90 26"><path d="M2 13 Q 13 1 24 13 T 46 13 T 68 13 T 88 13" stroke="#8b5cf6" stroke-width="5" fill="none" stroke-linecap="round"/></svg></div>
+
+  <div class="wrap hero-inner">
+    <div>
+      <span class="hi-chip"><span class="wave">👋</span> <span data-en="Hi! I&#x27;m">Hi! Mình là</span></span>
+      <h1><span class="grad-text" data-en="Xuan Anh">Xuân Ánh</span> <span class="spark">✨</span></h1>
+      <div class="fullname"><span data-en="Nguyen Thi Xuan Anh">Nguyễn Thị Xuân Ánh</span> <small>阮氏春英</small></div>
+      <div class="typed" aria-live="polite"><span class="word" id="typed">Trợ giảng tiếng Anh 🧑‍🏫</span></div>
+      <p class="lead" data-en="I love teaching English and bringing people together: from one-on-one lessons and an international department office to lively English camps for students from many countries. 🌏">Mình yêu việc dạy tiếng Anh và kết nối mọi người: từ lớp học một kèm một, văn phòng khoa quốc tế
+        đến những trại tiếng Anh sôi động cho sinh viên nhiều quốc gia. 🌏</p>
+      <div class="cta">
+        <button class="btn btn-main" id="chatHero" type="button" data-en="💬 Ask my assistant">💬 Hỏi trợ lý ảo</button>
+        <a class="btn btn-soft" href="#kinh-nghiem" data-en="🚀 See my journey">🚀 Xem hành trình</a>
+        <button class="btn btn-line" id="printHero" type="button" data-en="🖨️ Print / PDF">🖨️ In / PDF</button>
+      </div>
+    </div>
+    <div class="avatar-zone">
+      <div class="orbit"></div>
+      <div class="blob">XA</div>
+      <div class="sticker k1"><b>🇬🇧 TOEIC 790</b></div>
+      <div class="sticker k2"><b data-en="🎓 M.A. in TEFL">🎓 Thạc sĩ TEFL</b></div>
+      <div class="sticker k3"><b data-en="🏆 Scholarship">🏆 Học bổng</b></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="tiles">
+    <a class="tile t1 reveal" href="#hoc-van"><span class="ic">🎓</span><b data-en="Education">Học vấn</b><span class="d" data-en="3 countries">3 quốc gia</span></a>
+    <a class="tile t2 reveal d1" href="#kinh-nghiem"><span class="ic">💼</span><b data-en="Experience">Kinh nghiệm</b><span class="d" data-en="5 positions">5 vị trí</span></a>
+    <a class="tile t3 reveal d2" href="#thanh-tich"><span class="ic">🏆</span><b data-en="Achievements">Thành tích</b><span class="d" data-en="Awards &amp; leadership">Giải thưởng &amp; lãnh đạo</span></a>
+    <a class="tile t4 reveal d3" href="#ky-nang"><span class="ic">🌍</span><b data-en="Languages">Ngôn ngữ</b><span class="d" data-en="Vietnamese · English · Chinese">Việt · Anh · Trung</span></a>
+    <button class="tile t5 reveal d4" id="chatTile" type="button"><span class="ic">💬</span><b data-en="Ask assistant">Hỏi trợ lý</b><span class="d" data-en="Instant answers about me">Trả lời ngay về mình</span></button>
+  </div>
+</div>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span data-en="Fluent English ✦">Tiếng Anh thành thạo ✦</span><span>TOEIC 790 ✦</span><span data-en="M.A. in TEFL ✦">Thạc sĩ TEFL ✦</span><span data-en="Studied in 3 countries ✦">Học tập tại 3 quốc gia ✦</span><span data-en="3× camp team leader ✦">3 lần trưởng nhóm tổ chức trại ✦</span><span data-en="International scholarship ✦">Học bổng quốc tế ✦</span><span data-en="One-on-one tutor ✦">Gia sư một kèm một ✦</span>
+    <span data-en="Fluent English ✦">Tiếng Anh thành thạo ✦</span><span>TOEIC 790 ✦</span><span data-en="M.A. in TEFL ✦">Thạc sĩ TEFL ✦</span><span data-en="Studied in 3 countries ✦">Học tập tại 3 quốc gia ✦</span><span data-en="3× camp team leader ✦">3 lần trưởng nhóm tổ chức trại ✦</span><span data-en="International scholarship ✦">Học bổng quốc tế ✦</span><span data-en="One-on-one tutor ✦">Gia sư một kèm một ✦</span>
+  </div>
+</div>
+
+<main>
+  <!-- Giới thiệu -->
+  <section class="block" id="gioi-thieu">
+    <div class="wrap">
+      <div class="head-row reveal">
+        <span class="eyebrow" data-en="👋 About">👋 Giới thiệu</span>
+        <h2 class="heading"><span data-en="A little about">Một chút về</span> <span class="grad-text" data-en="me">mình</span></h2>
+      </div>
+      <div class="bento">
+        <div class="card b-intro reveal">
+          <div class="emo">🌷</div>
+          <h3 data-en="Inspiring English learners, caring about every detail">Truyền cảm hứng học tiếng Anh, chu đáo trong từng chi tiết</h3>
+          <p data-en="B.A. in English Language, currently pursuing an M.A. in Teaching English as a Foreign Language at National Chung Cheng University (Taiwan). Diverse experience as a teaching assistant, tutor, office assistant and team leader of international education events, communicating confidently with learners, lecturers and customers from Vietnam and abroad.">Cử nhân Ngôn ngữ Anh, hiện là học viên Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ tại
+            Đại học Quốc gia Trung Chính (Đài Loan). Kinh nghiệm đa dạng ở vai trò trợ giảng, gia sư,
+            trợ lý văn phòng và trưởng nhóm tổ chức sự kiện giáo dục quốc tế, giao tiếp tự tin với học viên,
+            giảng viên và khách hàng trong nước lẫn quốc tế.</p>
+        </div>
+        <div class="card stat c-pink reveal d1"><div class="num" data-count="790">790</div><div class="label" data-en="TOEIC score (Listening + Reading)">Điểm TOEIC (Nghe + Đọc)</div><span class="bg-emo">🎯</span></div>
+        <div class="card stat c-orange reveal d2"><div class="num" data-count="5">5</div><div class="label" data-en="Positions held">Vị trí công việc</div><span class="bg-emo">💼</span></div>
+        <div class="card stat c-purple reveal d2"><div class="num" data-count="3">3</div><div class="label" data-en="Times as camp team leader">Lần trưởng nhóm tổ chức trại</div><span class="bg-emo">🏕️</span></div>
+        <div class="card stat c-teal reveal d3"><div class="num" data-count="3">3</div><div class="label" data-en="Countries studied in">Quốc gia học tập</div><span class="bg-emo">🌏</span></div>
+        <div class="card b-now reveal d2">
+          <span class="live"><i></i> <span data-en="Currently">Đang làm</span></span>
+          <div class="r" data-en="Teaching Assistant · TÜV SÜD Vietnam">Trợ giảng · TÜV SÜD Việt Nam</div>
+          <div class="o" data-en="since 07/2026, while studying for a Master&#x27;s in Taiwan 🇹🇼">từ 07/2026, song song học Thạc sĩ tại Đài Loan 🇹🇼</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kinh nghiệm -->
+  <section class="block" id="kinh-nghiem">
+    <div class="wrap">
+      <div class="head-row reveal">
+        <span class="eyebrow" data-en="💼 Experience">💼 Kinh nghiệm</span>
+        <h2 class="heading"><span data-en="My work">Hành trình</span> <span class="grad-text" data-en="journey">làm việc</span></h2>
+        <p class="sub" data-en="Pick a field to filter, and tap a card to see the details!">Chọn lĩnh vực để lọc, bấm vào từng thẻ để xem chi tiết nhé!</p>
+      </div>
+      <div class="filters reveal" id="filters">
+        <button class="chip on" data-f="all" type="button" data-en="✨ All">✨ Tất cả</button>
+        <button class="chip" data-f="day" type="button" data-en="🎓 Teaching">🎓 Giảng dạy</button>
+        <button class="chip" data-f="vp" type="button" data-en="🗂️ Office">🗂️ Văn phòng</button>
+        <button class="chip" data-f="kd" type="button" data-en="☕ Sales">☕ Kinh doanh</button>
+      </div>
+
+      <div class="jobs" id="timeline">
+        <div class="job open reveal" data-cat="day">
+          <div class="card">
+            <button class="job-head" type="button">
+              <span class="bubble">🧑‍🏫</span>
+              <div>
+                <div class="job-title" data-en="Teaching Assistant (part-time)">Trợ giảng (bán thời gian)</div>
+                <div class="job-org" data-en="TÜV SÜD Vietnam Co., Ltd.">Công ty TNHH TÜV SÜD Việt Nam</div>
+                <div class="job-meta"><span class="tag time" data-en="07/2026 – Present">07/2026 – Nay</span><span class="tag" data-en="Corporate training">Đào tạo doanh nghiệp</span></div>
+              </div>
+              <span class="plus">+</span>
+            </button>
+            <div class="job-body"><div><ul>
+              <li data-en="Supported trainees, client representatives and trainers during courses: reception, attendance, answering questions and coordinating classes.">Hỗ trợ học viên, đại diện khách hàng và giảng viên trong các khóa đào tạo: đón tiếp, điểm danh, giải đáp thắc mắc, điều phối lớp học.</li>
+              <li data-en="Prepared classrooms, materials, equipment and logistics; worked with venue staff to keep sessions running smoothly.">Chuẩn bị phòng học, tài liệu, thiết bị và hậu cần; phối hợp với nhân viên địa điểm để buổi học diễn ra suôn sẻ.</li>
+              <li data-en="Assisted trainers in class: handing out materials, timekeeping and basic technical support.">Hỗ trợ giảng viên khi giảng dạy: phát tài liệu, quản lý thời gian, hỗ trợ kỹ thuật cơ bản.</li>
+              <li data-en="Reported training activities to the TÜV SÜD Academy team, collected feedback and prepared post-course reports.">Báo cáo hoạt động đào tạo cho đội ngũ TÜV SÜD Academy, thu thập phản hồi và lập báo cáo sau khóa học.</li>
+            </ul></div></div>
+          </div>
+        </div>
+
+        <div class="job reveal" data-cat="kd">
+          <div class="card">
+            <button class="job-head" type="button">
+              <span class="bubble">☕</span>
+              <div>
+                <div class="job-title" data-en="Sales Associate">Nhân viên bán hàng</div>
+                <div class="job-org" data-en="Ban Coffee Joint Stock Company">Công ty cổ phần Bản cà phê</div>
+                <div class="job-meta"><span class="tag time">08/2026 – 09/2026</span><span class="tag" data-en="International customers">Khách hàng quốc tế</span></div>
+              </div>
+              <span class="plus">+</span>
+            </button>
+            <div class="job-body"><div><ul>
+              <li data-en="Served local and international customers, recommending products based on their needs and preferences.">Giao tiếp với khách hàng trong nước và quốc tế, tư vấn sản phẩm theo nhu cầu và sở thích.</li>
+              <li data-en="Supported sales, checkout, product display and daily store operations.">Hỗ trợ bán hàng, thanh toán, trưng bày sản phẩm và vận hành cửa hàng hằng ngày.</li>
+            </ul></div></div>
+          </div>
+        </div>
+
+        <div class="job reveal" data-cat="vp">
+          <div class="card">
+            <button class="job-head" type="button">
+              <span class="bubble">🗂️</span>
+              <div>
+                <div class="job-title" data-en="Office Assistant">Trợ lý văn phòng</div>
+                <div class="job-org" data-en="Department of Foreign Languages and Literature, National Chung Cheng University">Khoa Ngoại ngữ và Văn học, Đại học Quốc gia Trung Chính</div>
+                <div class="job-meta"><span class="tag time">2025 – 06/2026</span><span class="tag" data-en="Taiwan">Đài Loan</span></div>
+              </div>
+              <span class="plus">+</span>
+            </button>
+            <div class="job-body"><div><ul>
+              <li data-en="Helped visitors, faculty and international students with their daily enquiries.">Hỗ trợ khách đến làm việc, giảng viên và sinh viên quốc tế giải đáp thắc mắc hằng ngày.</li>
+              <li data-en="Answered emails and handled administrative requests professionally.">Trả lời email và xử lý các yêu cầu hành chính một cách chuyên nghiệp.</li>
+              <li data-en="Supported front-desk duties and kept the office running smoothly.">Hỗ trợ công tác lễ tân, đảm bảo hoạt động văn phòng diễn ra suôn sẻ.</li>
+            </ul></div></div>
+          </div>
+        </div>
+
+        <div class="job reveal" data-cat="day">
+          <div class="card">
+            <button class="job-head" type="button">
+              <span class="bubble">📚</span>
+              <div>
+                <div class="job-title" data-en="English Tutor">Gia sư Tiếng Anh</div>
+                <div class="job-org" data-en="Language Center, National Chung Cheng University">Trung tâm Nghiên cứu Ngôn ngữ, Đại học Quốc gia Trung Chính</div>
+                <div class="job-meta"><span class="tag time">2025 – 06/2026</span><span class="tag" data-en="One-on-one">Một kèm một</span></div>
+              </div>
+              <span class="plus">+</span>
+            </button>
+            <div class="job-body"><div><ul>
+              <li data-en="Scheduled lessons and managed learning records.">Sắp xếp lịch học và quản lý hồ sơ học tập.</li>
+              <li data-en="Provided personalised learning support and a positive learning experience.">Hỗ trợ học tập theo nhu cầu cá nhân, tạo trải nghiệm học tập tích cực.</li>
+              <li data-en="Developed learners&#x27; communication skills through one-on-one guidance.">Phát triển kỹ năng giao tiếp qua hướng dẫn một kèm một.</li>
+            </ul></div></div>
+          </div>
+        </div>
+
+        <div class="job reveal" data-cat="day">
+          <div class="card">
+            <button class="job-head" type="button">
+              <span class="bubble">✏️</span>
+              <div>
+                <div class="job-title" data-en="Teaching Assistant">Trợ giảng</div>
+                <div class="job-org" data-en="Linh IELTS UK English Center, Hanoi">Trung tâm Tiếng Anh Linh IELTS UK, Hà Nội</div>
+                <div class="job-meta"><span class="tag time">2023 – 2024</span><span class="tag">IELTS</span></div>
+              </div>
+              <span class="plus">+</span>
+            </button>
+            <div class="job-body"><div><ul>
+              <li data-en="Assessed learners&#x27; progress and gave personalised feedback to improve their results.">Đánh giá tiến độ học tập và đưa ra phản hồi cá nhân hóa để nâng cao kết quả của học viên.</li>
+              <li data-en="Applied digital tools and AI writing assistants in teaching.">Ứng dụng công cụ số và công cụ hỗ trợ viết bằng AI vào giảng dạy.</li>
+            </ul></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Học vấn -->
+  <section class="block" id="hoc-van">
+    <div class="wrap">
+      <div class="head-row reveal">
+        <span class="eyebrow" data-en="🎓 Education">🎓 Học vấn</span>
+        <h2 class="heading"><span data-en="Studying across">Học tập qua</span> <span class="grad-text" data-en="3 countries">3 quốc gia</span></h2>
+        <p class="sub" data-en="From Da Lat to Malaysia, then Taiwan: every stop has been a step forward.">Từ Đà Lạt đến Malaysia, rồi Đài Loan: mỗi chặng là một bước trưởng thành.</p>
+      </div>
+      <div class="journey-wrap">
+        <div class="journey">
+          <svg class="path" viewBox="0 0 800 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C 130 -10, 200 70, 270 30 S 420 -10, 530 30 S 700 70, 800 30"/></svg>
+          <div class="card stop reveal">
+            <div class="flag">🇻🇳</div>
+            <span class="yr">2020 – 2023</span>
+            <div class="ttl" data-en="B.A. in English Language">Cử nhân Ngôn ngữ Anh</div>
+            <div class="plc" data-en="Yersin University of Da Lat">Đại học Yersin Đà Lạt</div>
+          </div>
+          <div class="card stop reveal d1">
+            <div class="flag">🇲🇾</div>
+            <span class="yr">06 – 08/2023</span>
+            <div class="ttl" data-en="Exchange Student">Sinh viên trao đổi</div>
+            <div class="plc" data-en="School of Communication and Languages, University of Wollongong Malaysia">Khoa Truyền thông và Ngôn ngữ, Đại học Wollongong, Malaysia</div>
+          </div>
+          <div class="card stop reveal d2">
+            <div class="flag">🇻🇳</div>
+            <span class="yr">09/2023 – 02/2024</span>
+            <div class="ttl" data-en="Teaching Certificate (Pedagogy)">Chứng chỉ Nghiệp vụ Sư phạm</div>
+            <div class="plc" data-en="Hanoi Pedagogical University 2, Vinh Phuc">Đại học Sư phạm Hà Nội 2, Vĩnh Phúc</div>
+          </div>
+          <div class="card stop now reveal d3">
+            <div class="flag">🇹🇼</div>
+            <span class="yr" data-en="2024 – Present">2024 – Nay</span>
+            <div class="ttl" data-en="M.A. in Teaching English as a Foreign Language">Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</div>
+            <div class="plc" data-en="National Chung Cheng University, Chiayi, Taiwan">Đại học Quốc gia Trung Chính, Gia Nghĩa, Đài Loan</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Thành tích -->
+  <section class="block" id="thanh-tich">
+    <div class="wrap">
+      <div class="head-row reveal">
+        <span class="eyebrow" data-en="🏆 Achievements &amp; leadership">🏆 Thành tích &amp; lãnh đạo</span>
+        <h2 class="heading"><span data-en="Standout">Những</span> <span class="grad-text" data-en="highlights">dấu ấn</span> <span data-en="">nổi bật</span></h2>
+      </div>
+      <p class="flip-tip reveal" data-en="👆 Hover or tap a card to flip it, there is a surprise!">👆 Rê chuột hoặc chạm vào thẻ để lật, có bất ngờ đó!</p>
+      <div class="flip-grid">
+        <div class="flip reveal" tabindex="0">
+          <div class="flip-inner">
+            <div class="face front"><div class="big">🏆</div><div class="t" data-en="Outstanding International Student Award">Sinh viên Quốc tế có Thành tích Xuất sắc</div><div class="s">2025 – 2026</div></div>
+            <div class="face back"><div class="k" data-en="Award">Giải thưởng</div><div class="v" data-en="Outstanding achievement">Thành tích xuất sắc</div><div class="d" data-en="Presented by National Chung Cheng University to international students.">Do Đại học Quốc gia Trung Chính trao cho sinh viên quốc tế.</div></div>
+          </div>
+        </div>
+        <div class="flip reveal d1" tabindex="0">
+          <div class="flip-inner">
+            <div class="face front"><div class="big">🎓</div><div class="t" data-en="International Student Scholarship">Học bổng sinh viên quốc tế</div><div class="s" data-en="2024 – Present">2024 – Nay</div></div>
+            <div class="face back"><div class="k" data-en="Scholarship">Học bổng</div><div class="v" data-en="National Chung Cheng University">Đại học Quốc gia Trung Chính</div><div class="d" data-en="For international students in the Master&#x27;s programme.">Dành cho sinh viên quốc tế theo học chương trình Thạc sĩ.</div></div>
+          </div>
+        </div>
+        <div class="flip reveal d2" tabindex="0">
+          <div class="flip-inner">
+            <div class="face front"><div class="big">❄️</div><div class="t" data-en="Team Leader, Winter English Camp">Trưởng nhóm tổ chức Trại tiếng Anh Mùa Đông</div><div class="s">01/2026</div></div>
+            <div class="face back"><div class="k" data-en="Leadership">Lãnh đạo</div><div class="v" data-en="Winter English Camp">Trại tiếng Anh Mùa Đông</div><div class="d" data-en="EMI Center, College of Education, National Chung Cheng University.">Trung tâm EMI, Trường Sư phạm, Đại học Quốc gia Trung Chính.</div></div>
+          </div>
+        </div>
+        <div class="flip reveal d3" tabindex="0">
+          <div class="flip-inner">
+            <div class="face front"><div class="big">☀️</div><div class="t" data-en="Team Leader, Summer English Camp">Trưởng nhóm tổ chức Trại tiếng Anh Mùa Hè</div><div class="s">06/2025</div></div>
+            <div class="face back"><div class="k" data-en="Leadership">Lãnh đạo</div><div class="v" data-en="Summer English Camp">Trại tiếng Anh Mùa Hè</div><div class="d" data-en="EMI Center, College of Education, National Chung Cheng University.">Trung tâm EMI, Trường Sư phạm, Đại học Quốc gia Trung Chính.</div></div>
+          </div>
+        </div>
+        <div class="flip reveal d4" tabindex="0">
+          <div class="flip-inner">
+            <div class="face front"><div class="big">🇹🇭</div><div class="t" data-en="Team Leader, Summer Camp for Thai Students">Trưởng nhóm Trại hè cho sinh viên Thái Lan</div><div class="s">04 &amp; 05/2025</div></div>
+            <div class="face back"><div class="k" data-en="Leadership">Lãnh đạo</div><div class="v" data-en="International summer camp">Trại hè quốc tế</div><div class="d" data-en="Hosted by National Chung Cheng University for students from Thailand.">Do Đại học Quốc gia Trung Chính tổ chức cho sinh viên Thái Lan.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vol">
+        <div class="card reveal"><div class="e">💻</div><div><div class="t" data-en="Online English Teacher (volunteer)">Giáo viên tiếng Anh trực tuyến (tình nguyện)</div><div class="s">Vten Education · 2025 – 03/2026</div></div></div>
+        <div class="card reveal d1"><div class="e">✍️</div><div><div class="t" data-en="English – Vietnamese Translator (volunteer)">Cộng tác viên biên dịch Anh – Việt (tình nguyện)</div><div class="s">YBOX · 08/2021 – 12/2021</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kỹ năng -->
+  <section class="block" id="ky-nang">
+    <div class="wrap">
+      <div class="head-row reveal">
+        <span class="eyebrow" data-en="🌍 Skills">🌍 Kỹ năng</span>
+        <h2 class="heading"><span data-en="Languages &amp;">Ngôn ngữ &amp;</span> <span class="grad-text" data-en="tools">công cụ</span></h2>
+      </div>
+      <div class="lang-grid">
+        <div class="card lang reveal">
+          <div class="ring"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52" fill="none" stroke-width="12"/><circle class="fg" cx="60" cy="60" r="52" fill="none" stroke-width="12" data-level="1"/></svg><div class="mid">🇻🇳</div></div>
+          <div class="n" data-en="Vietnamese">Tiếng Việt</div><span class="lv" data-en="Native">Bản ngữ</span>
+        </div>
+        <div class="card lang reveal d1">
+          <div class="ring"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52" fill="none" stroke-width="12"/><circle class="fg" cx="60" cy="60" r="52" fill="none" stroke-width="12" data-level="0.85"/></svg><div class="mid">🇬🇧</div></div>
+          <div class="n" data-en="English">Tiếng Anh</div><span class="lv" data-en="Fluent">Thành thạo</span><div class="ex" data-en="TOEIC Listening + Reading: 790">TOEIC Nghe + Đọc: 790</div>
+        </div>
+        <div class="card lang reveal d2">
+          <div class="ring"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52" fill="none" stroke-width="12"/><circle class="fg" cx="60" cy="60" r="52" fill="none" stroke-width="12" data-level="0.3"/></svg><div class="mid">🇨🇳</div></div>
+          <div class="n" data-en="Chinese">Tiếng Trung</div><span class="lv" data-en="Beginner">Sơ cấp</span>
+        </div>
+      </div>
+
+      <div class="tools reveal">
+        <span class="tool"><i>📝</i>Word</span>
+        <span class="tool"><i>📊</i>Excel</span>
+        <span class="tool"><i>📽️</i>PowerPoint</span>
+        <span class="tool"><i>📄</i>Google Docs · Sheets · Slides</span>
+        <span class="tool"><i>🎥</i>Zoom</span>
+        <span class="tool"><i>📹</i>Google Meet</span>
+        <span class="tool"><i>👥</i>Microsoft Teams</span>
+        <span class="tool"><i>🤖</i><span data-en="AI tools for teaching">Công cụ AI hỗ trợ giảng dạy</span></span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="closing">
+  <h3 class="reveal" data-en="“Every class is a chance to connect and inspire.” 💫">“Mỗi lớp học là một cơ hội để kết nối và truyền cảm hứng.” 💫</h3>
+  <p class="reveal d1" data-en="Nguyen Thi Xuan Anh · References available upon request">Nguyễn Thị Xuân Ánh · Thông tin người tham khảo được cung cấp khi có yêu cầu</p>
+  <div class="cta reveal d2">
+    <button class="btn btn-soft" id="chatEnd" type="button" data-en="💬 Chat with my assistant">💬 Trò chuyện với trợ lý ảo</button>
+    <a class="btn btn-soft" href="#top" data-en="↑ Back to top">↑ Về đầu trang</a>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" aria-label="Về đầu trang">↑</button>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Nền sáng / tối */
+  var themeBtn = document.getElementById('themeBtn');
+  function isDark() {
+    var t = root.getAttribute('data-theme');
+    if (t) return t === 'dark';
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function syncTheme() { themeBtn.textContent = isDark() ? '☀️' : '🌙'; }
+  themeBtn.addEventListener('click', function () {
+    var next = isDark() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    syncTheme();
+  });
+  syncTheme();
+
+  /* In / PDF */
+  function doPrint() { window.print(); }
+  document.getElementById('printTop').addEventListener('click', doPrint);
+  document.getElementById('printHero').addEventListener('click', doPrint);
+
+  /* Các nút mở trợ lý ảo khác */
+  ['chatTile', 'chatEnd'].forEach(function (id) {
+    document.getElementById(id).addEventListener('click', function () { document.getElementById('chatFab').click(); });
+  });
+
+  /* Thanh tiến độ và nút về đầu trang */
+  var bar = document.getElementById('progress');
+  var toTop = document.getElementById('toTop');
+  function onScroll() {
+    var y = window.scrollY;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+    toTop.classList.toggle('show', y > window.innerHeight * 0.8);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  toTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
+
+  /* Hình khối di chuyển theo chuột */
+  var hero = document.querySelector('.hero');
+  var shapes = document.querySelectorAll('.shape');
+  if (!reduce) {
+    hero.addEventListener('mousemove', function (e) {
+      var r = hero.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      shapes.forEach(function (s) {
+        var d = +s.getAttribute('data-depth');
+        s.style.transform = 'translate(' + (x * d * 2) + 'px,' + (y * d * 2) + 'px)';
+      });
+    });
+  }
+
+  /* Vai trò đổi lần lượt: chữ cũ trượt lên, chữ mới trượt vào */
+  var WORDS = {
+    vi: ['Trợ giảng tiếng Anh 🧑‍🏫', 'Học viên Thạc sĩ TEFL 🎓', 'Gia sư một kèm một 📚', 'Trưởng nhóm tổ chức trại ⛺', 'Người kết nối quốc tế 🌏'],
+    en: ['English Teaching Assistant 🧑‍🏫', 'M.A. in TEFL student 🎓', 'One-on-one tutor 📚', 'English camp team leader ⛺', 'International connector 🌏']
+  };
+  var lang = 'vi';
+  var wi = 0;
+  var typed = document.getElementById('typed');
+  if (!reduce) {
+    setInterval(function () {
+      typed.classList.add('out');
+      setTimeout(function () {
+        wi = (wi + 1) % WORDS[lang].length;
+        typed.textContent = WORDS[lang][wi];
+        typed.classList.remove('out');
+        typed.classList.add('below');
+        typed.offsetWidth;
+        typed.classList.remove('below');
+      }, 380);
+    }, 2600);
+  }
+
+  /* Đổi ngôn ngữ Việt / Anh: chữ tiếng Anh nằm sẵn trong thuộc tính data-en */
+  var langBtn = document.getElementById('langBtn');
+  var TITLE = { vi: 'Xuân Ánh ✨', en: 'Xuan Anh ✨' };
+  function setLang(l) {
+    lang = l;
+    root.lang = l;
+    document.querySelectorAll('[data-en]').forEach(function (el) {
+      if (el.__vi === undefined) el.__vi = el.textContent;
+      el.textContent = l === 'en' ? el.getAttribute('data-en') : el.__vi;
+    });
+    typed.textContent = WORDS[l][wi % WORDS[l].length];
+    document.title = TITLE[l];
+    langBtn.textContent = l === 'en' ? 'VI' : 'EN';
+    langBtn.title = l === 'en' ? 'Tiếng Việt' : 'English';
+    try { localStorage.setItem('lang', l); } catch (e) {}
+    document.dispatchEvent(new Event('langchange'));
+  }
+  langBtn.addEventListener('click', function () { setLang(lang === 'en' ? 'vi' : 'en'); });
+  var savedLang = null;
+  try { savedLang = localStorage.getItem('lang'); } catch (e) {}
+  if (savedLang === 'en') setTimeout(function () { setLang('en'); }, 0);
+
+  /* Pháo giấy */
+  var COLORS = ['#ff4d8d', '#ff8a3d', '#8b5cf6', '#ffc93c', '#1fc3a5', '#4d8dff'];
+  function confetti(x, y) {
+    if (reduce) return;
+    for (var i = 0; i < 28; i++) {
+      var c = document.createElement('i');
+      c.className = 'confetti';
+      c.style.background = COLORS[i % COLORS.length];
+      c.style.left = x + 'px'; c.style.top = y + 'px';
+      document.body.appendChild(c);
+      var ang = Math.random() * Math.PI * 2, dist = 80 + Math.random() * 140;
+      var dx = Math.cos(ang) * dist, dy = Math.sin(ang) * dist - 80;
+      c.animate([
+        { transform: 'translate(0,0) rotate(0)', opacity: 1 },
+        { transform: 'translate(' + dx + 'px,' + (dy + 160) + 'px) rotate(' + (Math.random() * 720) + 'deg)', opacity: 0 }
+      ], { duration: 1100 + Math.random() * 500, easing: 'cubic-bezier(.2,.7,.4,1)' }).onfinish = (function (el) { return function () { el.remove(); }; })(c);
+    }
+  }
+
+  /* Hiệu ứng con chuột (chỉ trên máy tính có chuột) */
+  if (!reduce && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    var dot = document.createElement('div'); dot.className = 'cur-dot';
+    var ring = document.createElement('div'); ring.className = 'cur-ring';
+    document.body.appendChild(ring); document.body.appendChild(dot);
+    var mx = -100, my = -100, rx = mx, ry = my, lastSpark = 0, lx = 0, ly = 0;
+    var SPARKS = ['✦', '✧', '★', '•'];
+    document.addEventListener('mousemove', function (e) {
+      mx = e.clientX; my = e.clientY;
+      dot.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
+      root.classList.remove('cur-hidden');
+      var now = performance.now(), dist = Math.abs(mx - lx) + Math.abs(my - ly);
+      if (now - lastSpark > 45 && dist > 14) {
+        lastSpark = now; lx = mx; ly = my;
+        var s = document.createElement('span');
+        s.className = 'spark-p';
+        s.textContent = SPARKS[Math.floor(Math.random() * SPARKS.length)];
+        s.style.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+        document.body.appendChild(s);
+        var dx = (Math.random() - .5) * 30, dy = 18 + Math.random() * 22;
+        s.animate([
+          { transform: 'translate(' + mx + 'px,' + my + 'px) scale(1) rotate(0)', opacity: .95 },
+          { transform: 'translate(' + (mx + dx) + 'px,' + (my + dy) + 'px) scale(.2) rotate(180deg)', opacity: 0 }
+        ], { duration: 750, easing: 'ease-out' }).onfinish = function () { s.remove(); };
+      }
+    });
+    document.addEventListener('mouseleave', function () { root.classList.add('cur-hidden'); });
+    (function follow() {
+      rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18;
+      ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+      requestAnimationFrame(follow);
+    })();
+    var HOT = 'a, button, .flip, .tile, .chip, .tool, .job-head, input';
+    document.addEventListener('mouseover', function (e) { ring.classList.toggle('big', !!e.target.closest(HOT)); });
+    document.addEventListener('mousedown', function () { ring.classList.add('down'); });
+    document.addEventListener('mouseup', function () { ring.classList.remove('down'); });
+    document.addEventListener('click', function (e) {
+      var c = document.createElement('div');
+      c.className = 'click-ring';
+      document.body.appendChild(c);
+      c.animate([
+        { transform: 'translate(' + e.clientX + 'px,' + e.clientY + 'px) scale(.5)', opacity: 1 },
+        { transform: 'translate(' + e.clientX + 'px,' + e.clientY + 'px) scale(4)', opacity: 0 }
+      ], { duration: 550, easing: 'ease-out' }).onfinish = function () { c.remove(); };
+    });
+  }
+
+  /* Mở / đóng chi tiết công việc */
+  document.querySelectorAll('.job-head').forEach(function (b) {
+    var job = b.closest('.job');
+    b.setAttribute('aria-expanded', job.classList.contains('open'));
+    b.addEventListener('click', function () {
+      job.classList.toggle('open');
+      b.setAttribute('aria-expanded', job.classList.contains('open'));
+    });
+  });
+
+  /* Lọc kinh nghiệm */
+  var chips = document.querySelectorAll('#filters .chip');
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      var f = c.getAttribute('data-f');
+      chips.forEach(function (x) { x.classList.toggle('on', x === c); });
+      document.querySelectorAll('#timeline .job').forEach(function (j) {
+        var show = f === 'all' || j.getAttribute('data-cat') === f;
+        j.classList.toggle('hide', !show);
+        if (show) j.classList.add('shown');
+      });
+    });
+  });
+
+  /* Lật thẻ thành tích + pháo giấy */
+  document.querySelectorAll('.flip').forEach(function (f) {
+    function burst() {
+      var r = f.getBoundingClientRect();
+      confetti(r.left + r.width / 2, r.top + r.height / 2);
+    }
+    f.addEventListener('click', function () { f.classList.toggle('flipped'); if (f.classList.contains('flipped')) burst(); });
+    f.addEventListener('mouseenter', function () { if (window.matchMedia('(hover: hover)').matches) burst(); });
+    f.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); f.classList.toggle('flipped'); burst(); }
+    });
+  });
+
+  /* Đếm số và vòng tròn ngôn ngữ */
+  function countUp(el) {
+    var target = +el.getAttribute('data-count');
+    if (reduce) { el.textContent = target; return; }
+    var start = null, dur = 1500;
+    el.textContent = '0';
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var C = 2 * Math.PI * 52;
+  document.querySelectorAll('.ring .fg').forEach(function (c) { c.style.strokeDasharray = C; c.style.strokeDashoffset = C; });
+  function fillRing(c) { c.style.strokeDashoffset = C * (1 - +c.getAttribute('data-level')); }
+
+  /* Hiện dần khi cuộn */
+  var items = document.querySelectorAll('.reveal');
+  function show(el) {
+    el.classList.add('shown');
+    el.querySelectorAll('[data-count]').forEach(countUp);
+    el.querySelectorAll('.ring .fg').forEach(fillRing);
+  }
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(show);
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    items.forEach(function (el) { io.observe(el); });
+
+    /* Tô sáng mục đang xem trên menu */
+    var links = document.querySelectorAll('#menu a');
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    document.querySelectorAll('main section[id]').forEach(function (s) { spy.observe(s); });
+  }
+
+  /* Khi in: hiện mọi thứ đầy đủ */
+  window.addEventListener('beforeprint', function () {
+    items.forEach(function (el) { el.classList.add('shown'); });
+    document.querySelectorAll('.stat .num').forEach(function (n) { n.textContent = n.getAttribute('data-count'); });
+    document.querySelectorAll('.ring .fg').forEach(fillRing);
+  });
+})();
+</script>
+
+<button class="chat-fab" id="chatFab" type="button" aria-label="Mở trợ lý ảo"><span class="em">💬</span><span class="lbl" data-en="Ask about Xuan Anh">Hỏi về Xuân Ánh</span></button>
+
+<div class="chat" id="chat" role="dialog" aria-label="Trợ lý ảo của Xuân Ánh">
+  <div class="chat-head">
+    <div class="chat-ava"><span>XA</span></div>
+    <div>
+      <div class="chat-title" data-en="Xuan Anh&#x27;s virtual assistant">Trợ lý ảo của Xuân Ánh</div>
+      <div class="chat-sub" data-en="Instant answers · based on Xuan Anh&#x27;s profile">Trả lời ngay · dựa trên hồ sơ của Xuân Ánh</div>
+    </div>
+    <button class="chat-x" id="chatClose" type="button" aria-label="Đóng">✕</button>
+  </div>
+  <div class="chat-body" id="chatBody" aria-live="polite"></div>
+  <div class="sugg" id="sugg"></div>
+  <form class="chat-form" id="chatForm" autocomplete="off">
+    <input id="chatInput" type="text" placeholder="Nhập câu hỏi, ví dụ: Xuân Ánh học ở đâu?" aria-label="Câu hỏi">
+    <button type="submit" aria-label="Gửi">➤</button>
+  </form>
+</div>
+
+<script>
+(function () {
+  /* ---- Kiến thức của trợ lý: chỉ lấy từ hồ sơ của Xuân Ánh ----
+     k / a: từ khóa và câu trả lời tiếng Việt; ke / e: từ khóa và câu trả lời tiếng Anh */
+  var go = function (id, txt) { return '<br><a class="go" href="#' + id + '" data-close>→ ' + txt + '</a>'; };
+  var KB = [
+    { k: ['xin chao', 'chao', 'alo', 'chao ban'], ke: ['hello', 'hi', 'hey', 'good morning', 'good afternoon'],
+      a: 'Xin chào! 👋 Mình là trợ lý ảo của <b>Xuân Ánh</b>. Bạn có thể hỏi mình về kinh nghiệm, học vấn, ngoại ngữ, kỹ năng hay thành tích của Xuân Ánh nhé.',
+      e: "Hello! 👋 I'm <b>Xuan Anh</b>'s virtual assistant. Feel free to ask me about her experience, education, languages, skills or achievements." },
+    { k: ['la ai', 'gioi thieu', 'tom tat', 'ban than', 've xuan anh', 'xuan anh la', 'thong tin', 'ho so'], ke: ['who', 'introduce', 'introduction', 'yourself', 'summary', 'profile'],
+      a: '<b>Nguyễn Thị Xuân Ánh</b> (阮氏春英) là Cử nhân Ngôn ngữ Anh, hiện là học viên <b>Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</b> tại Đại học Quốc gia Trung Chính (Đài Loan). Xuân Ánh có kinh nghiệm trợ giảng, gia sư, trợ lý văn phòng và từng 3 lần làm trưởng nhóm tổ chức trại tiếng Anh quốc tế. Tiếng Anh thành thạo (TOEIC 790).' + go('gioi-thieu', 'Xem phần Giới thiệu'),
+      e: '<b>Nguyen Thi Xuan Anh</b> (阮氏春英) holds a B.A. in English Language and is currently pursuing an <b>M.A. in Teaching English as a Foreign Language</b> at National Chung Cheng University (Taiwan). She has experience as a teaching assistant, tutor and office assistant, and has led 3 international English camps. She speaks fluent English (TOEIC 790).' + go('gioi-thieu', 'See the About section') },
+    { k: ['hien tai', 'hien nay', 'bay gio', 'dang lam', 'lam gi', 'cong viec hien tai', 'dang hoc'], ke: ['now', 'currently', 'current', 'these days', 'present'],
+      a: 'Hiện nay Xuân Ánh:<ul><li>Làm <b>Trợ giảng (bán thời gian)</b> tại Công ty TNHH TÜV SÜD Việt Nam (từ 07/2026)</li><li>Đang học <b>Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</b> tại Đại học Quốc gia Trung Chính, Đài Loan (từ 2024)</li></ul>',
+      e: 'At the moment Xuan Anh is:<ul><li>Working as a <b>part-time Teaching Assistant</b> at TÜV SÜD Vietnam (since 07/2026)</li><li>Studying for an <b>M.A. in Teaching English as a Foreign Language</b> at National Chung Cheng University, Taiwan (since 2024)</li></ul>' },
+    { k: ['kinh nghiem', 'cong viec', 'lam viec', 'da lam', 'viec lam', 'nghe nghiep', 'vi tri', 'cong ty', 'lam o dau', 'bao nhieu nam'], ke: ['experience', 'work', 'job', 'jobs', 'career', 'worked', 'positions', 'employment', 'companies'],
+      a: 'Xuân Ánh đã làm <b>5 vị trí</b>:<ul><li><b>Trợ giảng</b> – TÜV SÜD Việt Nam (07/2026 – nay)</li><li><b>Nhân viên bán hàng</b> – Bản cà phê (08 – 09/2026)</li><li><b>Trợ lý văn phòng</b> – Khoa Ngoại ngữ & Văn học, ĐH Quốc gia Trung Chính (2025 – 06/2026)</li><li><b>Gia sư Tiếng Anh</b> – Trung tâm Nghiên cứu Ngôn ngữ, ĐH Quốc gia Trung Chính (2025 – 06/2026)</li><li><b>Trợ giảng</b> – Trung tâm Linh IELTS UK, Hà Nội (2023 – 2024)</li></ul>Bạn muốn biết chi tiết công việc nào?' + go('kinh-nghiem', 'Xem phần Kinh nghiệm'),
+      e: 'Xuan Anh has held <b>5 positions</b>:<ul><li><b>Teaching Assistant</b> – TÜV SÜD Vietnam (07/2026 – present)</li><li><b>Sales Associate</b> – Ban Coffee (08 – 09/2026)</li><li><b>Office Assistant</b> – Dept. of Foreign Languages & Literature, National Chung Cheng University (2025 – 06/2026)</li><li><b>English Tutor</b> – Language Center, National Chung Cheng University (2025 – 06/2026)</li><li><b>Teaching Assistant</b> – Linh IELTS UK English Center, Hanoi (2023 – 2024)</li></ul>Which one would you like to know more about?' + go('kinh-nghiem', 'See the Experience section') },
+    { k: ['tuv', 'sud', 'tuv sud', 'dao tao doanh nghiep', 'academy'], ke: ['tuv', 'sud', 'tuv sud', 'corporate training', 'academy'],
+      a: 'Tại <b>TÜV SÜD Việt Nam</b> (07/2026 – nay), Xuân Ánh làm trợ giảng bán thời gian:<ul><li>Đón tiếp, điểm danh, giải đáp thắc mắc và điều phối lớp học</li><li>Chuẩn bị phòng học, tài liệu, thiết bị và hậu cần</li><li>Hỗ trợ giảng viên: phát tài liệu, quản lý thời gian, hỗ trợ kỹ thuật</li><li>Thu thập phản hồi và lập báo cáo sau khóa học cho TÜV SÜD Academy</li></ul>',
+      e: 'At <b>TÜV SÜD Vietnam</b> (07/2026 – present), Xuan Anh works as a part-time teaching assistant:<ul><li>Welcoming trainees, taking attendance, answering questions and coordinating classes</li><li>Preparing rooms, materials, equipment and logistics</li><li>Supporting trainers with materials, timekeeping and technical help</li><li>Collecting feedback and writing post-course reports for TÜV SÜD Academy</li></ul>' },
+    { k: ['ban hang', 'ca phe', 'cafe', 'coffee', 'khach hang', 'tu van'], ke: ['sales', 'sell', 'coffee', 'cafe', 'customer', 'customers', 'shop', 'store', 'retail'],
+      a: 'Tại <b>Công ty cổ phần Bản cà phê</b> (08 – 09/2026), Xuân Ánh làm nhân viên bán hàng: giao tiếp và tư vấn sản phẩm cho khách trong nước và quốc tế, hỗ trợ bán hàng, thanh toán, trưng bày và vận hành cửa hàng hằng ngày.',
+      e: 'At <b>Ban Coffee JSC</b> (08 – 09/2026), Xuan Anh was a sales associate: serving local and international customers, recommending products, and helping with sales, checkout, displays and daily store operations.' },
+    { k: ['tro ly', 'van phong', 'hanh chinh', 'le tan', 'email', 'giay to'], ke: ['office', 'assistant', 'admin', 'administrative', 'reception', 'front desk', 'email'],
+      a: 'Xuân Ánh từng là <b>Trợ lý văn phòng</b> tại Khoa Ngoại ngữ và Văn học, ĐH Quốc gia Trung Chính (2025 – 06/2026): hỗ trợ khách, giảng viên và sinh viên quốc tế, trả lời email, xử lý yêu cầu hành chính và hỗ trợ lễ tân.',
+      e: 'Xuan Anh was an <b>Office Assistant</b> at the Department of Foreign Languages and Literature, National Chung Cheng University (2025 – 06/2026): helping visitors, faculty and international students, answering emails, handling administrative requests and supporting the front desk.' },
+    { k: ['gia su', 'kem', 'mot kem mot', 'day kem', 'day hoc', 'giang day', 'day tieng anh', 'giao vien'], ke: ['tutor', 'tutoring', 'teach', 'teaching', 'teacher', 'one on one', 'lessons'],
+      a: 'Về giảng dạy, Xuân Ánh có:<ul><li><b>Gia sư Tiếng Anh</b> một kèm một tại ĐH Quốc gia Trung Chính (2025 – 06/2026): xếp lịch, quản lý hồ sơ học tập, hỗ trợ theo nhu cầu từng người</li><li><b>Trợ giảng</b> tại Linh IELTS UK (2023 – 2024) và TÜV SÜD (2026 – nay)</li><li><b>Giáo viên tiếng Anh trực tuyến</b> (tình nguyện) tại Vten Education</li></ul>Ngoài ra Xuân Ánh có <b>Chứng chỉ Nghiệp vụ Sư phạm</b> và đang học Thạc sĩ chuyên ngành giảng dạy tiếng Anh.',
+      e: 'Teaching experience:<ul><li><b>One-on-one English Tutor</b> at National Chung Cheng University (2025 – 06/2026): scheduling, learning records and personalised support</li><li><b>Teaching Assistant</b> at Linh IELTS UK (2023 – 2024) and TÜV SÜD (2026 – present)</li><li><b>Online English Teacher</b> (volunteer) at Vten Education</li></ul>She also holds a <b>Teaching Certificate (Pedagogy)</b> and is completing an M.A. in TEFL.' },
+    { k: ['ielts', 'linh', 'tro giang'], ke: ['ielts', 'linh', 'teaching assistant', 'ta'],
+      a: 'Xuân Ánh đã làm trợ giảng ở 2 nơi:<ul><li><b>Trung tâm Linh IELTS UK</b>, Hà Nội (2023 – 2024): đánh giá tiến độ, phản hồi cá nhân hóa cho học viên, ứng dụng công cụ số và AI vào giảng dạy</li><li><b>TÜV SÜD Việt Nam</b> (07/2026 – nay): hỗ trợ học viên, giảng viên và điều phối các khóa đào tạo</li></ul>',
+      e: 'Xuan Anh has been a teaching assistant at 2 places:<ul><li><b>Linh IELTS UK English Center</b>, Hanoi (2023 – 2024): assessing progress, giving personalised feedback and using digital and AI tools in class</li><li><b>TÜV SÜD Vietnam</b> (07/2026 – present): supporting trainees and trainers and coordinating courses</li></ul>' },
+    { k: ['hoc van', 'hoc o dau', 'truong', 'bang cap', 'tot nghiep', 'dai hoc', 'hoc gi', 'hoc tap', 'bang'], ke: ['education', 'study', 'studied', 'school', 'university', 'degree', 'degrees', 'graduate', 'graduated', 'qualifications'],
+      a: 'Học vấn của Xuân Ánh:<ul><li>🇹🇼 <b>Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</b> – ĐH Quốc gia Trung Chính, Đài Loan (2024 – nay)</li><li>🇻🇳 <b>Chứng chỉ Nghiệp vụ Sư phạm</b> – ĐH Sư phạm Hà Nội 2 (09/2023 – 02/2024)</li><li>🇲🇾 <b>Sinh viên trao đổi</b> – ĐH Wollongong, Malaysia (06 – 08/2023)</li><li>🇻🇳 <b>Cử nhân Ngôn ngữ Anh</b> – ĐH Yersin Đà Lạt (2020 – 2023)</li></ul>' + go('hoc-van', 'Xem phần Học vấn'),
+      e: "Xuan Anh's education:<ul><li>🇹🇼 <b>M.A. in Teaching English as a Foreign Language</b> – National Chung Cheng University, Taiwan (2024 – present)</li><li>🇻🇳 <b>Teaching Certificate (Pedagogy)</b> – Hanoi Pedagogical University 2 (09/2023 – 02/2024)</li><li>🇲🇾 <b>Exchange Student</b> – University of Wollongong Malaysia (06 – 08/2023)</li><li>🇻🇳 <b>B.A. in English Language</b> – Yersin University of Da Lat (2020 – 2023)</li></ul>" + go('hoc-van', 'See the Education section') },
+    { k: ['thac si', 'tefl', 'cao hoc', 'dai loan', 'trung chinh', 'chung cheng', 'master'], ke: ['master', 'masters', 'tefl', 'm a', 'taiwan', 'chung cheng', 'postgraduate'],
+      a: 'Từ 2024, Xuân Ánh học <b>Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</b> (M.A. in TEFL) tại Khoa Ngoại ngữ và Văn học, <b>Đại học Quốc gia Trung Chính</b>, Gia Nghĩa, Đài Loan, và nhận <b>học bổng dành cho sinh viên quốc tế</b> của trường.',
+      e: "Since 2024, Xuan Anh has been studying for an <b>M.A. in Teaching English as a Foreign Language</b> at the Department of Foreign Languages and Literature, <b>National Chung Cheng University</b>, Chiayi, Taiwan, on the university's <b>international student scholarship</b>." },
+    { k: ['cu nhan', 'yersin', 'da lat', 'ngon ngu anh'], ke: ['bachelor', 'ba', 'yersin', 'da lat', 'dalat', 'undergraduate'],
+      a: 'Xuân Ánh tốt nghiệp <b>Cử nhân Ngôn ngữ Anh</b> tại Khoa Ngoại ngữ, Đại học Yersin Đà Lạt (2020 – 2023).',
+      e: 'Xuan Anh earned a <b>B.A. in English Language</b> from the Faculty of Foreign Languages, Yersin University of Da Lat (2020 – 2023).' },
+    { k: ['trao doi', 'malaysia', 'wollongong', 'nuoc ngoai', 'du hoc'], ke: ['exchange', 'malaysia', 'wollongong', 'abroad', 'overseas', 'countries'],
+      a: 'Xuân Ánh từng là <b>sinh viên trao đổi</b> tại Khoa Truyền thông và Ngôn ngữ, Đại học Wollongong, Malaysia (06 – 08/2023), và hiện đang học Thạc sĩ tại Đài Loan. Tổng cộng Xuân Ánh đã học tập ở <b>3 quốc gia</b>.',
+      e: "Xuan Anh was an <b>exchange student</b> at the School of Communication and Languages, University of Wollongong Malaysia (06 – 08/2023), and is now doing her Master's in Taiwan. In total she has studied in <b>3 countries</b>." },
+    { k: ['su pham', 'nghiep vu', 'chung chi'], ke: ['certificate', 'certificates', 'certification', 'pedagogy'],
+      a: 'Xuân Ánh có <b>Chứng chỉ Nghiệp vụ Sư phạm</b> của Trường Đại học Sư phạm Hà Nội 2, Vĩnh Phúc (09/2023 – 02/2024), cùng chứng chỉ <b>TOEIC 790</b> (Nghe + Đọc).',
+      e: 'Xuan Anh holds a <b>Teaching Certificate (Pedagogy)</b> from Hanoi Pedagogical University 2, Vinh Phuc (09/2023 – 02/2024), and a <b>TOEIC score of 790</b> (Listening + Reading).' },
+    { k: ['ngoai ngu', 'tieng anh', 'toeic', 'ngon ngu', 'english', 'noi tieng', 'diem'], ke: ['language', 'languages', 'english', 'toeic', 'speak', 'fluent', 'score', 'vietnamese'],
+      a: 'Ngoại ngữ của Xuân Ánh:<ul><li>🇬🇧 <b>Tiếng Anh: Thành thạo</b> – TOEIC Nghe + Đọc <b>790</b></li><li>🇻🇳 <b>Tiếng Việt:</b> Bản ngữ</li><li>🇨🇳 <b>Tiếng Trung:</b> Sơ cấp</li></ul>' + go('ky-nang', 'Xem phần Kỹ năng'),
+      e: 'Languages:<ul><li>🇬🇧 <b>English: Fluent</b> – TOEIC Listening + Reading <b>790</b></li><li>🇻🇳 <b>Vietnamese:</b> Native</li><li>🇨🇳 <b>Chinese:</b> Beginner</li></ul>' + go('ky-nang', 'See the Skills section') },
+    { k: ['tieng trung', 'tieng hoa', 'trung quoc', 'chinese'], ke: ['chinese', 'mandarin'],
+      a: 'Xuân Ánh biết <b>tiếng Trung ở mức sơ cấp</b>, và có tên tiếng Trung là <b>阮氏春英</b>.',
+      e: 'Xuan Anh speaks <b>beginner-level Chinese</b>, and her Chinese name is <b>阮氏春英</b>.' },
+    { k: ['ky nang', 'tin hoc', 'office', 'excel', 'word', 'powerpoint', 'google', 'zoom', 'teams', 'meet', 'cong cu', 'may tinh', 'phan mem', 'ai'], ke: ['skills', 'skill', 'computer', 'software', 'tools', 'office', 'excel', 'word', 'powerpoint', 'google', 'zoom', 'teams', 'ai'],
+      a: 'Kỹ năng chuyên môn của Xuân Ánh:<ul><li>Thành thạo <b>Microsoft Office</b> (Word, Excel, PowerPoint) và <b>Google Workspace</b> (Docs, Sheets, Slides)</li><li>Thành thạo họp trực tuyến: <b>Zoom, Google Meet, Microsoft Teams</b></li><li>Ứng dụng <b>công cụ số và AI</b> hỗ trợ giảng dạy</li><li>Giao tiếp với học viên, giảng viên, khách hàng quốc tế; tổ chức và điều phối sự kiện</li></ul>' + go('ky-nang', 'Xem phần Kỹ năng'),
+      e: "Xuan Anh's skills:<ul><li>Proficient in <b>Microsoft Office</b> (Word, Excel, PowerPoint) and <b>Google Workspace</b> (Docs, Sheets, Slides)</li><li>Online meeting platforms: <b>Zoom, Google Meet, Microsoft Teams</b></li><li>Using <b>digital and AI tools</b> in teaching</li><li>Communicating with learners, faculty and international customers; organising and coordinating events</li></ul>" + go('ky-nang', 'See the Skills section') },
+    { k: ['thanh tich', 'giai thuong', 'hoc bong', 'khen thuong', 'xuat sac', 'giai'], ke: ['achievement', 'achievements', 'award', 'awards', 'scholarship', 'prize', 'honors', 'honours'],
+      a: 'Thành tích của Xuân Ánh:<ul><li>🏆 <b>Giải thưởng Sinh viên Quốc tế có Thành tích Xuất sắc</b> – ĐH Quốc gia Trung Chính (2025 – 2026)</li><li>🎓 <b>Học bổng dành cho sinh viên quốc tế</b> – ĐH Quốc gia Trung Chính (2024 – nay)</li></ul>' + go('thanh-tich', 'Xem phần Thành tích'),
+      e: 'Achievements:<ul><li>🏆 <b>Outstanding International Student Award</b> – National Chung Cheng University (2025 – 2026)</li><li>🎓 <b>International Student Scholarship</b> – National Chung Cheng University (2024 – present)</li></ul>' + go('thanh-tich', 'See the Achievements section') },
+    { k: ['lanh dao', 'truong nhom', 'trai', 'to chuc', 'su kien', 'camp', 'quan ly', 'dan dat'], ke: ['leader', 'leadership', 'lead', 'led', 'camp', 'camps', 'event', 'events', 'organise', 'organize', 'team'],
+      a: 'Xuân Ánh đã <b>3 lần làm trưởng nhóm</b>:<ul><li>❄️ Trại tiếng Anh Mùa Đông – Trung tâm EMI, ĐH Quốc gia Trung Chính (01/2026)</li><li>☀️ Trại tiếng Anh Mùa Hè – Trung tâm EMI (06/2025)</li><li>🇹🇭 Trại hè cho sinh viên Thái Lan – ĐH Quốc gia Trung Chính (04 & 05/2025)</li></ul>',
+      e: 'Xuan Anh has been <b>team leader 3 times</b>:<ul><li>❄️ Winter English Camp – EMI Center, National Chung Cheng University (01/2026)</li><li>☀️ Summer English Camp – EMI Center (06/2025)</li><li>🇹🇭 Summer Camp for Thai Students – National Chung Cheng University (04 & 05/2025)</li></ul>' },
+    { k: ['tinh nguyen', 'vten', 'ybox', 'bien dich', 'dich thuat', 'dich', 'cong dong'], ke: ['volunteer', 'volunteering', 'vten', 'ybox', 'translate', 'translation', 'translator', 'community'],
+      a: 'Hoạt động tình nguyện:<ul><li>💻 <b>Giáo viên tiếng Anh trực tuyến</b> – Vten Education (2025 – 03/2026)</li><li>✍️ <b>Cộng tác viên biên dịch Anh – Việt</b> – YBOX (08 – 12/2021)</li></ul>',
+      e: 'Volunteering:<ul><li>💻 <b>Online English Teacher</b> – Vten Education (2025 – 03/2026)</li><li>✍️ <b>English – Vietnamese Translator</b> – YBOX (08 – 12/2021)</li></ul>' },
+    { k: ['lien he', 'so dien thoai', 'dien thoai', 'sdt', 'zalo', 'linkedin', 'dia chi', 'gap', 'goi', 'mail', 'lien lac', 'o dau'], ke: ['contact', 'phone', 'number', 'address', 'linkedin', 'reach', 'call', 'where', 'live'],
+      a: 'Thông tin liên hệ của Xuân Ánh <b>chưa được công khai</b> trên trang này. Nếu bạn là nhà tuyển dụng hoặc đối tác, thông tin liên hệ sẽ được cung cấp khi có yêu cầu. 🙏',
+      e: "Xuan Anh's contact details are <b>not published</b> on this page. If you are a recruiter or partner, contact information is available upon request. 🙏" },
+    { k: ['tham khao', 'nguoi gioi thieu', 'reference', 'xac minh'], ke: ['reference', 'references', 'referee', 'referees', 'recommend', 'recommendation'],
+      a: 'Xuân Ánh có <b>3 người tham khảo</b> là giảng viên đại học (2 Phó Giáo sư tại ĐH Quốc gia Trung Chính và Trưởng khoa Ngoại ngữ ĐH Yersin Đà Lạt). Thông tin chi tiết sẽ được cung cấp khi có yêu cầu.',
+      e: "Xuan Anh has <b>3 academic referees</b> (2 Associate Professors at National Chung Cheng University and the Dean of Foreign Languages at Yersin University of Da Lat). Details are available upon request." },
+    { k: ['diem manh', 'tai sao', 'vi sao', 'phu hop', 'tuyen', 'uu diem', 'noi bat', 'manh', 'gioi'], ke: ['strength', 'strengths', 'why', 'hire', 'good at', 'best', 'strong', 'fit', 'suitable'],
+      a: 'Điểm mạnh nổi bật của Xuân Ánh:<ul><li><b>Chuyên môn giảng dạy tiếng Anh</b>: Cử nhân Ngôn ngữ Anh, Chứng chỉ Sư phạm, đang học Thạc sĩ TEFL</li><li><b>Tiếng Anh thành thạo</b> (TOEIC 790), môi trường học tập ở 3 quốc gia</li><li><b>Tổ chức & lãnh đạo</b>: 3 lần trưởng nhóm tổ chức trại tiếng Anh quốc tế</li><li><b>Được ghi nhận</b>: học bổng và giải thưởng thành tích xuất sắc</li><li><b>Linh hoạt</b>: kinh nghiệm cả giảng dạy, hành chính văn phòng và chăm sóc khách hàng</li></ul>',
+      e: "Xuan Anh's key strengths:<ul><li><b>English teaching expertise</b>: B.A. in English Language, Teaching Certificate, M.A. in TEFL in progress</li><li><b>Fluent English</b> (TOEIC 790), studied in 3 countries</li><li><b>Organisation & leadership</b>: led 3 international English camps</li><li><b>Recognised</b>: scholarship and outstanding achievement award</li><li><b>Versatile</b>: experience in teaching, office administration and customer service</li></ul>" },
+    { k: ['tuoi', 'sinh nam', 'ngay sinh', 'luong', 'muc luong', 'gia dinh', 'chong', 'ket hon', 'so thich', 'que', 'chieu cao'], ke: ['age', 'old', 'birthday', 'born', 'salary', 'married', 'family', 'hobby', 'hobbies', 'husband'],
+      a: 'Thông tin này chưa có trong hồ sơ của Xuân Ánh nên mình không trả lời được. Bạn có thể hỏi về kinh nghiệm, học vấn, ngoại ngữ, kỹ năng hoặc thành tích nhé.',
+      e: "That information isn't in Xuan Anh's profile, so I can't answer it. You can ask about her experience, education, languages, skills or achievements." },
+    { k: ['cam on', 'thanks', 'thank', 'tks', 'ok', 'tuyet'], ke: ['thanks', 'thank', 'thank you', 'great', 'ok', 'cool', 'awesome'],
+      a: 'Rất vui được giúp bạn! 😊 Nếu còn muốn biết thêm về Xuân Ánh, cứ hỏi mình nhé.',
+      e: "Happy to help! 😊 If you'd like to know more about Xuan Anh, just ask." }
+  ];
+  var TXT = {
+    vi: {
+      fallback: 'Xin lỗi, mình chưa hiểu câu hỏi này 😅. Mình chỉ trả lời được về <b>hồ sơ của Xuân Ánh</b>: kinh nghiệm, học vấn, ngoại ngữ, kỹ năng, thành tích, hoạt động lãnh đạo. Bạn thử chọn một gợi ý bên dưới nhé.',
+      hello: 'Xin chào! 👋 Mình là <b>trợ lý ảo của Xuân Ánh</b>. Bạn muốn biết gì về Xuân Ánh? Hãy gõ câu hỏi hoặc chọn một gợi ý bên dưới nhé.',
+      sugg: ['Xuân Ánh là ai?', 'Đang làm gì hiện nay?', 'Kinh nghiệm làm việc', 'Học ở đâu?', 'Tiếng Anh thế nào?', 'Thành tích nổi bật', 'Kỹ năng tin học', 'Điểm mạnh là gì?', 'Cách liên hệ'],
+      ph: 'Nhập câu hỏi, ví dụ: Xuân Ánh học ở đâu?'
+    },
+    en: {
+      fallback: "Sorry, I didn't quite get that 😅. I can only answer questions about <b>Xuan Anh's profile</b>: experience, education, languages, skills, achievements and leadership. Try one of the suggestions below.",
+      hello: "Hello! 👋 I'm <b>Xuan Anh's virtual assistant</b>. What would you like to know about her? Type a question or pick a suggestion below.",
+      sugg: ['Who is Xuan Anh?', 'What is she doing now?', 'Work experience', 'Where did she study?', 'How good is her English?', 'Achievements', 'Computer skills', 'Why hire her?', 'How to contact'],
+      ph: 'Ask a question, e.g. Where did Xuan Anh study?'
+    }
+  };
+  function lang() { return document.documentElement.lang === 'en' ? 'en' : 'vi'; }
+
+  function norm(s) {
+    return ' ' + s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd')
+      .replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim() + ' ';
+  }
+  function answer(q) {
+    var t = norm(q), best = null, bestScore = 0;
+    KB.forEach(function (it) {
+      var s = 0;
+      it.k.concat(it.ke).forEach(function (kw) { if (t.indexOf(' ' + kw + ' ') !== -1) s += kw.split(' ').length; });
+      if (s > bestScore) { bestScore = s; best = it; }
+    });
+    var en = lang() === 'en';
+    return best ? (en ? best.e : best.a) : TXT[lang()].fallback;
+  }
+
+  var root = document.documentElement;
+  var body = document.getElementById('chatBody');
+  var input = document.getElementById('chatInput');
+  var started = false;
+
+  function add(html, who) {
+    var m = document.createElement('div');
+    m.className = 'msg ' + who;
+    if (who === 'me') m.textContent = html; else m.innerHTML = html;
+    body.appendChild(m);
+    body.scrollTop = body.scrollHeight;
+  }
+  function botSay(html) {
+    var t = document.createElement('div');
+    t.className = 'msg bot typing';
+    t.innerHTML = '<i></i><i></i><i></i>';
+    body.appendChild(t);
+    body.scrollTop = body.scrollHeight;
+    setTimeout(function () { t.remove(); add(html, 'bot'); }, 550 + Math.min(html.length, 600));
+  }
+  function ask(q) {
+    q = q.trim();
+    if (!q) return;
+    add(q, 'me');
+    botSay(answer(q));
+  }
+
+  var sugg = document.getElementById('sugg');
+  function renderSugg() {
+    sugg.innerHTML = '';
+    TXT[lang()].sugg.forEach(function (s) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.textContent = s;
+      b.addEventListener('click', function () { ask(s); });
+      sugg.appendChild(b);
+    });
+    input.placeholder = TXT[lang()].ph;
+  }
+  renderSugg();
+  document.addEventListener('langchange', renderSugg);
+
+  function openChat() {
+    root.classList.add('chat-open');
+    if (!started) {
+      started = true;
+      botSay(TXT[lang()].hello);
+    }
+    if (window.matchMedia('(hover: hover)').matches) setTimeout(function () { input.focus(); }, 300);
+  }
+  function closeChat() { root.classList.remove('chat-open'); }
+
+  document.getElementById('chatFab').addEventListener('click', openChat);
+  document.getElementById('chatHero').addEventListener('click', openChat);
+  document.getElementById('chatClose').addEventListener('click', closeChat);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeChat(); });
+  body.addEventListener('click', function (e) {
+    if (e.target.closest('[data-close]') && window.innerWidth <= 560) closeChat();
+  });
+  document.getElementById('chatForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    ask(input.value);
+    input.value = '';
+  });
+})();
+</script>
+</body>
+</html>
