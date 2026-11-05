@@ -180,14 +180,17 @@
     box-shadow: var(--shadow-pop);
     display: grid; place-items: center; color: #fff; font-weight: 900; font-size: clamp(44px, 6.4vw, 70px); line-height: 1.02; letter-spacing: -1px; text-align: center;
   }
-  /* Ảnh tách nền: phần dưới bo theo khối màu, đầu và mũ "nhô" ra ngoài */
+  /* Ảnh tách nền: hiện trọn người (cả tay, mũ) trên khối màu, phần ngực mờ dần ở dưới */
   .portrait {
-    position: absolute; left: 9%; right: 9%; top: -12%; bottom: 8%; z-index: 2;
-    border-radius: 0 0 50% 50% / 0 0 42% 42%; overflow: hidden;
+    position: absolute; left: -6%; right: -6%; top: -16%; bottom: 3%; z-index: 2;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 94%, transparent 100%), linear-gradient(to bottom, #000 78%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 94%, transparent 100%), linear-gradient(to bottom, #000 78%, transparent 100%);
+    mask-composite: intersect;
   }
   .portrait img {
-    width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
-    filter: drop-shadow(0 14px 24px rgba(80, 30, 120, .25));
+    width: 100%; height: 100%; object-fit: contain; object-position: center bottom; display: block;
+    filter: drop-shadow(0 12px 22px rgba(80, 30, 120, .22));
     transition: transform .6s cubic-bezier(.34,1.56,.64,1);
   }
   .avatar-zone:hover .portrait img { transform: scale(1.04) translateY(-6px); }
