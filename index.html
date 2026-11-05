@@ -172,7 +172,6 @@
   .btn:active { transform: scale(.96); }
   .btn-main { color: #fff; background: var(--g); background-size: 200% 200%; animation: shift 6s ease-in-out infinite; box-shadow: var(--shadow-pop); }
   .btn-soft { background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
-  .btn-line { background: transparent; color: var(--text); border: 2px dashed var(--line); }
 
   .avatar-zone { position: relative; width: min(380px, 80vw); aspect-ratio: 1; margin: 0 auto; }
   .blob {
@@ -206,15 +205,29 @@
   .sticker.k1 b { color: var(--pink); } .sticker.k2 b { color: var(--purple); } .sticker.k3 b { color: var(--orange); }
 
   /* Hàng liên hệ (email) */
-  .contact-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
-  .ct {
-    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
-    font-size: 14px; font-weight: 700; color: var(--text); padding: 8px 14px 8px 8px; border-radius: 999px;
-    background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow);
-    transition: transform .3s cubic-bezier(.34,1.56,.64,1), color .2s;
+  .contact-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  svg.i { width: 18px; height: 18px; flex: 0 0 18px; display: block; }
+  .mail-pill {
+    display: inline-flex; align-items: center; gap: 12px; padding: 6px 6px 6px 6px; border-radius: 999px;
+    background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); max-width: 100%;
   }
-  .ct:hover { transform: translateY(-2px); color: var(--brand); }
-  .ct-ic { width: 26px; height: 26px; border-radius: 50%; display: inline-grid; place-items: center; font-size: 14px; color: #fff; background: var(--g); }
+  .mail-ic { width: 38px; height: 38px; flex: 0 0 38px; border-radius: 50%; display: grid; place-items: center; color: #fff; background: var(--g); }
+  .mail-pill > a { font-weight: 700; font-size: 15px; color: var(--text); text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .mail-pill > a:hover { color: var(--brand); }
+  .copy-btn {
+    border: 0; cursor: pointer; font: inherit; font-size: 13px; font-weight: 800; padding: 9px 14px; border-radius: 999px;
+    background: var(--brand-soft); color: var(--brand); transition: background .2s, color .2s, transform .3s cubic-bezier(.34,1.56,.64,1);
+  }
+  .copy-btn:hover { transform: scale(1.05); }
+  .copy-btn > span { display: inline-flex; align-items: center; gap: 6px; }
+  .copy-btn svg.i { width: 15px; height: 15px; flex-basis: 15px; }
+  .copy-btn .c2 { display: none; }
+  .copy-btn.done { background: #d9f7ef; color: #0e8f74; }
+  .copy-btn.done .c1 { display: none; }
+  .copy-btn.done .c2 { display: inline-flex; }
+  .btn svg.i { width: 18px; height: 18px; }
+  .btn-cv { border: 2px solid transparent; background: linear-gradient(var(--surface), var(--surface)) padding-box, var(--g) border-box; }
+  .icon-btn svg.i { width: 18px; height: 18px; }
   @media (max-width: 900px) { .contact-row { justify-content: center; } }
 
   /* Ô truy cập nhanh */
@@ -672,7 +685,7 @@
   <div class="nav-actions">
     <button class="icon-btn lang-btn" id="langBtn" type="button" title="English / Tiếng Việt" aria-label="Đổi ngôn ngữ">EN</button>
     <button class="icon-btn" id="themeBtn" type="button" title="Đổi nền sáng / tối" aria-label="Đổi nền sáng / tối">🌙</button>
-    <a class="icon-btn" id="cvTop" href="cv/CV-Nguyen-Thi-Xuan-Anh.pdf" download data-cv title="Download CV (PDF)" aria-label="Download CV (PDF)">📄</a>
+    <a class="icon-btn" id="cvTop" href="cv/CV-Nguyen-Thi-Xuan-Anh.pdf" download data-cv title="Download CV (PDF)" aria-label="Download CV (PDF)"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10.5 5 5 5-5"/><path d="M5 20h14"/></svg></a>
   </div>
 </header>
 
@@ -696,10 +709,14 @@
       <div class="cta">
         <button class="btn btn-main" id="chatHero" type="button" data-en="💬 Ask my assistant">💬 Hỏi trợ lý ảo</button>
         <a class="btn btn-soft" href="#kinh-nghiem" data-en="🚀 See my journey">🚀 Xem hành trình</a>
-        <a class="btn btn-line" id="cvHero" href="cv/CV-Nguyen-Thi-Xuan-Anh.pdf" download data-cv>📄 CV</a>
+        <a class="btn btn-soft btn-cv" id="cvHero" href="cv/CV-Nguyen-Thi-Xuan-Anh.pdf" download data-cv><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10.5 5 5 5-5"/><path d="M5 20h14"/></svg><span data-en="Download CV">Tải CV</span></a>
       </div>
       <div class="contact-row">
-        <a class="ct" href="mailto:xuananh1401@gmail.com"><span class="ct-ic">✉</span>xuananh1401@gmail.com</a>
+        <div class="mail-pill">
+          <span class="mail-ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></span>
+          <a href="mailto:xuananh1401@gmail.com">xuananh1401@gmail.com</a>
+          <button class="copy-btn" type="button" data-copy="xuananh1401@gmail.com"><span class="c1"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><span data-en="Copy">Sao chép</span></span><span class="c2"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span data-en="Copied!">Đã chép!</span></span></button>
+        </div>
       </div>
     </div>
     <div class="avatar-zone">
@@ -753,7 +770,7 @@
         <div class="card b-now reveal d2">
           <span class="live"><i></i> <span data-en="Currently">Đang làm</span></span>
           <div class="r" data-en="Teaching Assistant · TÜV SÜD Vietnam">Trợ giảng · TÜV SÜD Việt Nam</div>
-          <div class="o" data-en="since 07/2026, while studying for a Master&#x27;s in Taiwan">từ 07/2026, song song học Thạc sĩ tại Đài Loan</div>
+          <div class="o" data-en="since 07/2026, while studying for a Master&#x27;s in Taiwan 🇹🇼">từ 07/2026, song song học Thạc sĩ tại Đài Loan 🇹🇼</div>
         </div>
       </div>
     </div>
@@ -819,25 +836,25 @@
         <div class="journey">
           <svg class="path" viewBox="0 0 800 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C 130 -10, 200 70, 270 30 S 420 -10, 530 30 S 700 70, 800 30"/></svg>
           <div class="card stop reveal">
-            <div class="flag">📘</div>
+            <div class="flag">🇻🇳</div>
             <span class="yr">2020 – 2023</span>
             <div class="ttl" data-en="B.A. in English Language">Cử nhân Ngôn ngữ Anh</div>
             <div class="plc" data-en="Yersin University of Da Lat">Đại học Yersin Đà Lạt</div>
           </div>
           <div class="card stop reveal d1">
-            <div class="flag">✈️</div>
+            <div class="flag">🇲🇾</div>
             <span class="yr">06 – 08/2023</span>
             <div class="ttl" data-en="Exchange Student">Sinh viên trao đổi</div>
             <div class="plc" data-en="School of Communication and Languages, University of Wollongong Malaysia">Khoa Truyền thông và Ngôn ngữ, Đại học Wollongong, Malaysia</div>
           </div>
           <div class="card stop reveal d2">
-            <div class="flag">📜</div>
+            <div class="flag">🇻🇳</div>
             <span class="yr">09/2023 – 02/2024</span>
             <div class="ttl" data-en="Teaching Certificate (Pedagogy)">Chứng chỉ Nghiệp vụ Sư phạm</div>
             <div class="plc" data-en="Hanoi Pedagogical University 2, Vinh Phuc">Đại học Sư phạm Hà Nội 2, Vĩnh Phúc</div>
           </div>
           <div class="card stop now reveal d3">
-            <div class="flag">🎓</div>
+            <div class="flag">🇹🇼</div>
             <span class="yr" data-en="2024 – Present">2024 – Nay</span>
             <div class="ttl" data-en="M.A. in Teaching English as a Foreign Language">Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</div>
             <div class="plc" data-en="National Chung Cheng University, Chiayi, Taiwan">Đại học Quốc gia Trung Chính, Gia Nghĩa, Đài Loan</div>
@@ -1157,7 +1174,7 @@
   <h3 class="reveal" data-en="“Every class is a chance to connect and inspire.” 💫">“Mỗi lớp học là một cơ hội để kết nối và truyền cảm hứng.” 💫</h3>
   <p class="reveal d1" data-en="Nguyen Thi Xuan Anh · References available upon request">Nguyễn Thị Xuân Ánh · Thông tin người tham khảo được cung cấp khi có yêu cầu</p>
   <div class="cta reveal d2">
-    <a class="btn btn-soft" href="mailto:xuananh1401@gmail.com">✉ Email</a>
+    <a class="btn btn-soft" href="mailto:xuananh1401@gmail.com"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>Email</a>
     <button class="btn btn-soft" id="chatEnd" type="button" data-en="💬 Chat with my assistant">💬 Trò chuyện với trợ lý ảo</button>
     <a class="btn btn-soft" href="#top" data-en="↑ Back to top">↑ Về đầu trang</a>
   </div>
@@ -1342,6 +1359,17 @@
     });
   });
 
+  /* Sao chép email */
+  document.querySelectorAll('.copy-btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var text = b.getAttribute('data-copy');
+      function done() { b.classList.add('done'); setTimeout(function () { b.classList.remove('done'); }, 1800); }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { window.prompt('Email:', text); });
+      } else { window.prompt('Email:', text); }
+    });
+  });
+
   /* Bong bóng lời chào: bấm để máy đọc */
   document.querySelectorAll('.say').forEach(function (b) {
     b.addEventListener('click', function () {
@@ -1504,8 +1532,8 @@
       a: 'Xuân Ánh đã làm trợ giảng ở 2 nơi:<ul><li><b>Trung tâm Linh IELTS UK</b>, Hà Nội (2023 – 2024): đánh giá tiến độ, phản hồi cá nhân hóa cho học viên, ứng dụng công cụ số và AI vào giảng dạy</li><li><b>TÜV SÜD Việt Nam</b> (07/2026 – nay): hỗ trợ học viên, giảng viên và điều phối các khóa đào tạo</li></ul>',
       e: 'Xuan Anh has been a teaching assistant at 2 places:<ul><li><b>Linh IELTS UK English Center</b>, Hanoi (2023 – 2024): assessing progress, giving personalised feedback and using digital and AI tools in class</li><li><b>TÜV SÜD Vietnam</b> (07/2026 – present): supporting trainees and trainers and coordinating courses</li></ul>' },
     { k: ['hoc van', 'hoc o dau', 'truong', 'bang cap', 'tot nghiep', 'dai hoc', 'hoc gi', 'hoc tap', 'bang'], ke: ['education', 'study', 'studied', 'school', 'university', 'degree', 'degrees', 'graduate', 'graduated', 'qualifications'],
-      a: 'Học vấn của Xuân Ánh:<ul><li>🎓 <b>Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</b> – ĐH Quốc gia Trung Chính, Đài Loan (2024 – nay)</li><li>📜 <b>Chứng chỉ Nghiệp vụ Sư phạm</b> – ĐH Sư phạm Hà Nội 2 (09/2023 – 02/2024)</li><li>✈️ <b>Sinh viên trao đổi</b> – ĐH Wollongong, Malaysia (06 – 08/2023)</li><li>📘 <b>Cử nhân Ngôn ngữ Anh</b> – ĐH Yersin Đà Lạt (2020 – 2023)</li></ul>' + go('hoc-van', 'Xem phần Học vấn'),
-      e: "Xuan Anh's education:<ul><li>🎓 <b>M.A. in Teaching English as a Foreign Language</b> – National Chung Cheng University, Taiwan (2024 – present)</li><li>📜 <b>Teaching Certificate (Pedagogy)</b> – Hanoi Pedagogical University 2 (09/2023 – 02/2024)</li><li>✈️ <b>Exchange Student</b> – University of Wollongong Malaysia (06 – 08/2023)</li><li>📘 <b>B.A. in English Language</b> – Yersin University of Da Lat (2020 – 2023)</li></ul>" + go('hoc-van', 'See the Education section') },
+      a: 'Học vấn của Xuân Ánh:<ul><li>🇹🇼 <b>Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</b> – ĐH Quốc gia Trung Chính, Đài Loan (2024 – nay)</li><li>🇻🇳 <b>Chứng chỉ Nghiệp vụ Sư phạm</b> – ĐH Sư phạm Hà Nội 2 (09/2023 – 02/2024)</li><li>🇲🇾 <b>Sinh viên trao đổi</b> – ĐH Wollongong, Malaysia (06 – 08/2023)</li><li>🇻🇳 <b>Cử nhân Ngôn ngữ Anh</b> – ĐH Yersin Đà Lạt (2020 – 2023)</li></ul>' + go('hoc-van', 'Xem phần Học vấn'),
+      e: "Xuan Anh's education:<ul><li>🇹🇼 <b>M.A. in Teaching English as a Foreign Language</b> – National Chung Cheng University, Taiwan (2024 – present)</li><li>🇻🇳 <b>Teaching Certificate (Pedagogy)</b> – Hanoi Pedagogical University 2 (09/2023 – 02/2024)</li><li>🇲🇾 <b>Exchange Student</b> – University of Wollongong Malaysia (06 – 08/2023)</li><li>🇻🇳 <b>B.A. in English Language</b> – Yersin University of Da Lat (2020 – 2023)</li></ul>" + go('hoc-van', 'See the Education section') },
     { k: ['thac si', 'tefl', 'cao hoc', 'dai loan', 'trung chinh', 'chung cheng', 'master'], ke: ['master', 'masters', 'tefl', 'm a', 'taiwan', 'chung cheng', 'postgraduate'],
       a: 'Từ 2024, Xuân Ánh học <b>Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</b> (M.A. in TEFL) tại Khoa Ngoại ngữ và Văn học, <b>Đại học Quốc gia Trung Chính</b>, Gia Nghĩa, Đài Loan, với <b>học bổng toàn phần</b> của trường (CCU).',
       e: "Since 2024, Xuan Anh has been studying for an <b>M.A. in Teaching English as a Foreign Language</b> at the Department of Foreign Languages and Literature, <b>National Chung Cheng University</b>, Chiayi, Taiwan, on a <b>full scholarship</b> from the university (CCU)." },
