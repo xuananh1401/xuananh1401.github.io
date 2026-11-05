@@ -94,15 +94,20 @@
     transition: background .4s, border-color .4s;
   }
   .logo { font-weight: 900; font-size: 19px; text-decoration: none; white-space: nowrap; }
-  .menu { display: flex; gap: 2px; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
+  .menu { position: relative; display: flex; gap: 2px; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
+  .menu-ind {
+    position: absolute; top: 0; left: 0; height: 100%; width: 0; border-radius: 999px; opacity: 0; pointer-events: none;
+    background: var(--g); box-shadow: 0 6px 16px rgba(255, 77, 141, .35);
+    transition: transform .5s cubic-bezier(.34,1.3,.64,1), width .5s cubic-bezier(.34,1.3,.64,1), opacity .3s;
+  }
   .menu::-webkit-scrollbar { display: none; }
   .menu a {
     display: inline-flex; align-items: center; gap: 6px;
     text-decoration: none; font-size: 14px; font-weight: 600; color: var(--muted);
-    padding: 8px 13px; border-radius: 999px; white-space: nowrap; transition: all .25s;
+    padding: 8px 13px; border-radius: 999px; white-space: nowrap; position: relative; z-index: 1; transition: color .3s, background .3s;
   }
-  .menu a:hover { color: var(--brand); background: var(--brand-soft); }
-  .menu a.active { color: #fff; background: var(--g); box-shadow: 0 6px 16px rgba(255, 77, 141, .35); }
+  .menu a:not(.active):hover { color: var(--brand); background: var(--brand-soft); }
+  .menu a.active { color: #fff; }
   .nav-actions { display: flex; gap: 6px; }
   .icon-btn {
     width: 40px; height: 40px; flex: 0 0 40px; border-radius: 50%; cursor: pointer; font-size: 17px;
@@ -173,8 +178,10 @@
     position: absolute; inset: 8%; background: var(--g); background-size: 200% 200%;
     animation: morph 9s ease-in-out infinite, shift 6s ease-in-out infinite;
     box-shadow: var(--shadow-pop);
-    display: grid; place-items: center; color: #fff; font-weight: 900; font-size: clamp(64px, 10vw, 104px); letter-spacing: 2px;
+    display: grid; place-items: center; color: #fff; font-weight: 900; font-size: clamp(44px, 6.4vw, 70px); line-height: 1.02; letter-spacing: -1px; text-align: center;
   }
+  .blob > span { position: relative; z-index: 1; }
+  .blob > span > span { display: block; }
   .blob::after {
     content: ""; position: absolute; inset: 0; border-radius: inherit;
     background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.45), transparent 45%);
@@ -322,6 +329,8 @@
   .flip:nth-child(5n+4) .front { background: linear-gradient(135deg, #fff1bf, #ffd96b); }
   .flip:nth-child(5n+5) .front { background: linear-gradient(135deg, #d0f5ec, #9fe8d6); }
   .front .big { font-size: 48px; margin-bottom: 10px; }
+  .ribbon { position: absolute; top: 14px; right: 14px; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 999px; color: #fff; background: var(--g); box-shadow: 0 4px 12px rgba(255,77,141,.35); }
+  .flip:has(.ribbon) .front { outline: 3px solid #ff4d8d; outline-offset: -3px; }
   .front .t { font-weight: 800; font-size: 17px; line-height: 1.35; }
   .front .s { font-size: 13px; font-weight: 700; margin-top: 8px; opacity: .65; }
   .back { transform: rotateY(180deg); color: #fff; background: var(--g); box-shadow: var(--shadow-pop); }
@@ -544,6 +553,7 @@
 <header class="nav" id="nav">
   <a class="logo grad-text" href="#top" data-en="Xuan Anh ✨">Xuân Ánh ✨</a>
   <nav class="menu" id="menu">
+    <span class="menu-ind" id="menuInd" aria-hidden="true"></span>
     <a href="#gioi-thieu"><span>👋</span><span class="t" data-en="About">Giới thiệu</span></a>
     <a href="#kinh-nghiem"><span>💼</span><span class="t" data-en="Experience">Kinh nghiệm</span></a>
     <a href="#hoc-van"><span>🎓</span><span class="t" data-en="Education">Học vấn</span></a>
@@ -582,10 +592,10 @@
     </div>
     <div class="avatar-zone">
       <div class="orbit"></div>
-      <div class="blob">XA</div>
-      <div class="sticker k1"><b>🇬🇧 TOEIC 790</b></div>
+      <div class="blob"><span><span data-en="Xuan">Xuân</span><span data-en="Anh">Ánh</span></span></div>
+      <div class="sticker k1"><b data-en="🏅 Outstanding Student Award">🏅 SV Quốc tế Xuất sắc</b></div>
       <div class="sticker k2"><b data-en="🎓 M.A. in TEFL">🎓 Thạc sĩ TEFL</b></div>
-      <div class="sticker k3"><b data-en="🏆 Scholarship">🏆 Học bổng</b></div>
+      <div class="sticker k3"><b data-en="🏆 Full Scholarship · CCU">🏆 Học bổng toàn phần CCU</b></div>
     </div>
   </div>
 </section>
@@ -602,8 +612,8 @@
 
 <div class="marquee" aria-hidden="true">
   <div class="track">
-    <span data-en="Fluent English ✦">Tiếng Anh thành thạo ✦</span><span>TOEIC 790 ✦</span><span data-en="M.A. in TEFL ✦">Thạc sĩ TEFL ✦</span><span data-en="Studied in 3 countries ✦">Học tập tại 3 quốc gia ✦</span><span data-en="3× camp team leader ✦">3 lần trưởng nhóm tổ chức trại ✦</span><span data-en="International scholarship ✦">Học bổng quốc tế ✦</span><span data-en="One-on-one tutor ✦">Gia sư một kèm một ✦</span>
-    <span data-en="Fluent English ✦">Tiếng Anh thành thạo ✦</span><span>TOEIC 790 ✦</span><span data-en="M.A. in TEFL ✦">Thạc sĩ TEFL ✦</span><span data-en="Studied in 3 countries ✦">Học tập tại 3 quốc gia ✦</span><span data-en="3× camp team leader ✦">3 lần trưởng nhóm tổ chức trại ✦</span><span data-en="International scholarship ✦">Học bổng quốc tế ✦</span><span data-en="One-on-one tutor ✦">Gia sư một kèm một ✦</span>
+    <span data-en="Fluent English ✦">Tiếng Anh thành thạo ✦</span><span data-en="M.A. in TEFL ✦">Thạc sĩ TEFL ✦</span><span data-en="Studied in 3 countries ✦">Học tập tại 3 quốc gia ✦</span><span data-en="3× camp team leader ✦">3 lần trưởng nhóm tổ chức trại ✦</span><span data-en="Full scholarship · CCU ✦">Học bổng toàn phần CCU ✦</span><span data-en="Outstanding International Student Award ✦">Giải Sinh viên Quốc tế Xuất sắc ✦</span><span data-en="One-on-one tutor ✦">Gia sư một kèm một ✦</span>
+    <span data-en="Fluent English ✦">Tiếng Anh thành thạo ✦</span><span data-en="M.A. in TEFL ✦">Thạc sĩ TEFL ✦</span><span data-en="Studied in 3 countries ✦">Học tập tại 3 quốc gia ✦</span><span data-en="3× camp team leader ✦">3 lần trưởng nhóm tổ chức trại ✦</span><span data-en="Full scholarship · CCU ✦">Học bổng toàn phần CCU ✦</span><span data-en="Outstanding International Student Award ✦">Giải Sinh viên Quốc tế Xuất sắc ✦</span><span data-en="One-on-one tutor ✦">Gia sư một kèm một ✦</span>
   </div>
 </div>
 
@@ -624,7 +634,7 @@
             trợ lý văn phòng và trưởng nhóm tổ chức sự kiện giáo dục quốc tế, giao tiếp tự tin với học viên,
             giảng viên và khách hàng trong nước lẫn quốc tế.</p>
         </div>
-        <div class="card stat c-pink reveal d1"><div class="num" data-count="790">790</div><div class="label" data-en="TOEIC score (Listening + Reading)">Điểm TOEIC (Nghe + Đọc)</div><span class="bg-emo">🎯</span></div>
+        <div class="card stat c-pink reveal d1"><div class="num" data-count="2">2</div><div class="label" data-en="Awards &amp; scholarships">Giải thưởng &amp; học bổng</div><span class="bg-emo">🏆</span></div>
         <div class="card stat c-orange reveal d2"><div class="num" data-count="5">5</div><div class="label" data-en="Positions held">Vị trí công việc</div><span class="bg-emo">💼</span></div>
         <div class="card stat c-purple reveal d2"><div class="num" data-count="3">3</div><div class="label" data-en="Times as camp team leader">Lần trưởng nhóm tổ chức trại</div><span class="bg-emo">🏕️</span></div>
         <div class="card stat c-teal reveal d3"><div class="num" data-count="3">3</div><div class="label" data-en="Countries studied in">Quốc gia học tập</div><span class="bg-emo">🌏</span></div>
@@ -801,14 +811,14 @@
       <div class="flip-grid">
         <div class="flip reveal" tabindex="0">
           <div class="flip-inner">
-            <div class="face front"><div class="big">🏆</div><div class="t" data-en="Outstanding International Student Award">Sinh viên Quốc tế có Thành tích Xuất sắc</div><div class="s">2025 – 2026</div></div>
+            <div class="face front"><span class="ribbon" data-en="⭐ Highlight">⭐ Nổi bật</span><div class="big">🏆</div><div class="t" data-en="Outstanding International Student Award">Sinh viên Quốc tế có Thành tích Xuất sắc</div><div class="s">2025 – 2026</div></div>
             <div class="face back"><div class="k" data-en="Award">Giải thưởng</div><div class="v" data-en="Outstanding achievement">Thành tích xuất sắc</div><div class="d" data-en="Presented by National Chung Cheng University to international students.">Do Đại học Quốc gia Trung Chính trao cho sinh viên quốc tế.</div></div>
           </div>
         </div>
         <div class="flip reveal d1" tabindex="0">
           <div class="flip-inner">
-            <div class="face front"><div class="big">🎓</div><div class="t" data-en="International Student Scholarship">Học bổng sinh viên quốc tế</div><div class="s" data-en="2024 – Present">2024 – Nay</div></div>
-            <div class="face back"><div class="k" data-en="Scholarship">Học bổng</div><div class="v" data-en="National Chung Cheng University">Đại học Quốc gia Trung Chính</div><div class="d" data-en="For international students in the Master&#x27;s programme.">Dành cho sinh viên quốc tế theo học chương trình Thạc sĩ.</div></div>
+            <div class="face front"><span class="ribbon" data-en="⭐ Highlight">⭐ Nổi bật</span><div class="big">🎓</div><div class="t" data-en="Full Scholarship · CCU">Học bổng toàn phần CCU</div><div class="s" data-en="2024 – Present">2024 – Nay</div></div>
+            <div class="face back"><div class="k" data-en="Full scholarship">Học bổng toàn phần</div><div class="v" data-en="National Chung Cheng University">Đại học Quốc gia Trung Chính</div><div class="d" data-en="Full scholarship for international students in the Master&#x27;s programme.">Học bổng toàn phần dành cho sinh viên quốc tế theo học chương trình Thạc sĩ.</div></div>
           </div>
         </div>
         <div class="flip reveal d2" tabindex="0">
@@ -852,7 +862,7 @@
         </div>
         <div class="card lang reveal d1">
           <div class="ring"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52" fill="none" stroke-width="12"/><circle class="fg" cx="60" cy="60" r="52" fill="none" stroke-width="12" data-level="0.85"/></svg><div class="mid">🇬🇧</div></div>
-          <div class="n" data-en="English">Tiếng Anh</div><span class="lv" data-en="Fluent">Thành thạo</span><div class="ex" data-en="TOEIC Listening + Reading: 790">TOEIC Nghe + Đọc: 790</div>
+          <div class="n" data-en="English">Tiếng Anh</div><span class="lv" data-en="Fluent">Thành thạo</span>
         </div>
         <div class="card lang reveal d2">
           <div class="ring"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52" fill="none" stroke-width="12"/><circle class="fg" cx="60" cy="60" r="52" fill="none" stroke-width="12" data-level="0.3"/></svg><div class="mid">🇨🇳</div></div>
@@ -980,14 +990,11 @@
     document.title = TITLE[l];
     langBtn.textContent = l === 'en' ? 'VI' : 'EN';
     langBtn.title = l === 'en' ? 'Tiếng Việt' : 'English';
-    try { localStorage.setItem('lang', l); } catch (e) {}
     document.dispatchEvent(new Event('langchange'));
   }
   langBtn.addEventListener('click', function () { setLang(lang === 'en' ? 'vi' : 'en'); });
-  var savedLang = null;
-  try { savedLang = localStorage.getItem('lang'); } catch (e) {}
-  /* Mặc định tiếng Anh; chỉ hiện tiếng Việt khi người xem đã chọn VI trước đó */
-  setLang(savedLang === 'vi' ? 'vi' : 'en');
+  /* Trang luôn mở bằng tiếng Anh; người xem bấm VI để đọc tiếng Việt */
+  document.addEventListener('DOMContentLoaded', function () { setLang('en'); });
 
   /* Pháo giấy */
   var COLORS = ['#ff4d8d', '#ff8a3d', '#8b5cf6', '#ffc93c', '#1fc3a5', '#4d8dff'];
@@ -1065,6 +1072,18 @@
     });
   });
 
+  /* Viên màu của menu trượt tới mục đang xem */
+  var ind = document.getElementById('menuInd');
+  function moveInd() {
+    var a = document.querySelector('#menu a.active');
+    if (!a) { ind.style.opacity = '0'; return; }
+    ind.style.width = a.offsetWidth + 'px';
+    ind.style.transform = 'translateX(' + a.offsetLeft + 'px)';
+    ind.style.opacity = '1';
+  }
+  window.addEventListener('resize', moveInd);
+  document.addEventListener('langchange', function () { setTimeout(moveInd, 0); });
+
   /* Lọc kinh nghiệm */
   var chips = document.querySelectorAll('#filters .chip');
   chips.forEach(function (c) {
@@ -1131,6 +1150,7 @@
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
         links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+        moveInd();
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     document.querySelectorAll('main section[id]').forEach(function (s) { spy.observe(s); });
@@ -1174,8 +1194,8 @@
       a: 'Xin chào! 👋 Mình là trợ lý ảo của <b>Xuân Ánh</b>. Bạn có thể hỏi mình về kinh nghiệm, học vấn, ngoại ngữ, kỹ năng hay thành tích của Xuân Ánh nhé.',
       e: "Hello! 👋 I'm <b>Xuan Anh</b>'s virtual assistant. Feel free to ask me about her experience, education, languages, skills or achievements." },
     { k: ['la ai', 'gioi thieu', 'tom tat', 'ban than', 've xuan anh', 'xuan anh la', 'thong tin', 'ho so'], ke: ['who', 'introduce', 'introduction', 'yourself', 'summary', 'profile'],
-      a: '<b>Nguyễn Thị Xuân Ánh</b> (阮氏春英) là Cử nhân Ngôn ngữ Anh, hiện là học viên <b>Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</b> tại Đại học Quốc gia Trung Chính (Đài Loan). Xuân Ánh có kinh nghiệm trợ giảng, gia sư, trợ lý văn phòng và từng 3 lần làm trưởng nhóm tổ chức trại tiếng Anh quốc tế. Tiếng Anh thành thạo (TOEIC 790).' + go('gioi-thieu', 'Xem phần Giới thiệu'),
-      e: '<b>Nguyen Thi Xuan Anh</b> (阮氏春英) holds a B.A. in English Language and is currently pursuing an <b>M.A. in Teaching English as a Foreign Language</b> at National Chung Cheng University (Taiwan). She has experience as a teaching assistant, tutor and office assistant, and has led 3 international English camps. She speaks fluent English (TOEIC 790).' + go('gioi-thieu', 'See the About section') },
+      a: '<b>Nguyễn Thị Xuân Ánh</b> (阮氏春英) là Cử nhân Ngôn ngữ Anh, hiện là học viên <b>Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</b> tại Đại học Quốc gia Trung Chính (Đài Loan). Xuân Ánh có kinh nghiệm trợ giảng, gia sư, trợ lý văn phòng và từng 3 lần làm trưởng nhóm tổ chức trại tiếng Anh quốc tế. Tiếng Anh thành thạo.' + go('gioi-thieu', 'Xem phần Giới thiệu'),
+      e: '<b>Nguyen Thi Xuan Anh</b> (阮氏春英) holds a B.A. in English Language and is currently pursuing an <b>M.A. in Teaching English as a Foreign Language</b> at National Chung Cheng University (Taiwan). She has experience as a teaching assistant, tutor and office assistant, and has led 3 international English camps. She speaks fluent English.' + go('gioi-thieu', 'See the About section') },
     { k: ['hien tai', 'hien nay', 'bay gio', 'dang lam', 'lam gi', 'cong viec hien tai', 'dang hoc'], ke: ['now', 'currently', 'current', 'these days', 'present'],
       a: 'Hiện nay Xuân Ánh:<ul><li>Làm <b>Trợ giảng (bán thời gian)</b> tại Công ty TNHH TÜV SÜD Việt Nam (từ 07/2026)</li><li>Đang học <b>Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</b> tại Đại học Quốc gia Trung Chính, Đài Loan (từ 2024)</li></ul>',
       e: 'At the moment Xuan Anh is:<ul><li>Working as a <b>part-time Teaching Assistant</b> at TÜV SÜD Vietnam (since 07/2026)</li><li>Studying for an <b>M.A. in Teaching English as a Foreign Language</b> at National Chung Cheng University, Taiwan (since 2024)</li></ul>' },
@@ -1201,8 +1221,8 @@
       a: 'Học vấn của Xuân Ánh:<ul><li>🇹🇼 <b>Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</b> – ĐH Quốc gia Trung Chính, Đài Loan (2024 – nay)</li><li>🇻🇳 <b>Chứng chỉ Nghiệp vụ Sư phạm</b> – ĐH Sư phạm Hà Nội 2 (09/2023 – 02/2024)</li><li>🇲🇾 <b>Sinh viên trao đổi</b> – ĐH Wollongong, Malaysia (06 – 08/2023)</li><li>🇻🇳 <b>Cử nhân Ngôn ngữ Anh</b> – ĐH Yersin Đà Lạt (2020 – 2023)</li></ul>' + go('hoc-van', 'Xem phần Học vấn'),
       e: "Xuan Anh's education:<ul><li>🇹🇼 <b>M.A. in Teaching English as a Foreign Language</b> – National Chung Cheng University, Taiwan (2024 – present)</li><li>🇻🇳 <b>Teaching Certificate (Pedagogy)</b> – Hanoi Pedagogical University 2 (09/2023 – 02/2024)</li><li>🇲🇾 <b>Exchange Student</b> – University of Wollongong Malaysia (06 – 08/2023)</li><li>🇻🇳 <b>B.A. in English Language</b> – Yersin University of Da Lat (2020 – 2023)</li></ul>" + go('hoc-van', 'See the Education section') },
     { k: ['thac si', 'tefl', 'cao hoc', 'dai loan', 'trung chinh', 'chung cheng', 'master'], ke: ['master', 'masters', 'tefl', 'm a', 'taiwan', 'chung cheng', 'postgraduate'],
-      a: 'Từ 2024, Xuân Ánh học <b>Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</b> (M.A. in TEFL) tại Khoa Ngoại ngữ và Văn học, <b>Đại học Quốc gia Trung Chính</b>, Gia Nghĩa, Đài Loan, và nhận <b>học bổng dành cho sinh viên quốc tế</b> của trường.',
-      e: "Since 2024, Xuan Anh has been studying for an <b>M.A. in Teaching English as a Foreign Language</b> at the Department of Foreign Languages and Literature, <b>National Chung Cheng University</b>, Chiayi, Taiwan, on the university's <b>international student scholarship</b>." },
+      a: 'Từ 2024, Xuân Ánh học <b>Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</b> (M.A. in TEFL) tại Khoa Ngoại ngữ và Văn học, <b>Đại học Quốc gia Trung Chính</b>, Gia Nghĩa, Đài Loan, với <b>học bổng toàn phần</b> của trường (CCU).',
+      e: "Since 2024, Xuan Anh has been studying for an <b>M.A. in Teaching English as a Foreign Language</b> at the Department of Foreign Languages and Literature, <b>National Chung Cheng University</b>, Chiayi, Taiwan, on a <b>full scholarship</b> from the university (CCU)." },
     { k: ['cu nhan', 'yersin', 'da lat', 'ngon ngu anh'], ke: ['bachelor', 'ba', 'yersin', 'da lat', 'dalat', 'undergraduate'],
       a: 'Xuân Ánh tốt nghiệp <b>Cử nhân Ngôn ngữ Anh</b> tại Khoa Ngoại ngữ, Đại học Yersin Đà Lạt (2020 – 2023).',
       e: 'Xuan Anh earned a <b>B.A. in English Language</b> from the Faculty of Foreign Languages, Yersin University of Da Lat (2020 – 2023).' },
@@ -1210,11 +1230,11 @@
       a: 'Xuân Ánh từng là <b>sinh viên trao đổi</b> tại Khoa Truyền thông và Ngôn ngữ, Đại học Wollongong, Malaysia (06 – 08/2023), và hiện đang học Thạc sĩ tại Đài Loan. Tổng cộng Xuân Ánh đã học tập ở <b>3 quốc gia</b>.',
       e: "Xuan Anh was an <b>exchange student</b> at the School of Communication and Languages, University of Wollongong Malaysia (06 – 08/2023), and is now doing her Master's in Taiwan. In total she has studied in <b>3 countries</b>." },
     { k: ['su pham', 'nghiep vu', 'chung chi'], ke: ['certificate', 'certificates', 'certification', 'pedagogy'],
-      a: 'Xuân Ánh có <b>Chứng chỉ Nghiệp vụ Sư phạm</b> của Trường Đại học Sư phạm Hà Nội 2, Vĩnh Phúc (09/2023 – 02/2024), cùng chứng chỉ <b>TOEIC 790</b> (Nghe + Đọc).',
-      e: 'Xuan Anh holds a <b>Teaching Certificate (Pedagogy)</b> from Hanoi Pedagogical University 2, Vinh Phuc (09/2023 – 02/2024), and a <b>TOEIC score of 790</b> (Listening + Reading).' },
+      a: 'Xuân Ánh có <b>Chứng chỉ Nghiệp vụ Sư phạm</b> của Trường Đại học Sư phạm Hà Nội 2, Vĩnh Phúc (09/2023 – 02/2024).',
+      e: 'Xuan Anh holds a <b>Teaching Certificate (Pedagogy)</b> from Hanoi Pedagogical University 2, Vinh Phuc (09/2023 – 02/2024).' },
     { k: ['ngoai ngu', 'tieng anh', 'toeic', 'ngon ngu', 'english', 'noi tieng', 'diem'], ke: ['language', 'languages', 'english', 'toeic', 'speak', 'fluent', 'score', 'vietnamese'],
-      a: 'Ngoại ngữ của Xuân Ánh:<ul><li>🇬🇧 <b>Tiếng Anh: Thành thạo</b> – TOEIC Nghe + Đọc <b>790</b></li><li>🇻🇳 <b>Tiếng Việt:</b> Bản ngữ</li><li>🇨🇳 <b>Tiếng Trung:</b> Sơ cấp</li></ul>' + go('ky-nang', 'Xem phần Kỹ năng'),
-      e: 'Languages:<ul><li>🇬🇧 <b>English: Fluent</b> – TOEIC Listening + Reading <b>790</b></li><li>🇻🇳 <b>Vietnamese:</b> Native</li><li>🇨🇳 <b>Chinese:</b> Beginner</li></ul>' + go('ky-nang', 'See the Skills section') },
+      a: 'Ngoại ngữ của Xuân Ánh:<ul><li>🇬🇧 <b>Tiếng Anh: Thành thạo</b></li><li>🇻🇳 <b>Tiếng Việt:</b> Bản ngữ</li><li>🇨🇳 <b>Tiếng Trung:</b> Sơ cấp</li></ul>' + go('ky-nang', 'Xem phần Kỹ năng'),
+      e: 'Languages:<ul><li>🇬🇧 <b>English: Fluent</b></li><li>🇻🇳 <b>Vietnamese:</b> Native</li><li>🇨🇳 <b>Chinese:</b> Beginner</li></ul>' + go('ky-nang', 'See the Skills section') },
     { k: ['tieng trung', 'tieng hoa', 'trung quoc', 'chinese'], ke: ['chinese', 'mandarin'],
       a: 'Xuân Ánh biết <b>tiếng Trung ở mức sơ cấp</b>, và có tên tiếng Trung là <b>阮氏春英</b>.',
       e: 'Xuan Anh speaks <b>beginner-level Chinese</b>, and her Chinese name is <b>阮氏春英</b>.' },
@@ -1222,8 +1242,8 @@
       a: 'Kỹ năng chuyên môn của Xuân Ánh:<ul><li>Thành thạo <b>Microsoft Office</b> (Word, Excel, PowerPoint) và <b>Google Workspace</b> (Docs, Sheets, Slides)</li><li>Thành thạo họp trực tuyến: <b>Zoom, Google Meet, Microsoft Teams</b></li><li>Ứng dụng <b>công cụ số và AI</b> hỗ trợ giảng dạy</li><li>Giao tiếp với học viên, giảng viên, khách hàng quốc tế; tổ chức và điều phối sự kiện</li></ul>' + go('ky-nang', 'Xem phần Kỹ năng'),
       e: "Xuan Anh's skills:<ul><li>Proficient in <b>Microsoft Office</b> (Word, Excel, PowerPoint) and <b>Google Workspace</b> (Docs, Sheets, Slides)</li><li>Online meeting platforms: <b>Zoom, Google Meet, Microsoft Teams</b></li><li>Using <b>digital and AI tools</b> in teaching</li><li>Communicating with learners, faculty and international customers; organising and coordinating events</li></ul>" + go('ky-nang', 'See the Skills section') },
     { k: ['thanh tich', 'giai thuong', 'hoc bong', 'khen thuong', 'xuat sac', 'giai'], ke: ['achievement', 'achievements', 'award', 'awards', 'scholarship', 'prize', 'honors', 'honours'],
-      a: 'Thành tích của Xuân Ánh:<ul><li>🏆 <b>Giải thưởng Sinh viên Quốc tế có Thành tích Xuất sắc</b> – ĐH Quốc gia Trung Chính (2025 – 2026)</li><li>🎓 <b>Học bổng dành cho sinh viên quốc tế</b> – ĐH Quốc gia Trung Chính (2024 – nay)</li></ul>' + go('thanh-tich', 'Xem phần Thành tích'),
-      e: 'Achievements:<ul><li>🏆 <b>Outstanding International Student Award</b> – National Chung Cheng University (2025 – 2026)</li><li>🎓 <b>International Student Scholarship</b> – National Chung Cheng University (2024 – present)</li></ul>' + go('thanh-tich', 'See the Achievements section') },
+      a: 'Thành tích của Xuân Ánh:<ul><li>🏆 <b>Giải thưởng Sinh viên Quốc tế có Thành tích Xuất sắc</b> – ĐH Quốc gia Trung Chính (2025 – 2026)</li><li>🎓 <b>Học bổng toàn phần</b> – ĐH Quốc gia Trung Chính (CCU) (2024 – nay)</li></ul>' + go('thanh-tich', 'Xem phần Thành tích'),
+      e: 'Achievements:<ul><li>🏆 <b>Outstanding International Student Award</b> – National Chung Cheng University (2025 – 2026)</li><li>🎓 <b>Full Scholarship</b> – National Chung Cheng University (CCU) (2024 – present)</li></ul>' + go('thanh-tich', 'See the Achievements section') },
     { k: ['lanh dao', 'truong nhom', 'trai', 'to chuc', 'su kien', 'camp', 'quan ly', 'dan dat'], ke: ['leader', 'leadership', 'lead', 'led', 'camp', 'camps', 'event', 'events', 'organise', 'organize', 'team'],
       a: 'Xuân Ánh đã <b>3 lần làm trưởng nhóm</b>:<ul><li>❄️ Trại tiếng Anh Mùa Đông – Trung tâm EMI, ĐH Quốc gia Trung Chính (01/2026)</li><li>☀️ Trại tiếng Anh Mùa Hè – Trung tâm EMI (06/2025)</li><li>🇹🇭 Trại hè cho sinh viên Thái Lan – ĐH Quốc gia Trung Chính (04 & 05/2025)</li></ul>',
       e: 'Xuan Anh has been <b>team leader 3 times</b>:<ul><li>❄️ Winter English Camp – EMI Center, National Chung Cheng University (01/2026)</li><li>☀️ Summer English Camp – EMI Center (06/2025)</li><li>🇹🇭 Summer Camp for Thai Students – National Chung Cheng University (04 & 05/2025)</li></ul>' },
@@ -1237,8 +1257,8 @@
       a: 'Xuân Ánh có <b>3 người tham khảo</b> là giảng viên đại học (2 Phó Giáo sư tại ĐH Quốc gia Trung Chính và Trưởng khoa Ngoại ngữ ĐH Yersin Đà Lạt). Thông tin chi tiết sẽ được cung cấp khi có yêu cầu.',
       e: "Xuan Anh has <b>3 academic referees</b> (2 Associate Professors at National Chung Cheng University and the Dean of Foreign Languages at Yersin University of Da Lat). Details are available upon request." },
     { k: ['diem manh', 'tai sao', 'vi sao', 'phu hop', 'tuyen', 'uu diem', 'noi bat', 'manh', 'gioi'], ke: ['strength', 'strengths', 'why', 'hire', 'good at', 'best', 'strong', 'fit', 'suitable'],
-      a: 'Điểm mạnh nổi bật của Xuân Ánh:<ul><li><b>Chuyên môn giảng dạy tiếng Anh</b>: Cử nhân Ngôn ngữ Anh, Chứng chỉ Sư phạm, đang học Thạc sĩ TEFL</li><li><b>Tiếng Anh thành thạo</b> (TOEIC 790), môi trường học tập ở 3 quốc gia</li><li><b>Tổ chức & lãnh đạo</b>: 3 lần trưởng nhóm tổ chức trại tiếng Anh quốc tế</li><li><b>Được ghi nhận</b>: học bổng và giải thưởng thành tích xuất sắc</li><li><b>Linh hoạt</b>: kinh nghiệm cả giảng dạy, hành chính văn phòng và chăm sóc khách hàng</li></ul>',
-      e: "Xuan Anh's key strengths:<ul><li><b>English teaching expertise</b>: B.A. in English Language, Teaching Certificate, M.A. in TEFL in progress</li><li><b>Fluent English</b> (TOEIC 790), studied in 3 countries</li><li><b>Organisation & leadership</b>: led 3 international English camps</li><li><b>Recognised</b>: scholarship and outstanding achievement award</li><li><b>Versatile</b>: experience in teaching, office administration and customer service</li></ul>" },
+      a: 'Điểm mạnh nổi bật của Xuân Ánh:<ul><li><b>Chuyên môn giảng dạy tiếng Anh</b>: Cử nhân Ngôn ngữ Anh, Chứng chỉ Sư phạm, đang học Thạc sĩ TEFL</li><li><b>Tiếng Anh thành thạo</b>, môi trường học tập ở 3 quốc gia</li><li><b>Tổ chức & lãnh đạo</b>: 3 lần trưởng nhóm tổ chức trại tiếng Anh quốc tế</li><li><b>Được ghi nhận</b>: học bổng toàn phần và giải thưởng thành tích xuất sắc</li><li><b>Linh hoạt</b>: kinh nghiệm cả giảng dạy, hành chính văn phòng và chăm sóc khách hàng</li></ul>',
+      e: "Xuan Anh's key strengths:<ul><li><b>English teaching expertise</b>: B.A. in English Language, Teaching Certificate, M.A. in TEFL in progress</li><li><b>Fluent English</b>, studied in 3 countries</li><li><b>Organisation & leadership</b>: led 3 international English camps</li><li><b>Recognised</b>: full scholarship and outstanding achievement award</li><li><b>Versatile</b>: experience in teaching, office administration and customer service</li></ul>" },
     { k: ['tuoi', 'sinh nam', 'ngay sinh', 'luong', 'muc luong', 'gia dinh', 'chong', 'ket hon', 'so thich', 'que', 'chieu cao'], ke: ['age', 'old', 'birthday', 'born', 'salary', 'married', 'family', 'hobby', 'hobbies', 'husband'],
       a: 'Thông tin này chưa có trong hồ sơ của Xuân Ánh nên mình không trả lời được. Bạn có thể hỏi về kinh nghiệm, học vấn, ngoại ngữ, kỹ năng hoặc thành tích nhé.',
       e: "That information isn't in Xuan Anh's profile, so I can't answer it. You can ask about her experience, education, languages, skills or achievements." },
