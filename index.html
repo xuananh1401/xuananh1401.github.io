@@ -370,6 +370,7 @@
   .ring .bg { stroke: var(--surface-2); }
   .ring .fg { stroke: url(#grad); stroke-linecap: round; transition: stroke-dashoffset 1.8s cubic-bezier(.34,1.2,.64,1); }
   .ring .mid { position: absolute; inset: 0; display: grid; place-items: center; font-size: 40px; }
+  .ring .mid .code { font-size: 32px; font-weight: 900; line-height: 1; background: var(--g); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .lang .n { font-weight: 800; font-size: 19px; }
   .lang .lv { display: inline-block; margin-top: 4px; font-weight: 800; font-size: 13px; padding: 3px 12px; border-radius: 999px; background: var(--brand-soft); color: var(--brand); }
   .lang .ex { color: var(--muted); font-size: 13px; margin-top: 6px; }
@@ -480,6 +481,8 @@
 
   /* ---------- Máy tính bảng ---------- */
   @media (max-width: 900px) {
+    .menu a .t { display: none; }
+    .menu a { padding: 8px 10px; font-size: 18px; }
     .hero-inner { grid-template-columns: 1fr; text-align: center; }
     .hero-inner > div:first-child { order: 2; }
     .lead { margin-left: auto; margin-right: auto; }
@@ -596,6 +599,8 @@
   .cv-chipset { display: flex; flex-wrap: wrap; gap: 1.4mm; }
   .cv-chipset span { font-size: 7.8pt; font-weight: 600; padding: .6mm 2.4mm; border-radius: 9mm; background: #f6f1ff; color: #4b3a6e; }
   .cv-chipset span.k { background: #fff0f6; color: #c02a72; }
+  .cv-chipset span.k { display: inline-flex; align-items: center; gap: 1.4mm; }
+  .cv-chipset .lc { font-style: normal; font-size: 6.8pt; font-weight: 900; color: #fff; background: linear-gradient(135deg, #ff4d8d, #8b5cf6); border-radius: .8mm; padding: .1mm 1.1mm; }
   .cv-note { color: #6e6280; font-size: 7.8pt; margin-top: 1.6mm; }
   .cv-sec { break-inside: avoid; }
   .cv-refs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
@@ -723,7 +728,7 @@
         <div class="card b-now reveal d2">
           <span class="live"><i></i> <span data-en="Currently">Đang làm</span></span>
           <div class="r" data-en="Teaching Assistant · TÜV SÜD Vietnam">Trợ giảng · TÜV SÜD Việt Nam</div>
-          <div class="o" data-en="since 07/2026, while studying for a Master&#x27;s in Taiwan 🇹🇼">từ 07/2026, song song học Thạc sĩ tại Đài Loan 🇹🇼</div>
+          <div class="o" data-en="since 07/2026, while studying for a Master&#x27;s in Taiwan">từ 07/2026, song song học Thạc sĩ tại Đài Loan</div>
         </div>
       </div>
     </div>
@@ -764,7 +769,7 @@
         </div>
         <div class="flip reveal d4" tabindex="0">
           <div class="flip-inner">
-            <div class="face front"><div class="big">🇹🇭</div><div class="t" data-en="Team Leader, Summer Camp for Thai Students">Trưởng nhóm Trại hè cho sinh viên Thái Lan</div><div class="s">04 &amp; 05/2025</div></div>
+            <div class="face front"><div class="big">⛺</div><div class="t" data-en="Team Leader, Summer Camp for Thai Students">Trưởng nhóm Trại hè cho sinh viên Thái Lan</div><div class="s">04 &amp; 05/2025</div></div>
             <div class="face back"><div class="k" data-en="Leadership">Lãnh đạo</div><div class="v" data-en="International summer camp">Trại hè quốc tế</div><div class="d" data-en="Hosted by National Chung Cheng University for students from Thailand.">Do Đại học Quốc gia Trung Chính tổ chức cho sinh viên Thái Lan.</div></div>
           </div>
         </div>
@@ -789,25 +794,25 @@
         <div class="journey">
           <svg class="path" viewBox="0 0 800 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C 130 -10, 200 70, 270 30 S 420 -10, 530 30 S 700 70, 800 30"/></svg>
           <div class="card stop reveal">
-            <div class="flag">🇻🇳</div>
+            <div class="flag">📘</div>
             <span class="yr">2020 – 2023</span>
             <div class="ttl" data-en="B.A. in English Language">Cử nhân Ngôn ngữ Anh</div>
             <div class="plc" data-en="Yersin University of Da Lat">Đại học Yersin Đà Lạt</div>
           </div>
           <div class="card stop reveal d1">
-            <div class="flag">🇲🇾</div>
+            <div class="flag">✈️</div>
             <span class="yr">06 – 08/2023</span>
             <div class="ttl" data-en="Exchange Student">Sinh viên trao đổi</div>
             <div class="plc" data-en="School of Communication and Languages, University of Wollongong Malaysia">Khoa Truyền thông và Ngôn ngữ, Đại học Wollongong, Malaysia</div>
           </div>
           <div class="card stop reveal d2">
-            <div class="flag">🇻🇳</div>
+            <div class="flag">📜</div>
             <span class="yr">09/2023 – 02/2024</span>
             <div class="ttl" data-en="Teaching Certificate (Pedagogy)">Chứng chỉ Nghiệp vụ Sư phạm</div>
             <div class="plc" data-en="Hanoi Pedagogical University 2, Vinh Phuc">Đại học Sư phạm Hà Nội 2, Vĩnh Phúc</div>
           </div>
           <div class="card stop now reveal d3">
-            <div class="flag">🇹🇼</div>
+            <div class="flag">🎓</div>
             <span class="yr" data-en="2024 – Present">2024 – Nay</span>
             <div class="ttl" data-en="M.A. in Teaching English as a Foreign Language">Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</div>
             <div class="plc" data-en="National Chung Cheng University, Chiayi, Taiwan">Đại học Quốc gia Trung Chính, Gia Nghĩa, Đài Loan</div>
@@ -939,15 +944,15 @@
       </div>
       <div class="lang-grid">
         <div class="card lang reveal">
-          <div class="ring"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52" fill="none" stroke-width="12"/><circle class="fg" cx="60" cy="60" r="52" fill="none" stroke-width="12" data-level="1"/></svg><div class="mid">🇻🇳</div></div>
+          <div class="ring"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52" fill="none" stroke-width="12"/><circle class="fg" cx="60" cy="60" r="52" fill="none" stroke-width="12" data-level="1"/></svg><div class="mid"><span class="code">VI</span></div></div>
           <div class="n" data-en="Vietnamese">Tiếng Việt</div><span class="lv" data-en="Native">Bản ngữ</span>
         </div>
         <div class="card lang reveal d1">
-          <div class="ring"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52" fill="none" stroke-width="12"/><circle class="fg" cx="60" cy="60" r="52" fill="none" stroke-width="12" data-level="0.85"/></svg><div class="mid">🇬🇧</div></div>
+          <div class="ring"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52" fill="none" stroke-width="12"/><circle class="fg" cx="60" cy="60" r="52" fill="none" stroke-width="12" data-level="0.85"/></svg><div class="mid"><span class="code">EN</span></div></div>
           <div class="n" data-en="English">Tiếng Anh</div><span class="lv" data-en="Fluent">Thành thạo</span>
         </div>
         <div class="card lang reveal d2">
-          <div class="ring"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52" fill="none" stroke-width="12"/><circle class="fg" cx="60" cy="60" r="52" fill="none" stroke-width="12" data-level="0.3"/></svg><div class="mid">🇨🇳</div></div>
+          <div class="ring"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52" fill="none" stroke-width="12"/><circle class="fg" cx="60" cy="60" r="52" fill="none" stroke-width="12" data-level="0.3"/></svg><div class="mid"><span class="code">中</span></div></div>
           <div class="n" data-en="Chinese">Tiếng Trung</div><span class="lv" data-en="Beginner">Sơ cấp</span>
         </div>
       </div>
@@ -1083,9 +1088,9 @@
       <div>
         <h2><span class="ic">🌍</span><span data-en="Languages">Ngoại ngữ</span></h2>
         <div class="cv-chipset">
-          <span class="k" data-en="🇬🇧 English – Fluent">🇬🇧 Tiếng Anh – Thành thạo</span>
-          <span class="k" data-en="🇻🇳 Vietnamese – Native">🇻🇳 Tiếng Việt – Bản ngữ</span>
-          <span class="k" data-en="🇨🇳 Chinese – Beginner">🇨🇳 Tiếng Trung – Sơ cấp</span>
+          <span class="k"><i class="lc">EN</i><span data-en="English – Fluent">Tiếng Anh – Thành thạo</span></span>
+          <span class="k"><i class="lc">VI</i><span data-en="Vietnamese – Native">Tiếng Việt – Bản ngữ</span></span>
+          <span class="k"><i class="lc">中</i><span data-en="Chinese – Beginner">Tiếng Trung – Sơ cấp</span></span>
         </div>
       </div>
       <div>
@@ -1454,8 +1459,8 @@
       a: 'Xuân Ánh đã làm trợ giảng ở 2 nơi:<ul><li><b>Trung tâm Linh IELTS UK</b>, Hà Nội (2023 – 2024): đánh giá tiến độ, phản hồi cá nhân hóa cho học viên, ứng dụng công cụ số và AI vào giảng dạy</li><li><b>TÜV SÜD Việt Nam</b> (07/2026 – nay): hỗ trợ học viên, giảng viên và điều phối các khóa đào tạo</li></ul>',
       e: 'Xuan Anh has been a teaching assistant at 2 places:<ul><li><b>Linh IELTS UK English Center</b>, Hanoi (2023 – 2024): assessing progress, giving personalised feedback and using digital and AI tools in class</li><li><b>TÜV SÜD Vietnam</b> (07/2026 – present): supporting trainees and trainers and coordinating courses</li></ul>' },
     { k: ['hoc van', 'hoc o dau', 'truong', 'bang cap', 'tot nghiep', 'dai hoc', 'hoc gi', 'hoc tap', 'bang'], ke: ['education', 'study', 'studied', 'school', 'university', 'degree', 'degrees', 'graduate', 'graduated', 'qualifications'],
-      a: 'Học vấn của Xuân Ánh:<ul><li>🇹🇼 <b>Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</b> – ĐH Quốc gia Trung Chính, Đài Loan (2024 – nay)</li><li>🇻🇳 <b>Chứng chỉ Nghiệp vụ Sư phạm</b> – ĐH Sư phạm Hà Nội 2 (09/2023 – 02/2024)</li><li>🇲🇾 <b>Sinh viên trao đổi</b> – ĐH Wollongong, Malaysia (06 – 08/2023)</li><li>🇻🇳 <b>Cử nhân Ngôn ngữ Anh</b> – ĐH Yersin Đà Lạt (2020 – 2023)</li></ul>' + go('hoc-van', 'Xem phần Học vấn'),
-      e: "Xuan Anh's education:<ul><li>🇹🇼 <b>M.A. in Teaching English as a Foreign Language</b> – National Chung Cheng University, Taiwan (2024 – present)</li><li>🇻🇳 <b>Teaching Certificate (Pedagogy)</b> – Hanoi Pedagogical University 2 (09/2023 – 02/2024)</li><li>🇲🇾 <b>Exchange Student</b> – University of Wollongong Malaysia (06 – 08/2023)</li><li>🇻🇳 <b>B.A. in English Language</b> – Yersin University of Da Lat (2020 – 2023)</li></ul>" + go('hoc-van', 'See the Education section') },
+      a: 'Học vấn của Xuân Ánh:<ul><li>🎓 <b>Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</b> – ĐH Quốc gia Trung Chính, Đài Loan (2024 – nay)</li><li>📜 <b>Chứng chỉ Nghiệp vụ Sư phạm</b> – ĐH Sư phạm Hà Nội 2 (09/2023 – 02/2024)</li><li>✈️ <b>Sinh viên trao đổi</b> – ĐH Wollongong, Malaysia (06 – 08/2023)</li><li>📘 <b>Cử nhân Ngôn ngữ Anh</b> – ĐH Yersin Đà Lạt (2020 – 2023)</li></ul>' + go('hoc-van', 'Xem phần Học vấn'),
+      e: "Xuan Anh's education:<ul><li>🎓 <b>M.A. in Teaching English as a Foreign Language</b> – National Chung Cheng University, Taiwan (2024 – present)</li><li>📜 <b>Teaching Certificate (Pedagogy)</b> – Hanoi Pedagogical University 2 (09/2023 – 02/2024)</li><li>✈️ <b>Exchange Student</b> – University of Wollongong Malaysia (06 – 08/2023)</li><li>📘 <b>B.A. in English Language</b> – Yersin University of Da Lat (2020 – 2023)</li></ul>" + go('hoc-van', 'See the Education section') },
     { k: ['thac si', 'tefl', 'cao hoc', 'dai loan', 'trung chinh', 'chung cheng', 'master'], ke: ['master', 'masters', 'tefl', 'm a', 'taiwan', 'chung cheng', 'postgraduate'],
       a: 'Từ 2024, Xuân Ánh học <b>Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</b> (M.A. in TEFL) tại Khoa Ngoại ngữ và Văn học, <b>Đại học Quốc gia Trung Chính</b>, Gia Nghĩa, Đài Loan, với <b>học bổng toàn phần</b> của trường (CCU).',
       e: "Since 2024, Xuan Anh has been studying for an <b>M.A. in Teaching English as a Foreign Language</b> at the Department of Foreign Languages and Literature, <b>National Chung Cheng University</b>, Chiayi, Taiwan, on a <b>full scholarship</b> from the university (CCU)." },
@@ -1469,8 +1474,8 @@
       a: 'Xuân Ánh có <b>Chứng chỉ Nghiệp vụ Sư phạm</b> của Trường Đại học Sư phạm Hà Nội 2, Vĩnh Phúc (09/2023 – 02/2024).',
       e: 'Xuan Anh holds a <b>Teaching Certificate (Pedagogy)</b> from Hanoi Pedagogical University 2, Vinh Phuc (09/2023 – 02/2024).' },
     { k: ['ngoai ngu', 'tieng anh', 'toeic', 'ngon ngu', 'english', 'noi tieng', 'diem'], ke: ['language', 'languages', 'english', 'toeic', 'speak', 'fluent', 'score', 'vietnamese'],
-      a: 'Ngoại ngữ của Xuân Ánh:<ul><li>🇬🇧 <b>Tiếng Anh: Thành thạo</b></li><li>🇻🇳 <b>Tiếng Việt:</b> Bản ngữ</li><li>🇨🇳 <b>Tiếng Trung:</b> Sơ cấp</li></ul>' + go('ky-nang', 'Xem phần Kỹ năng'),
-      e: 'Languages:<ul><li>🇬🇧 <b>English: Fluent</b></li><li>🇻🇳 <b>Vietnamese:</b> Native</li><li>🇨🇳 <b>Chinese:</b> Beginner</li></ul>' + go('ky-nang', 'See the Skills section') },
+      a: 'Ngoại ngữ của Xuân Ánh:<ul><li><b>Tiếng Anh: Thành thạo</b></li><li><b>Tiếng Việt:</b> Bản ngữ</li><li><b>Tiếng Trung:</b> Sơ cấp</li></ul>' + go('ky-nang', 'Xem phần Kỹ năng'),
+      e: 'Languages:<ul><li><b>English: Fluent</b></li><li><b>Vietnamese:</b> Native</li><li><b>Chinese:</b> Beginner</li></ul>' + go('ky-nang', 'See the Skills section') },
     { k: ['tieng trung', 'tieng hoa', 'trung quoc', 'chinese'], ke: ['chinese', 'mandarin'],
       a: 'Xuân Ánh biết <b>tiếng Trung ở mức sơ cấp</b>, và có tên tiếng Trung là <b>阮氏春英</b>.',
       e: 'Xuan Anh speaks <b>beginner-level Chinese</b>, and her Chinese name is <b>阮氏春英</b>.' },
@@ -1481,8 +1486,8 @@
       a: 'Thành tích của Xuân Ánh:<ul><li>🏆 <b>Giải thưởng Sinh viên Quốc tế có Thành tích Xuất sắc</b> – ĐH Quốc gia Trung Chính (2025, 2026)</li><li>🎓 <b>Học bổng toàn phần</b> – ĐH Quốc gia Trung Chính (CCU) (2024 – nay)</li></ul>' + go('thanh-tich', 'Xem phần Thành tích'),
       e: 'Achievements:<ul><li>🏆 <b>Outstanding International Student Award</b> – National Chung Cheng University (2025, 2026)</li><li>🎓 <b>Full Scholarship</b> – National Chung Cheng University (CCU) (2024 – present)</li></ul>' + go('thanh-tich', 'See the Achievements section') },
     { k: ['lanh dao', 'truong nhom', 'trai', 'to chuc', 'su kien', 'camp', 'quan ly', 'dan dat'], ke: ['leader', 'leadership', 'lead', 'led', 'camp', 'camps', 'event', 'events', 'organise', 'organize', 'team'],
-      a: 'Xuân Ánh đã <b>3 lần làm trưởng nhóm</b>:<ul><li>❄️ Trại tiếng Anh Mùa Đông – Trung tâm EMI, ĐH Quốc gia Trung Chính (01/2026)</li><li>☀️ Trại tiếng Anh Mùa Hè – Trung tâm EMI (06/2025)</li><li>🇹🇭 Trại hè cho sinh viên Thái Lan – ĐH Quốc gia Trung Chính (04 & 05/2025)</li></ul>',
-      e: 'Xuan Anh has been <b>team leader 3 times</b>:<ul><li>❄️ Winter English Camp – EMI Center, National Chung Cheng University (01/2026)</li><li>☀️ Summer English Camp – EMI Center (06/2025)</li><li>🇹🇭 Summer Camp for Thai Students – National Chung Cheng University (04 & 05/2025)</li></ul>' },
+      a: 'Xuân Ánh đã <b>3 lần làm trưởng nhóm</b>:<ul><li>❄️ Trại tiếng Anh Mùa Đông – Trung tâm EMI, ĐH Quốc gia Trung Chính (01/2026)</li><li>☀️ Trại tiếng Anh Mùa Hè – Trung tâm EMI (06/2025)</li><li>⛺ Trại hè cho sinh viên Thái Lan – ĐH Quốc gia Trung Chính (04 & 05/2025)</li></ul>',
+      e: 'Xuan Anh has been <b>team leader 3 times</b>:<ul><li>❄️ Winter English Camp – EMI Center, National Chung Cheng University (01/2026)</li><li>☀️ Summer English Camp – EMI Center (06/2025)</li><li>⛺ Summer Camp for Thai Students – National Chung Cheng University (04 & 05/2025)</li></ul>' },
     { k: ['tinh nguyen', 'vten', 'ybox', 'bien dich', 'dich thuat', 'dich', 'cong dong'], ke: ['volunteer', 'volunteering', 'vten', 'ybox', 'translate', 'translation', 'translator', 'community'],
       a: 'Hoạt động tình nguyện:<ul><li>💻 <b>Giáo viên tiếng Anh trực tuyến</b> – Vten Education (2025 – 03/2026)</li><li>✍️ <b>Cộng tác viên biên dịch Anh – Việt</b> – YBOX (08 – 12/2021)</li></ul>',
       e: 'Volunteering:<ul><li>💻 <b>Online English Teacher</b> – Vten Education (2025 – 03/2026)</li><li>✍️ <b>English – Vietnamese Translator</b> – YBOX (08 – 12/2021)</li></ul>' },
