@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -986,7 +986,8 @@
   langBtn.addEventListener('click', function () { setLang(lang === 'en' ? 'vi' : 'en'); });
   var savedLang = null;
   try { savedLang = localStorage.getItem('lang'); } catch (e) {}
-  if (savedLang === 'en') setTimeout(function () { setLang('en'); }, 0);
+  /* Mặc định tiếng Anh; chỉ hiện tiếng Việt khi người xem đã chọn VI trước đó */
+  setLang(savedLang === 'vi' ? 'vi' : 'en');
 
   /* Pháo giấy */
   var COLORS = ['#ff4d8d', '#ff8a3d', '#8b5cf6', '#ffc93c', '#1fc3a5', '#4d8dff'];
