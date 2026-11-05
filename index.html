@@ -327,10 +327,11 @@
   .stop { position: relative; z-index: 1; text-align: center; padding: 22px 16px 24px; transition: transform .4s cubic-bezier(.34,1.56,.64,1), background .4s; }
   .stop:hover { transform: translateY(-8px) rotate(1deg); }
   .flag { width: 78px; height: 78px; margin: -84px auto 14px; border-radius: 50%; display: grid; place-items: center; font-size: 38px; background: var(--surface); border: 4px solid; box-shadow: var(--shadow); }
-  .stop:nth-child(1) .flag { border-color: var(--pink); }
-  .stop:nth-child(2) .flag { border-color: var(--orange); }
-  .stop:nth-child(3) .flag { border-color: var(--teal); }
-  .stop:nth-child(4) .flag { border-color: var(--purple); }
+  /* Viền cờ theo màu quốc kỳ */
+  .stop .flag { border-color: transparent; }
+  .stop:nth-child(1) .flag, .stop:nth-child(3) .flag { background: linear-gradient(var(--surface), var(--surface)) padding-box, conic-gradient(#da251d 0 25%, #ffcd00 25% 50%, #da251d 50% 75%, #ffcd00 75%) border-box; }
+  .stop:nth-child(2) .flag { background: linear-gradient(var(--surface), var(--surface)) padding-box, conic-gradient(#010066 0 33%, #cc0001 33% 66%, #ffcc00 66%) border-box; }
+  .stop:nth-child(4) .flag { background: linear-gradient(var(--surface), var(--surface)) padding-box, conic-gradient(#fe0000 0 50%, #000095 50%) border-box; }
   .stop .yr { display: inline-block; font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 999px; background: var(--brand-soft); color: var(--brand); }
   .stop .ttl { font-weight: 800; margin: 10px 0 4px; font-size: 16px; line-height: 1.35; }
   .stop .plc { color: var(--muted); font-size: 14px; }
@@ -359,20 +360,14 @@
   @keyframes streak-y { from { transform: translateY(-120px); } to { transform: translateY(var(--len, 900px)); } }
   /* Chấm xanh "Đang học" */
   .stop .flag { position: relative; }
-  .flag .live-dot {
-    position: absolute; top: -2px; right: -2px; z-index: 2; width: 18px; height: 18px; border-radius: 50%;
-    background: #22c55e; border: 3px solid #fff; box-shadow: 0 0 10px 2px rgba(34,197,94,.75);
-    animation: live-glow 1.6s ease-out infinite;
+  .yr .live-i {
+    display: inline-block; width: 8px; height: 8px; margin-right: 6px; border-radius: 50%; vertical-align: 1px;
+    background: #4ade80; box-shadow: 0 0 6px 2px rgba(74,222,128,.9); animation: live-glow 1.6s ease-out infinite;
   }
   @keyframes live-glow {
-    0% { box-shadow: 0 0 8px 2px rgba(34,197,94,.8), 0 0 0 0 rgba(34,197,94,.55); }
-    100% { box-shadow: 0 0 8px 2px rgba(34,197,94,.8), 0 0 0 14px rgba(34,197,94,0); }
+    0% { box-shadow: 0 0 6px 2px rgba(74,222,128,.9), 0 0 0 0 rgba(74,222,128,.6); }
+    100% { box-shadow: 0 0 6px 2px rgba(74,222,128,.9), 0 0 0 8px rgba(74,222,128,0); }
   }
-  .studying {
-    display: inline-flex; align-items: center; gap: 6px; margin: 8px auto 0; padding: 3px 11px 3px 8px; border-radius: 999px;
-    font-size: 12px; font-weight: 800; background: rgba(255,255,255,.22); color: #fff;
-  }
-  .studying i { width: 9px; height: 9px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 8px 2px rgba(74,222,128,.9); animation: blink 1.2s ease-in-out infinite; }
 
   /* Thành tích: thẻ lật */
   .flip-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; }
@@ -886,9 +881,8 @@
             <div class="plc" data-en="Hanoi Pedagogical University 2, Vinh Phuc">Đại học Sư phạm Hà Nội 2, Vĩnh Phúc</div>
           </div>
           <div class="card stop now reveal d3">
-            <div class="flag">🇹🇼<span class="live-dot" title="Đang học"></span></div>
-            <span class="yr" data-en="2024 – Present">2024 – Nay</span>
-            <div><span class="studying"><i></i><span data-en="Studying now">Đang học</span></span></div>
+            <div class="flag">🇹🇼</div>
+            <span class="yr"><i class="live-i"></i><span data-en="2024 – Present">2024 – Nay</span></span>
             <div class="ttl" data-en="M.A. in Teaching English as a Foreign Language">Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</div>
             <div class="plc" data-en="National Chung Cheng University, Chiayi, Taiwan">Đại học Quốc gia Trung Chính, Gia Nghĩa, Đài Loan</div>
           </div>
