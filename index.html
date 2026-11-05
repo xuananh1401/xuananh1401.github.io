@@ -323,23 +323,56 @@
 
   /* Học vấn */
   .journey { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; position: relative; }
-  .journey svg.path { position: absolute; top: 30px; left: 10%; width: 80%; height: 60px; z-index: 0; overflow: visible; }
-  .journey svg.path path { stroke: var(--pink); stroke-width: 3; fill: none; stroke-dasharray: 10 10; animation: dash 1.5s linear infinite; }
   @keyframes dash { to { stroke-dashoffset: -20; } }
   .stop { position: relative; z-index: 1; text-align: center; padding: 22px 16px 24px; transition: transform .4s cubic-bezier(.34,1.56,.64,1), background .4s; }
   .stop:hover { transform: translateY(-8px) rotate(1deg); }
-  .flag { width: 78px; height: 78px; margin: -54px auto 14px; border-radius: 50%; display: grid; place-items: center; font-size: 38px; background: var(--surface); border: 4px solid; box-shadow: var(--shadow); }
-  .stop:nth-child(2) .flag { border-color: var(--pink); }
-  .stop:nth-child(3) .flag { border-color: var(--orange); }
-  .stop:nth-child(4) .flag { border-color: var(--teal); }
-  .stop:nth-child(5) .flag { border-color: var(--purple); }
+  .flag { width: 78px; height: 78px; margin: -84px auto 14px; border-radius: 50%; display: grid; place-items: center; font-size: 38px; background: var(--surface); border: 4px solid; box-shadow: var(--shadow); }
+  .stop:nth-child(1) .flag { border-color: var(--pink); }
+  .stop:nth-child(2) .flag { border-color: var(--orange); }
+  .stop:nth-child(3) .flag { border-color: var(--teal); }
+  .stop:nth-child(4) .flag { border-color: var(--purple); }
   .stop .yr { display: inline-block; font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 999px; background: var(--brand-soft); color: var(--brand); }
   .stop .ttl { font-weight: 800; margin: 10px 0 4px; font-size: 16px; line-height: 1.35; }
   .stop .plc { color: var(--muted); font-size: 14px; }
   .stop.now { background: var(--g2); color: #fff; border-color: transparent; }
   .stop.now .plc { color: rgba(255,255,255,.85); }
   .stop.now .yr { background: rgba(255,255,255,.25); color: #fff; }
-  .journey-wrap { padding-top: 40px; }
+  .journey-wrap { padding-top: 70px; position: relative; }
+  /* Đường hành trình nối các lá cờ: tự chạy dần, có máy bay bay dọc theo */
+  .route { position: absolute; z-index: 0; border-radius: 99px; background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--line); }
+  .js .route.reveal { transform: none; }
+  .route .fill { position: absolute; inset: 0; border-radius: inherit; background: var(--g); background-size: 200% 200%;
+    transform: scaleX(0); transform-origin: left center; transition: transform 2.4s cubic-bezier(.45,0,.2,1); animation: shift 6s ease-in-out infinite; }
+  .route.v .fill { transform: scaleY(0); transform-origin: center top; }
+  .route.shown .fill { transform: none; }
+  .route { overflow: hidden; }
+  .route.shown { box-shadow: inset 0 0 0 1px var(--line), 0 0 16px rgba(255, 77, 141, .35); }
+  .route .glow {
+    position: absolute; top: 0; bottom: 0; left: 0; width: 120px; opacity: 0; border-radius: inherit;
+    background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.95) 70%, #fff 85%, rgba(255,255,255,0));
+    filter: drop-shadow(0 0 6px #fff);
+  }
+  .route.shown .glow { opacity: 1; animation: streak-x 2.8s cubic-bezier(.5,0,.5,1) 2.4s infinite; }
+  .route.v .glow { left: 0; right: 0; top: 0; bottom: auto; width: auto; height: 120px; background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,.95) 70%, #fff 85%, rgba(255,255,255,0)); }
+  .route.v.shown .glow { animation-name: streak-y; }
+  @keyframes streak-x { from { transform: translateX(-120px); } to { transform: translateX(var(--len, 900px)); } }
+  @keyframes streak-y { from { transform: translateY(-120px); } to { transform: translateY(var(--len, 900px)); } }
+  /* Chấm xanh "Đang học" */
+  .stop .flag { position: relative; }
+  .flag .live-dot {
+    position: absolute; top: -2px; right: -2px; z-index: 2; width: 18px; height: 18px; border-radius: 50%;
+    background: #22c55e; border: 3px solid #fff; box-shadow: 0 0 10px 2px rgba(34,197,94,.75);
+    animation: live-glow 1.6s ease-out infinite;
+  }
+  @keyframes live-glow {
+    0% { box-shadow: 0 0 8px 2px rgba(34,197,94,.8), 0 0 0 0 rgba(34,197,94,.55); }
+    100% { box-shadow: 0 0 8px 2px rgba(34,197,94,.8), 0 0 0 14px rgba(34,197,94,0); }
+  }
+  .studying {
+    display: inline-flex; align-items: center; gap: 6px; margin: 8px auto 0; padding: 3px 11px 3px 8px; border-radius: 999px;
+    font-size: 12px; font-weight: 800; background: rgba(255,255,255,.22); color: #fff;
+  }
+  .studying i { width: 9px; height: 9px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 8px 2px rgba(74,222,128,.9); animation: blink 1.2s ease-in-out infinite; }
 
   /* Thành tích: thẻ lật */
   .flip-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; }
@@ -530,8 +563,7 @@
     .tiles .tile { flex: 0 0 calc((100% - 32px) / 3); }
     .bento { grid-template-columns: 1fr 1fr; }
     .b-intro, .b-now { grid-column: span 2; grid-row: auto; }
-    .journey { grid-template-columns: 1fr 1fr; row-gap: 60px; }
-    .journey svg.path { display: none; }
+    .journey { grid-template-columns: 1fr 1fr; row-gap: 92px; }
     .lang-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
     .vol { grid-template-columns: 1fr; }
     section.block { padding: 76px 0; }
@@ -722,7 +754,7 @@
     <div class="avatar-zone">
       <div class="orbit"></div>
       <div class="blob"><span><span data-en="Xuan">Xuân</span><span data-en="Anh">Ánh</span></span></div>
-      <div class="sticker k1"><b data-en="🏅 Outstanding Student Award">🏅 SV Quốc tế Xuất sắc</b></div>
+      <div class="sticker k1"><b data-en="🏅 Outstanding Student Award">🏅 Giải thưởng SV Xuất sắc</b></div>
       <div class="sticker k2"><b data-en="🎓 M.A. in TEFL">🎓 Thạc sĩ TEFL</b></div>
       <div class="sticker k3"><b data-en="🏆 Full Scholarship · CCU">🏆 Học bổng toàn phần CCU</b></div>
     </div>
@@ -741,8 +773,8 @@
 
 <div class="marquee" aria-hidden="true">
   <div class="track">
-    <span data-en="Fluent English ✦">Tiếng Anh thành thạo ✦</span><span data-en="M.A. in TEFL ✦">Thạc sĩ TEFL ✦</span><span data-en="Studied in 3 countries ✦">Học tập tại 3 quốc gia ✦</span><span data-en="3× camp team leader ✦">3 lần trưởng nhóm tổ chức trại ✦</span><span data-en="Full scholarship · CCU ✦">Học bổng toàn phần CCU ✦</span><span data-en="Outstanding International Student Award ✦">Giải Sinh viên Quốc tế Xuất sắc ✦</span><span data-en="One-on-one tutor ✦">Gia sư một kèm một ✦</span>
-    <span data-en="Fluent English ✦">Tiếng Anh thành thạo ✦</span><span data-en="M.A. in TEFL ✦">Thạc sĩ TEFL ✦</span><span data-en="Studied in 3 countries ✦">Học tập tại 3 quốc gia ✦</span><span data-en="3× camp team leader ✦">3 lần trưởng nhóm tổ chức trại ✦</span><span data-en="Full scholarship · CCU ✦">Học bổng toàn phần CCU ✦</span><span data-en="Outstanding International Student Award ✦">Giải Sinh viên Quốc tế Xuất sắc ✦</span><span data-en="One-on-one tutor ✦">Gia sư một kèm một ✦</span>
+    <span data-en="Fluent English ✦">Tiếng Anh thành thạo ✦</span><span data-en="M.A. in TEFL ✦">Thạc sĩ TEFL ✦</span><span data-en="Studied in 3 countries ✦">Học tập tại 3 quốc gia ✦</span><span data-en="3× camp team leader ✦">3 lần trưởng nhóm tổ chức trại ✦</span><span data-en="Full scholarship · CCU ✦">Học bổng toàn phần CCU ✦</span><span data-en="Outstanding International Student Award ✦">Giải thưởng Sinh viên Quốc tế Xuất sắc ✦</span><span data-en="One-on-one tutor ✦">Gia sư một kèm một ✦</span>
+    <span data-en="Fluent English ✦">Tiếng Anh thành thạo ✦</span><span data-en="M.A. in TEFL ✦">Thạc sĩ TEFL ✦</span><span data-en="Studied in 3 countries ✦">Học tập tại 3 quốc gia ✦</span><span data-en="3× camp team leader ✦">3 lần trưởng nhóm tổ chức trại ✦</span><span data-en="Full scholarship · CCU ✦">Học bổng toàn phần CCU ✦</span><span data-en="Outstanding International Student Award ✦">Giải thưởng Sinh viên Quốc tế Xuất sắc ✦</span><span data-en="One-on-one tutor ✦">Gia sư một kèm một ✦</span>
   </div>
 </div>
 
@@ -833,8 +865,8 @@
         <p class="sub" data-en="From Da Lat to Malaysia, then Taiwan: every stop has been a step forward.">Từ Đà Lạt đến Malaysia, rồi Đài Loan: mỗi chặng là một bước trưởng thành.</p>
       </div>
       <div class="journey-wrap">
+        <div class="route reveal" id="route" aria-hidden="true"><span class="fill"></span><span class="glow"></span></div>
         <div class="journey">
-          <svg class="path" viewBox="0 0 800 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C 130 -10, 200 70, 270 30 S 420 -10, 530 30 S 700 70, 800 30"/></svg>
           <div class="card stop reveal">
             <div class="flag">🇻🇳</div>
             <span class="yr">2020 – 2023</span>
@@ -854,8 +886,9 @@
             <div class="plc" data-en="Hanoi Pedagogical University 2, Vinh Phuc">Đại học Sư phạm Hà Nội 2, Vĩnh Phúc</div>
           </div>
           <div class="card stop now reveal d3">
-            <div class="flag">🇹🇼</div>
+            <div class="flag">🇹🇼<span class="live-dot" title="Đang học"></span></div>
             <span class="yr" data-en="2024 – Present">2024 – Nay</span>
+            <div><span class="studying"><i></i><span data-en="Studying now">Đang học</span></span></div>
             <div class="ttl" data-en="M.A. in Teaching English as a Foreign Language">Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</div>
             <div class="plc" data-en="National Chung Cheng University, Chiayi, Taiwan">Đại học Quốc gia Trung Chính, Gia Nghĩa, Đài Loan</div>
           </div>
@@ -1029,7 +1062,7 @@
           <div class="cv-role" data-en="English Teaching Assistant · M.A. in TEFL Candidate">Trợ giảng tiếng Anh · Học viên Thạc sĩ TEFL</div>
           <div class="cv-contact"><span>✉ xuananh1401@gmail.com</span></div>
           <div class="cv-chips">
-            <span class="hl" data-en="🏅 Outstanding International Student Award · CCU 2025, 2026">🏅 Giải Sinh viên Quốc tế Xuất sắc · CCU 2025, 2026</span>
+            <span class="hl" data-en="🏅 Outstanding International Student Award · CCU 2025, 2026">🏅 Giải thưởng Sinh viên Quốc tế Xuất sắc · CCU 2025, 2026</span>
             <span class="hl" data-en="🎓 Full Scholarship · National Chung Cheng University">🎓 Học bổng toàn phần · ĐH Quốc gia Trung Chính</span>
           </div>
         </div>
@@ -1358,6 +1391,34 @@
       b.setAttribute('aria-expanded', job.classList.contains('open'));
     });
   });
+
+  /* Đường hành trình học tập */
+  var route = document.getElementById('route');
+  function centerOf(flag) {
+    var x = flag.offsetLeft + flag.offsetWidth / 2, y = flag.offsetTop + flag.offsetHeight / 2, el = flag.offsetParent;
+    while (el && el !== route.parentElement) { x += el.offsetLeft; y += el.offsetTop; el = el.offsetParent; }
+    return { x: x, y: y };
+  }
+  function layoutRoute() {
+    var flags = route.parentElement.querySelectorAll('.flag');
+    var a = centerOf(flags[0]), b = centerOf(flags[flags.length - 1]), T = 8;
+    var s = route.style;
+    if (Math.abs(a.y - b.y) < 4) {
+      route.classList.remove('v'); s.display = '';
+      s.left = a.x + 'px'; s.top = (a.y - T / 2) + 'px'; s.width = (b.x - a.x) + 'px'; s.height = T + 'px';
+      s.setProperty('--len', (b.x - a.x) + 'px');
+    } else if (Math.abs(a.x - b.x) < 4) {
+      route.classList.add('v'); s.display = '';
+      s.left = (a.x - T / 2) + 'px'; s.top = a.y + 'px'; s.width = T + 'px'; s.height = (b.y - a.y) + 'px';
+      s.setProperty('--len', (b.y - a.y) + 'px');
+    } else {
+      s.display = 'none';
+    }
+  }
+  layoutRoute();
+  window.addEventListener('resize', layoutRoute);
+  window.addEventListener('load', layoutRoute);
+  document.addEventListener('langchange', function () { setTimeout(layoutRoute, 0); });
 
   /* Sao chép email */
   document.querySelectorAll('.copy-btn').forEach(function (b) {
