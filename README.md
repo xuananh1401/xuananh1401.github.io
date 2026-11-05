@@ -20,6 +20,8 @@ The whole site is a single self-contained file: `index.html` (HTML, CSS and Java
 
 Served by GitHub Pages from the `main` branch. Changes pushed to `main` usually go live within 1–2 minutes.
 
-## Privacy
+## Contact
 
-Contact details and references are intentionally not published. They are available upon request.
+Email: [xuananh1401@gmail.com](mailto:xuananh1401@gmail.com)
+
+Referees are listed by name and role only; their contact details are available upon request.
