@@ -9,7 +9,8 @@ The personal profile website of Nguyen Thi Xuan Anh, a teaching assistant and M.
 - **Bilingual:** English by default, with a `VI` / `EN` button to switch to Vietnamese and back (the choice is remembered per visitor)
 - **Virtual assistant:** a built-in chatbot that answers questions about experience, education, languages, skills and achievements in both languages (it runs entirely in the browser, with no server or API)
 - **Interactive sections:** filterable work experience, an education journey, flip cards for achievements, animated language rings
-- **Light and dark mode**, print / save as PDF
+- **Light and dark mode**
+- **Downloadable CV:** the `CV` button downloads a two-page A4 PDF (`cv/`) in the current language
 - **Responsive design** for desktop and mobile
 
 ## Structure

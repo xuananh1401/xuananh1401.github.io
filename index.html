@@ -115,6 +115,7 @@
     transition: transform .4s cubic-bezier(.34,1.56,.64,1);
   }
   .icon-btn:hover { transform: rotate(-15deg) scale(1.12); }
+  a.icon-btn { text-decoration: none; }
   .lang-btn { font: inherit; font-size: 13px; font-weight: 900; color: #fff; border: 0; background: var(--g); }
   .progress { position: fixed; top: 0; left: 0; height: 4px; width: 0; z-index: 60; background: var(--g); }
 
@@ -504,7 +505,7 @@
     .nav { padding: 6px 6px 6px 14px; gap: 4px; }
     .menu a { padding: 7px 6px; font-size: 17px; }
     .nav-actions { gap: 4px; }
-    #printTop { display: none; }
+    #cvTop { display: none; }
     .menu a .t { display: none; }
     .icon-btn { width: 36px; height: 36px; flex-basis: 36px; font-size: 15px; }
     .logo { font-size: 15px; }
@@ -647,7 +648,7 @@
   <div class="nav-actions">
     <button class="icon-btn lang-btn" id="langBtn" type="button" title="English / Tiếng Việt" aria-label="Đổi ngôn ngữ">EN</button>
     <button class="icon-btn" id="themeBtn" type="button" title="Đổi nền sáng / tối" aria-label="Đổi nền sáng / tối">🌙</button>
-    <button class="icon-btn" id="printTop" type="button" title="In hoặc lưu PDF" aria-label="In hoặc lưu PDF">🖨️</button>
+    <a class="icon-btn" id="cvTop" href="cv/CV-Nguyen-Thi-Xuan-Anh.pdf" download data-cv title="Download CV (PDF)" aria-label="Download CV (PDF)">📄</a>
   </div>
 </header>
 
@@ -671,7 +672,7 @@
       <div class="cta">
         <button class="btn btn-main" id="chatHero" type="button" data-en="💬 Ask my assistant">💬 Hỏi trợ lý ảo</button>
         <a class="btn btn-soft" href="#kinh-nghiem" data-en="🚀 See my journey">🚀 Xem hành trình</a>
-        <button class="btn btn-line" id="printHero" type="button" data-en="🖨️ Print / PDF">🖨️ In / PDF</button>
+        <a class="btn btn-line" id="cvHero" href="cv/CV-Nguyen-Thi-Xuan-Anh.pdf" download data-cv>📄 CV</a>
       </div>
       <div class="contact-row">
         <a class="ct" href="mailto:xuananh1401@gmail.com"><span class="ct-ic">✉</span>xuananh1401@gmail.com</a>
@@ -1157,9 +1158,8 @@
   syncTheme();
 
   /* In / PDF */
-  function doPrint() { window.print(); }
-  document.getElementById('printTop').addEventListener('click', doPrint);
-  document.getElementById('printHero').addEventListener('click', doPrint);
+  /* Nút CV: tải file PDF theo ngôn ngữ đang xem */
+  var CV_FILE = { en: 'cv/CV-Nguyen-Thi-Xuan-Anh.pdf', vi: 'cv/CV-Nguyen-Thi-Xuan-Anh-VI.pdf' };
 
   /* Các nút mở trợ lý ảo khác */
   ['chatTile', 'chatEnd'].forEach(function (id) {
@@ -1228,6 +1228,7 @@
     });
     typed.textContent = WORDS[l][wi % WORDS[l].length];
     document.title = TITLE[l];
+    document.querySelectorAll('[data-cv]').forEach(function (a) { a.setAttribute('href', CV_FILE[l]); });
     langBtn.textContent = l === 'en' ? 'VI' : 'EN';
     langBtn.title = l === 'en' ? 'Tiếng Việt' : 'English';
     document.dispatchEvent(new Event('langchange'));
