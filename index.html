@@ -366,15 +366,39 @@
   .lang-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .lang { padding: 30px 20px; text-align: center; transition: transform .4s cubic-bezier(.34,1.56,.64,1), background .4s; }
   .lang:hover { transform: translateY(-6px); }
-  .ring { width: 140px; height: 140px; margin: 0 auto 14px; position: relative; }
-  .ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
-  .ring .bg { stroke: var(--surface-2); }
-  .ring .fg { stroke: url(#grad); stroke-linecap: round; transition: stroke-dashoffset 1.8s cubic-bezier(.34,1.2,.64,1); }
-  .ring .mid { position: absolute; inset: 0; display: grid; place-items: center; font-size: 40px; }
-  .ring .mid .code { font-size: 32px; font-weight: 900; line-height: 1; background: var(--g); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  /* Bong bóng lời chào */
+  .say {
+    position: relative; display: inline-flex; align-items: center; gap: 10px; margin: 6px auto 22px;
+    padding: 16px 24px; border: 0; border-radius: 26px; cursor: pointer; color: #fff;
+    font: inherit; font-size: 26px; font-weight: 900; letter-spacing: -.3px;
+    box-shadow: var(--shadow-pop); animation: bob 5s ease-in-out infinite;
+    transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+  }
+  .say::after {
+    content: ""; position: absolute; left: 30px; bottom: -11px; width: 22px; height: 22px;
+    background: inherit; border-radius: 0 0 6px 0; transform: rotate(45deg); z-index: -1;
+  }
+  .say.c1 { background: linear-gradient(135deg, #ff4d8d, #ff8a3d); }
+  .say.c2 { background: linear-gradient(135deg, #8b5cf6, #ff4d8d); animation-delay: -1.7s; }
+  .say.c3 { background: linear-gradient(135deg, #1fc3a5, #4d8dff); animation-delay: -3.4s; }
+  .say:hover { transform: scale(1.08) rotate(-3deg); }
+  .say:active { transform: scale(.95); }
+  .say-ic { font-size: 16px; opacity: .85; }
+  .say.talking .say-ic { animation: blink .5s steps(1) infinite; }
+  .say-tip { text-align: center; color: var(--muted); font-size: 14px; margin-top: 18px; }
+  /* Thanh trình độ 5 nấc */
+  .meter { display: flex; justify-content: center; gap: 6px; margin-top: 14px; }
+  .meter i { width: 30px; height: 8px; border-radius: 99px; background: var(--surface-2); transition: background .5s; }
+  .js .lang .meter i.f { background: var(--surface-2); }
+  .lang.shown .meter i.f, .no-js .meter i.f { background: var(--g); }
+  .lang.shown .meter i:nth-child(2) { transition-delay: .15s; }
+  .lang.shown .meter i:nth-child(3) { transition-delay: .3s; }
+  .lang.shown .meter i:nth-child(4) { transition-delay: .45s; }
+  .lang.shown .meter i:nth-child(5) { transition-delay: .6s; }
   .lang .n { font-weight: 800; font-size: 19px; }
   .lang .lv { display: inline-block; margin-top: 4px; font-weight: 800; font-size: 13px; padding: 3px 12px; border-radius: 999px; background: var(--brand-soft); color: var(--brand); }
   .lang .ex { color: var(--muted); font-size: 13px; margin-top: 6px; }
+  html:not(.js) .meter i.f { background: var(--g); }
   .tools { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 30px; }
   .tool {
     display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 18px;
@@ -945,17 +969,22 @@
       </div>
       <div class="lang-grid">
         <div class="card lang reveal">
-          <div class="ring"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52" fill="none" stroke-width="12"/><circle class="fg" cx="60" cy="60" r="52" fill="none" stroke-width="12" data-level="1"/></svg><div class="mid"><span class="code">VI</span></div></div>
+          <button class="say c1" type="button" data-say="Xin chào!" data-voice="vi-VN" aria-label="Xin chào!"><span class="say-txt">Xin chào!</span><span class="say-ic">🔊</span></button>
           <div class="n" data-en="Vietnamese">Tiếng Việt</div><span class="lv" data-en="Native">Bản ngữ</span>
+          <div class="meter" aria-label="5/5"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></div>
         </div>
         <div class="card lang reveal d1">
-          <div class="ring"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52" fill="none" stroke-width="12"/><circle class="fg" cx="60" cy="60" r="52" fill="none" stroke-width="12" data-level="0.85"/></svg><div class="mid"><span class="code">EN</span></div></div>
+          <button class="say c2" type="button" data-say="Hello!" data-voice="en-US" aria-label="Hello!"><span class="say-txt">Hello!</span><span class="say-ic">🔊</span></button>
           <div class="n" data-en="English">Tiếng Anh</div><span class="lv" data-en="Fluent">Thành thạo</span>
+          <div class="meter" aria-label="4/5"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></div>
         </div>
         <div class="card lang reveal d2">
-          <div class="ring"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52" fill="none" stroke-width="12"/><circle class="fg" cx="60" cy="60" r="52" fill="none" stroke-width="12" data-level="0.3"/></svg><div class="mid"><span class="code">中</span></div></div>
+          <button class="say c3" type="button" data-say="你好!" data-voice="zh-TW" aria-label="你好!"><span class="say-txt">你好!</span><span class="say-ic">🔊</span></button>
           <div class="n" data-en="Chinese">Tiếng Trung</div><span class="lv" data-en="Beginner">Sơ cấp</span>
+          <div class="meter" aria-label="1/5"><i class="f"></i><i></i><i></i><i></i><i></i></div>
         </div>
+      </div>
+      <p class="say-tip" data-en="🔊 Tap a bubble to hear the greeting">🔊 Bấm vào bong bóng để nghe lời chào</p>
       </div>
 
       <div class="tools reveal">
@@ -1310,6 +1339,21 @@
     b.addEventListener('click', function () {
       job.classList.toggle('open');
       b.setAttribute('aria-expanded', job.classList.contains('open'));
+    });
+  });
+
+  /* Bong bóng lời chào: bấm để máy đọc */
+  document.querySelectorAll('.say').forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (!('speechSynthesis' in window)) return;
+      var u = new SpeechSynthesisUtterance(b.getAttribute('data-say').replace('!', ''));
+      u.lang = b.getAttribute('data-voice'); u.rate = .9;
+      var v = speechSynthesis.getVoices().filter(function (x) { return x.lang && x.lang.replace('_', '-').indexOf(u.lang.slice(0, 2)) === 0; });
+      var exact = v.filter(function (x) { return x.lang.replace('_', '-') === u.lang; });
+      if (exact.length) u.voice = exact[0]; else if (v.length) u.voice = v[0];
+      b.classList.add('talking');
+      u.onend = u.onerror = function () { b.classList.remove('talking'); };
+      speechSynthesis.cancel(); speechSynthesis.speak(u);
     });
   });
 
