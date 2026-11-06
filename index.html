@@ -311,6 +311,7 @@
   .job-org { color: var(--muted); font-size: 15px; }
   .job-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
   .tag { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--brand-soft); color: var(--brand); }
+  .tag.remote { background: color-mix(in srgb, var(--teal) 16%, transparent); color: #0e8f74; }
   .tag.time { background: color-mix(in srgb, var(--purple) 15%, transparent); color: var(--purple); }
   .plus { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-size: 22px; font-weight: 700; color: #fff; background: var(--g); transition: transform .4s cubic-bezier(.34,1.56,.64,1); }
   .job.open .plus { transform: rotate(135deg); }
@@ -605,7 +606,7 @@
   .print-cv { display: none; }
   .cv {
     width: 184mm; margin: 0 auto; color: #2a1b3d; background: #fff;
-    font-family: "Be Vietnam Pro", -apple-system, "Segoe UI", Arial, sans-serif; font-size: 9pt; line-height: 1.55;
+    font-family: "Be Vietnam Pro", -apple-system, "Segoe UI", Arial, sans-serif; font-size: 9pt; line-height: 1.48;
   }
   /* Khối đầu màu gradient */
   .cv-head {
@@ -622,6 +623,8 @@
   .cv .cv-role { font-size: 10pt; font-weight: 700; margin-top: .8mm; opacity: .95; }
   .cv-contact { display: flex; flex-wrap: wrap; gap: 1.2mm 4mm; margin-top: 1.4mm; font-size: 8.2pt; font-weight: 600; }
   .cv-contact span { display: inline-flex; align-items: center; gap: 1.2mm; }
+  .cv-contact a { color: inherit; text-decoration: none; }
+  a.cv-qr { display: block; color: inherit; text-decoration: none; }
   .cv-chips { display: flex; flex-direction: column; align-items: flex-start; gap: 1.4mm; margin-top: 2.4mm; }
   .cv-chips span.hl { background: #fff; color: #c02a72; border-color: #fff; font-weight: 800; font-size: 8.2pt; }
   .cv-chips span { font-size: 7.8pt; font-weight: 600; padding: .7mm 2.6mm; border-radius: 9mm; background: rgba(255,255,255,.2); border: .3mm solid rgba(255,255,255,.55); }
@@ -635,7 +638,7 @@
   .cv-stats b { font-size: 15pt; font-weight: 900; line-height: 1; }
   .cv-stats span { font-size: 7.6pt; opacity: .95; line-height: 1.2; }
   /* Tiêu đề mục: ô biểu tượng + chữ in hoa + đường mờ */
-  .cv h2 { display: flex; align-items: center; gap: 2.4mm; font-size: 9.2pt; font-weight: 800; letter-spacing: 1.6pt; text-transform: uppercase; margin: 5.4mm 0 2.6mm; break-after: avoid; }
+  .cv h2 { display: flex; align-items: center; gap: 2.4mm; font-size: 9.2pt; font-weight: 800; letter-spacing: 1.6pt; text-transform: uppercase; margin: 4.6mm 0 2.2mm; break-after: avoid; }
   .cv h2 .ic { width: 6.2mm; height: 6.2mm; flex: 0 0 6.2mm; border-radius: 1.6mm; display: grid; place-items: center; font-size: 8.5pt; letter-spacing: 0; background: linear-gradient(135deg, #ff4d8d, #8b5cf6); }
   .cv h2::after { content: ""; flex: 1; height: .35mm; background: linear-gradient(90deg, #ffc6dc, rgba(255,198,220,0)); }
   .cv-sum { color: #3c2f52; }
@@ -651,7 +654,7 @@
   .cv-hl span { color: #6e6280; font-size: 7.8pt; }
   /* Dòng thời gian */
   .tl { margin-left: 1.5mm; padding-left: 4.6mm; border-left: .45mm solid #ffd0e2; }
-  .tl-item { position: relative; margin-bottom: 3.2mm; break-inside: avoid; display: grid; grid-template-columns: 1fr auto; column-gap: 3mm; }
+  .tl-item { position: relative; margin-bottom: 2.5mm; break-inside: avoid; display: grid; grid-template-columns: 1fr auto; column-gap: 3mm; }
   .tl-item .org, .tl-item ul { grid-column: 1 / -1; }
   .tl-item .org { margin-top: .5mm; }
   .tl-item::before { content: ""; position: absolute; left: -6.4mm; top: .9mm; width: 2.6mm; height: 2.6mm; border-radius: 50%; border: .45mm solid #e83e8c; background: #fff; }
@@ -659,8 +662,8 @@
   .tl-item b { font-weight: 800; font-size: 9pt; }
   .tl-item .when { justify-self: end; align-self: start; white-space: nowrap; padding: .2mm 2.4mm; border-radius: 9mm; font-size: 7.4pt; font-weight: 700; color: #6a3fd6; background: #f1ebff; }
   .tl-item .org { display: block; color: #6e6280; }
-  .tl-item ul { margin: 1.2mm 0 0 3.8mm; padding: 0; }
-  .tl-item li { margin: .6mm 0; }
+  .tl-item ul { margin: .8mm 0 0 3.8mm; padding: 0; }
+  .tl-item li { margin: .35mm 0; }
   .cv-2col { display: grid; grid-template-columns: 1fr 1fr; column-gap: 7mm; }
   .cv-chipset { display: flex; flex-wrap: wrap; gap: 1.4mm; }
   .cv-chipset span { font-size: 7.8pt; font-weight: 600; padding: .6mm 2.4mm; border-radius: 9mm; background: #f6f1ff; color: #4b3a6e; }
@@ -789,7 +792,7 @@
           <p data-en="B.A. in English Language and full-scholarship M.A. candidate in Teaching English as a Foreign Language at National Chung Cheng University (Taiwan). Experienced in English teaching and corporate training support, from one-on-one tutoring and IELTS classes to coordinating courses at TÜV SÜD Academy, and three-time team leader of international English camps.">Cử nhân Ngôn ngữ Anh, học viên Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ (học bổng toàn phần) tại Đại học Quốc gia Trung Chính (Đài Loan). Có kinh nghiệm giảng dạy tiếng Anh và hỗ trợ đào tạo doanh nghiệp, từ gia sư một kèm một, lớp IELTS đến điều phối khóa học tại TÜV SÜD Academy, cùng 3 lần làm trưởng nhóm tổ chức trại tiếng Anh quốc tế.</p>
         </div>
         <div class="card stat c-pink reveal d1"><div class="num" data-count="2">2</div><div class="label" data-en="Awards &amp; scholarships">Giải thưởng &amp; học bổng</div><span class="bg-emo">🏆</span></div>
-        <div class="card stat c-orange reveal d2"><div class="num" data-count="3">3</div><div class="label" data-en="Teaching &amp; training roles">Vị trí giảng dạy &amp; đào tạo</div><span class="bg-emo">💼</span></div>
+        <div class="card stat c-orange reveal d2"><div class="num" data-count="4">4</div><div class="label" data-en="Teaching &amp; training roles">Vị trí giảng dạy &amp; đào tạo</div><span class="bg-emo">💼</span></div>
         <div class="card stat c-purple reveal d2"><div class="num" data-count="3">3</div><div class="label" data-en="Times as camp team leader">Lần trưởng nhóm tổ chức trại</div><span class="bg-emo">🏕️</span></div>
         <div class="card stat c-teal reveal d3"><div class="num" data-count="3">3</div><div class="label" data-en="Countries studied in">Quốc gia học tập</div><span class="bg-emo">🌏</span></div>
         <div class="card b-now reveal d2">
@@ -911,14 +914,33 @@
               <div>
                 <div class="job-title" data-en="Training Assistant">Trợ lý Đào tạo</div>
                 <div class="job-org" data-en="TÜV SÜD Academy · TÜV SÜD Vietnam Co., Ltd.">TÜV SÜD Academy · Công ty TNHH TÜV SÜD Việt Nam</div>
-                <div class="job-meta"><span class="tag time" data-en="07/2026 – Present">07/2026 – Nay</span><span class="tag" data-en="Corporate training">Đào tạo doanh nghiệp</span></div>
+                <div class="job-meta"><span class="tag time" data-en="07/2026 – Present">07/2026 – Nay</span><span class="tag" data-en="Corporate training">Đào tạo doanh nghiệp</span><span class="tag remote">🌐 Remote</span></div>
               </div>
               <span class="plus">+</span>
             </button>
             <div class="job-body"><div><ul>
-              <li data-en="Coordinate corporate training courses from set-up to wrap-up: participant registration and attendance, classrooms, materials and on-site logistics with venue partners.">Điều phối các khóa đào tạo doanh nghiệp từ khâu chuẩn bị đến kết thúc: đăng ký và điểm danh học viên, phòng học, tài liệu và hậu cần cùng đơn vị tổ chức.</li>
-              <li data-en="Support trainers in class with materials, timekeeping and equipment so that sessions run on schedule.">Hỗ trợ giảng viên trong lớp về tài liệu, quản lý thời gian và thiết bị, đảm bảo buổi học đúng tiến độ.</li>
+              <li data-en="Coordinate corporate training courses from set-up to wrap-up: participant registration and attendance, scheduling and logistics, liaising with venue partners.">Điều phối các khóa đào tạo doanh nghiệp từ khâu chuẩn bị đến kết thúc: đăng ký và điểm danh học viên, lịch trình và hậu cần, phối hợp với đơn vị tổ chức.</li>
+              <li data-en="Prepare training materials and learner guides for each course, ensuring accurate, consistent and professionally formatted documents.">Chuẩn bị tài liệu đào tạo và tài liệu hướng dẫn học viên cho từng khóa học, đảm bảo nội dung chính xác, nhất quán và trình bày chuyên nghiệp.</li>
+              <li data-en="Support trainers during sessions with materials, timekeeping and technical setup so that sessions run on schedule.">Hỗ trợ giảng viên trong các buổi học về tài liệu, quản lý thời gian và kỹ thuật, đảm bảo buổi học đúng tiến độ.</li>
               <li data-en="Act as the first point of contact for trainees and client representatives; collect feedback and prepare post-course reports for TÜV SÜD Academy.">Là đầu mối liên hệ của học viên và đại diện khách hàng; thu thập phản hồi và lập báo cáo sau khóa học cho TÜV SÜD Academy.</li>
+            </ul></div></div>
+          </div>
+        </div>
+
+        <div class="job reveal" data-cat="train">
+          <div class="card">
+            <button class="job-head" type="button">
+              <span class="bubble">💬</span>
+              <div>
+                <div class="job-title" data-en="Freelance English Teacher (1-on-1)">Giáo viên Tiếng Anh 1-1 (tự do)</div>
+                <div class="job-org" data-en="Freelance · Private learners">Tự do · Học viên cá nhân</div>
+                <div class="job-meta"><span class="tag time" data-en="2023 – Present">2023 – Nay</span><span class="tag" data-en="One-on-one">Một kèm một</span></div>
+              </div>
+              <span class="plus">+</span>
+            </button>
+            <div class="job-body"><div><ul>
+              <li data-en="Teach English one-on-one to private learners, building lessons around each learner&#x27;s goals and level.">Dạy tiếng Anh một kèm một cho học viên cá nhân, xây dựng bài học theo mục tiêu và trình độ của từng người.</li>
+              <li data-en="Plan learning paths and track each learner&#x27;s progress from session to session.">Lên kế hoạch học tập và theo dõi tiến bộ của học viên qua từng buổi học.</li>
             </ul></div></div>
           </div>
         </div>
@@ -1033,21 +1055,21 @@
         <div>
           <h1><span data-en="Nguyen Thi Xuan Anh">Nguyễn Thị Xuân Ánh</span><span class="cv-cn">阮氏春英</span></h1>
           <div class="cv-role" data-en="English Language Educator · Training Assistant · M.A. in TEFL Candidate">Giảng dạy tiếng Anh · Trợ lý Đào tạo · Học viên Thạc sĩ TEFL</div>
-          <div class="cv-contact"><span>✉ xuananh1401@gmail.com</span></div>
+          <div class="cv-contact"><a href="mailto:xuananh1401@gmail.com">✉ xuananh1401@gmail.com</a></div>
           <div class="cv-chips">
             <span class="hl" data-en="🏅 Outstanding International Student Award · CCU 2025, 2026">🏅 Giải thưởng Sinh viên Quốc tế Xuất sắc · CCU 2025, 2026</span>
             <span class="hl" data-en="🎓 Full Scholarship · National Chung Cheng University">🎓 Học bổng toàn phần · ĐH Quốc gia Trung Chính</span>
           </div>
         </div>
-        <div class="cv-qr">
+        <a class="cv-qr" href="https://xuananh1401.github.io">
           <svg class="qr-svg" aria-label="QR code" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31" shape-rendering="crispEdges"><rect width="31" height="31" fill="#fff"/><path d="M1 1h1v1h-1zM2 1h1v1h-1zM3 1h1v1h-1zM4 1h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM7 1h1v1h-1zM10 1h1v1h-1zM11 1h1v1h-1zM12 1h1v1h-1zM15 1h1v1h-1zM20 1h1v1h-1zM23 1h1v1h-1zM24 1h1v1h-1zM25 1h1v1h-1zM26 1h1v1h-1zM27 1h1v1h-1zM28 1h1v1h-1zM29 1h1v1h-1zM1 2h1v1h-1zM7 2h1v1h-1zM9 2h1v1h-1zM10 2h1v1h-1zM11 2h1v1h-1zM14 2h1v1h-1zM18 2h1v1h-1zM19 2h1v1h-1zM20 2h1v1h-1zM21 2h1v1h-1zM23 2h1v1h-1zM29 2h1v1h-1zM1 3h1v1h-1zM3 3h1v1h-1zM4 3h1v1h-1zM5 3h1v1h-1zM7 3h1v1h-1zM11 3h1v1h-1zM16 3h1v1h-1zM19 3h1v1h-1zM21 3h1v1h-1zM23 3h1v1h-1zM25 3h1v1h-1zM26 3h1v1h-1zM27 3h1v1h-1zM29 3h1v1h-1zM1 4h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM5 4h1v1h-1zM7 4h1v1h-1zM10 4h1v1h-1zM14 4h1v1h-1zM17 4h1v1h-1zM19 4h1v1h-1zM23 4h1v1h-1zM25 4h1v1h-1zM26 4h1v1h-1zM27 4h1v1h-1zM29 4h1v1h-1zM1 5h1v1h-1zM3 5h1v1h-1zM4 5h1v1h-1zM5 5h1v1h-1zM7 5h1v1h-1zM9 5h1v1h-1zM11 5h1v1h-1zM14 5h1v1h-1zM17 5h1v1h-1zM18 5h1v1h-1zM19 5h1v1h-1zM20 5h1v1h-1zM23 5h1v1h-1zM25 5h1v1h-1zM26 5h1v1h-1zM27 5h1v1h-1zM29 5h1v1h-1zM1 6h1v1h-1zM7 6h1v1h-1zM13 6h1v1h-1zM15 6h1v1h-1zM16 6h1v1h-1zM17 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM21 6h1v1h-1zM23 6h1v1h-1zM29 6h1v1h-1zM1 7h1v1h-1zM2 7h1v1h-1zM3 7h1v1h-1zM4 7h1v1h-1zM5 7h1v1h-1zM6 7h1v1h-1zM7 7h1v1h-1zM9 7h1v1h-1zM11 7h1v1h-1zM13 7h1v1h-1zM15 7h1v1h-1zM17 7h1v1h-1zM19 7h1v1h-1zM21 7h1v1h-1zM23 7h1v1h-1zM24 7h1v1h-1zM25 7h1v1h-1zM26 7h1v1h-1zM27 7h1v1h-1zM28 7h1v1h-1zM29 7h1v1h-1zM10 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM21 8h1v1h-1zM1 9h1v1h-1zM3 9h1v1h-1zM5 9h1v1h-1zM7 9h1v1h-1zM10 9h1v1h-1zM12 9h1v1h-1zM13 9h1v1h-1zM17 9h1v1h-1zM18 9h1v1h-1zM21 9h1v1h-1zM25 9h1v1h-1zM28 9h1v1h-1zM4 10h1v1h-1zM5 10h1v1h-1zM6 10h1v1h-1zM8 10h1v1h-1zM9 10h1v1h-1zM10 10h1v1h-1zM11 10h1v1h-1zM13 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM17 10h1v1h-1zM18 10h1v1h-1zM19 10h1v1h-1zM21 10h1v1h-1zM22 10h1v1h-1zM23 10h1v1h-1zM26 10h1v1h-1zM29 10h1v1h-1zM1 11h1v1h-1zM4 11h1v1h-1zM6 11h1v1h-1zM7 11h1v1h-1zM11 11h1v1h-1zM12 11h1v1h-1zM15 11h1v1h-1zM16 11h1v1h-1zM17 11h1v1h-1zM21 11h1v1h-1zM23 11h1v1h-1zM27 11h1v1h-1zM28 11h1v1h-1zM29 11h1v1h-1zM3 12h1v1h-1zM4 12h1v1h-1zM6 12h1v1h-1zM8 12h1v1h-1zM9 12h1v1h-1zM11 12h1v1h-1zM12 12h1v1h-1zM14 12h1v1h-1zM15 12h1v1h-1zM17 12h1v1h-1zM18 12h1v1h-1zM19 12h1v1h-1zM21 12h1v1h-1zM25 12h1v1h-1zM28 12h1v1h-1zM1 13h1v1h-1zM3 13h1v1h-1zM5 13h1v1h-1zM7 13h1v1h-1zM9 13h1v1h-1zM10 13h1v1h-1zM12 13h1v1h-1zM13 13h1v1h-1zM15 13h1v1h-1zM16 13h1v1h-1zM18 13h1v1h-1zM20 13h1v1h-1zM21 13h1v1h-1zM22 13h1v1h-1zM23 13h1v1h-1zM26 13h1v1h-1zM28 13h1v1h-1zM29 13h1v1h-1zM1 14h1v1h-1zM3 14h1v1h-1zM5 14h1v1h-1zM9 14h1v1h-1zM11 14h1v1h-1zM13 14h1v1h-1zM15 14h1v1h-1zM16 14h1v1h-1zM18 14h1v1h-1zM22 14h1v1h-1zM23 14h1v1h-1zM26 14h1v1h-1zM29 14h1v1h-1zM2 15h1v1h-1zM6 15h1v1h-1zM7 15h1v1h-1zM8 15h1v1h-1zM9 15h1v1h-1zM11 15h1v1h-1zM12 15h1v1h-1zM14 15h1v1h-1zM18 15h1v1h-1zM19 15h1v1h-1zM22 15h1v1h-1zM24 15h1v1h-1zM25 15h1v1h-1zM26 15h1v1h-1zM28 15h1v1h-1zM29 15h1v1h-1zM1 16h1v1h-1zM2 16h1v1h-1zM3 16h1v1h-1zM5 16h1v1h-1zM6 16h1v1h-1zM8 16h1v1h-1zM10 16h1v1h-1zM16 16h1v1h-1zM18 16h1v1h-1zM20 16h1v1h-1zM22 16h1v1h-1zM23 16h1v1h-1zM24 16h1v1h-1zM26 16h1v1h-1zM28 16h1v1h-1zM3 17h1v1h-1zM4 17h1v1h-1zM6 17h1v1h-1zM7 17h1v1h-1zM9 17h1v1h-1zM11 17h1v1h-1zM12 17h1v1h-1zM13 17h1v1h-1zM17 17h1v1h-1zM18 17h1v1h-1zM19 17h1v1h-1zM22 17h1v1h-1zM23 17h1v1h-1zM26 17h1v1h-1zM28 17h1v1h-1zM29 17h1v1h-1zM3 18h1v1h-1zM4 18h1v1h-1zM5 18h1v1h-1zM8 18h1v1h-1zM11 18h1v1h-1zM12 18h1v1h-1zM14 18h1v1h-1zM16 18h1v1h-1zM17 18h1v1h-1zM22 18h1v1h-1zM23 18h1v1h-1zM26 18h1v1h-1zM27 18h1v1h-1zM29 18h1v1h-1zM1 19h1v1h-1zM3 19h1v1h-1zM6 19h1v1h-1zM7 19h1v1h-1zM9 19h1v1h-1zM13 19h1v1h-1zM15 19h1v1h-1zM16 19h1v1h-1zM17 19h1v1h-1zM18 19h1v1h-1zM21 19h1v1h-1zM24 19h1v1h-1zM25 19h1v1h-1zM28 19h1v1h-1zM29 19h1v1h-1zM2 20h1v1h-1zM3 20h1v1h-1zM5 20h1v1h-1zM8 20h1v1h-1zM10 20h1v1h-1zM11 20h1v1h-1zM12 20h1v1h-1zM14 20h1v1h-1zM15 20h1v1h-1zM17 20h1v1h-1zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM28 20h1v1h-1zM1 21h1v1h-1zM3 21h1v1h-1zM4 21h1v1h-1zM6 21h1v1h-1zM7 21h1v1h-1zM8 21h1v1h-1zM9 21h1v1h-1zM11 21h1v1h-1zM15 21h1v1h-1zM16 21h1v1h-1zM18 21h1v1h-1zM21 21h1v1h-1zM22 21h1v1h-1zM23 21h1v1h-1zM24 21h1v1h-1zM25 21h1v1h-1zM9 22h1v1h-1zM11 22h1v1h-1zM15 22h1v1h-1zM16 22h1v1h-1zM21 22h1v1h-1zM25 22h1v1h-1zM27 22h1v1h-1zM28 22h1v1h-1zM29 22h1v1h-1zM1 23h1v1h-1zM2 23h1v1h-1zM3 23h1v1h-1zM4 23h1v1h-1zM5 23h1v1h-1zM6 23h1v1h-1zM7 23h1v1h-1zM10 23h1v1h-1zM12 23h1v1h-1zM13 23h1v1h-1zM14 23h1v1h-1zM19 23h1v1h-1zM20 23h1v1h-1zM21 23h1v1h-1zM23 23h1v1h-1zM25 23h1v1h-1zM26 23h1v1h-1zM28 23h1v1h-1zM29 23h1v1h-1zM1 24h1v1h-1zM7 24h1v1h-1zM13 24h1v1h-1zM16 24h1v1h-1zM18 24h1v1h-1zM19 24h1v1h-1zM20 24h1v1h-1zM21 24h1v1h-1zM25 24h1v1h-1zM26 24h1v1h-1zM1 25h1v1h-1zM3 25h1v1h-1zM4 25h1v1h-1zM5 25h1v1h-1zM7 25h1v1h-1zM9 25h1v1h-1zM10 25h1v1h-1zM17 25h1v1h-1zM18 25h1v1h-1zM21 25h1v1h-1zM22 25h1v1h-1zM23 25h1v1h-1zM24 25h1v1h-1zM25 25h1v1h-1zM28 25h1v1h-1zM1 26h1v1h-1zM3 26h1v1h-1zM4 26h1v1h-1zM5 26h1v1h-1zM7 26h1v1h-1zM10 26h1v1h-1zM11 26h1v1h-1zM14 26h1v1h-1zM16 26h1v1h-1zM17 26h1v1h-1zM20 26h1v1h-1zM22 26h1v1h-1zM25 26h1v1h-1zM27 26h1v1h-1zM1 27h1v1h-1zM3 27h1v1h-1zM4 27h1v1h-1zM5 27h1v1h-1zM7 27h1v1h-1zM9 27h1v1h-1zM11 27h1v1h-1zM15 27h1v1h-1zM16 27h1v1h-1zM17 27h1v1h-1zM18 27h1v1h-1zM20 27h1v1h-1zM21 27h1v1h-1zM22 27h1v1h-1zM24 27h1v1h-1zM25 27h1v1h-1zM26 27h1v1h-1zM29 27h1v1h-1zM1 28h1v1h-1zM7 28h1v1h-1zM10 28h1v1h-1zM12 28h1v1h-1zM13 28h1v1h-1zM14 28h1v1h-1zM17 28h1v1h-1zM18 28h1v1h-1zM19 28h1v1h-1zM21 28h1v1h-1zM22 28h1v1h-1zM24 28h1v1h-1zM28 28h1v1h-1zM1 29h1v1h-1zM2 29h1v1h-1zM3 29h1v1h-1zM4 29h1v1h-1zM5 29h1v1h-1zM6 29h1v1h-1zM7 29h1v1h-1zM9 29h1v1h-1zM12 29h1v1h-1zM13 29h1v1h-1zM14 29h1v1h-1zM15 29h1v1h-1zM16 29h1v1h-1zM17 29h1v1h-1zM19 29h1v1h-1zM21 29h1v1h-1zM22 29h1v1h-1zM23 29h1v1h-1zM26 29h1v1h-1zM28 29h1v1h-1zM29 29h1v1h-1z" fill="#2a1b3d"/></svg>
           <b data-en="Scan to visit">Quét để xem</b>
           <div>xuananh1401.github.io</div>
-        </div>
+        </a>
       </div>
       <div class="cv-stats">
         <div><b>2</b><span data-en="Awards &amp; scholarships">Giải thưởng &amp; học bổng</span></div>
-        <div><b>3</b><span data-en="Teaching &amp; training roles">Vị trí giảng dạy &amp; đào tạo</span></div>
+        <div><b>4</b><span data-en="Teaching &amp; training roles">Vị trí giảng dạy &amp; đào tạo</span></div>
         <div><b>3</b><span data-en="Camps led">Trại làm trưởng nhóm</span></div>
         <div><b>3</b><span data-en="Countries studied in">Quốc gia học tập</span></div>
       </div>
@@ -1081,8 +1103,11 @@
     <h2><span class="ic">💼</span><span data-en="Teaching &amp; training experience">Kinh nghiệm giảng dạy &amp; đào tạo</span></h2>
     <div class="tl">
       <div class="tl-item now"><b data-en="Training Assistant">Trợ lý Đào tạo</b><span class="when" data-en="07/2026 – Present">07/2026 – Nay</span>
-        <span class="org" data-en="TÜV SÜD Academy · TÜV SÜD Vietnam Co., Ltd.">TÜV SÜD Academy · Công ty TNHH TÜV SÜD Việt Nam</span>
-        <ul><li data-en="Coordinate corporate training courses from set-up to wrap-up: participant registration and attendance, classrooms, materials and on-site logistics with venue partners.">Điều phối các khóa đào tạo doanh nghiệp từ khâu chuẩn bị đến kết thúc: đăng ký và điểm danh học viên, phòng học, tài liệu và hậu cần cùng đơn vị tổ chức.</li><li data-en="Support trainers in class with materials, timekeeping and equipment so that sessions run on schedule.">Hỗ trợ giảng viên trong lớp về tài liệu, quản lý thời gian và thiết bị, đảm bảo buổi học đúng tiến độ.</li><li data-en="Act as the first point of contact for trainees and client representatives; collect feedback and prepare post-course reports for TÜV SÜD Academy.">Là đầu mối liên hệ của học viên và đại diện khách hàng; thu thập phản hồi và lập báo cáo sau khóa học cho TÜV SÜD Academy.</li></ul></div>
+        <span class="org" data-en="TÜV SÜD Academy · TÜV SÜD Vietnam Co., Ltd. · Remote">TÜV SÜD Academy · Công ty TNHH TÜV SÜD Việt Nam · Remote</span>
+        <ul><li data-en="Coordinate corporate training courses from set-up to wrap-up: participant registration and attendance, scheduling and logistics, liaising with venue partners.">Điều phối các khóa đào tạo doanh nghiệp từ khâu chuẩn bị đến kết thúc: đăng ký và điểm danh học viên, lịch trình và hậu cần, phối hợp với đơn vị tổ chức.</li><li data-en="Prepare training materials and learner guides for each course, ensuring accurate, consistent and professionally formatted documents.">Chuẩn bị tài liệu đào tạo và tài liệu hướng dẫn học viên cho từng khóa học, đảm bảo nội dung chính xác, nhất quán và trình bày chuyên nghiệp.</li><li data-en="Support trainers during sessions with materials, timekeeping and technical setup so that sessions run on schedule.">Hỗ trợ giảng viên trong các buổi học về tài liệu, quản lý thời gian và kỹ thuật, đảm bảo buổi học đúng tiến độ.</li><li data-en="Act as the first point of contact for trainees and client representatives; collect feedback and prepare post-course reports for TÜV SÜD Academy.">Là đầu mối liên hệ của học viên và đại diện khách hàng; thu thập phản hồi và lập báo cáo sau khóa học cho TÜV SÜD Academy.</li></ul></div>
+      <div class="tl-item now"><b data-en="Freelance English Teacher (1-on-1)">Giáo viên Tiếng Anh 1-1 (tự do)</b><span class="when" data-en="2023 – Present">2023 – Nay</span>
+        <span class="org" data-en="Freelance · Private learners">Tự do · Học viên cá nhân</span>
+        <ul><li data-en="Teach English one-on-one to private learners, building lessons around each learner&#x27;s goals and level.">Dạy tiếng Anh một kèm một cho học viên cá nhân, xây dựng bài học theo mục tiêu và trình độ của từng người.</li><li data-en="Plan learning paths and track each learner&#x27;s progress from session to session.">Lên kế hoạch học tập và theo dõi tiến bộ của học viên qua từng buổi học.</li></ul></div>
       <div class="tl-item"><b data-en="English Language Tutor">Gia sư Tiếng Anh</b><span class="when" data-en="2025 – 06/2026">2025 – 06/2026</span>
         <span class="org" data-en="Language Center, National Chung Cheng University">Trung tâm Ngôn ngữ, Đại học Quốc gia Trung Chính</span>
         <ul><li data-en="Designed and delivered one-on-one English sessions tailored to each learner&#x27;s goals and level.">Thiết kế và dạy các buổi học một kèm một theo mục tiêu và trình độ của từng học viên.</li><li data-en="Planned learning schedules and maintained records to track learner progress.">Lập kế hoạch học tập và quản lý hồ sơ để theo dõi tiến bộ của học viên.</li><li data-en="Focused on speaking and communication skills in a supportive, learner-centred setting.">Tập trung phát triển kỹ năng nói và giao tiếp trong môi trường lấy người học làm trung tâm.</li></ul></div>
@@ -1541,20 +1566,20 @@
       a: '<b>Nguyễn Thị Xuân Ánh</b> (阮氏春英) là Cử nhân Ngôn ngữ Anh, học viên <b>Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</b> (học bổng toàn phần) tại Đại học Quốc gia Trung Chính (Đài Loan). Xuân Ánh có kinh nghiệm <b>giảng dạy tiếng Anh và hỗ trợ đào tạo doanh nghiệp</b> (TÜV SÜD Academy, gia sư một kèm một, trợ giảng IELTS) và 3 lần làm trưởng nhóm tổ chức trại tiếng Anh quốc tế.' + go('gioi-thieu', 'Xem phần Giới thiệu'),
       e: '<b>Nguyen Thi Xuan Anh</b> (阮氏春英) holds a B.A. in English Language and is a full-scholarship <b>M.A. candidate in Teaching English as a Foreign Language</b> at National Chung Cheng University (Taiwan). She has experience in <b>English teaching and corporate training support</b> (TÜV SÜD Academy, one-on-one tutoring, IELTS teaching assistance) and has led 3 international English camps.' + go('gioi-thieu', 'See the About section') },
     { k: ['hien tai', 'hien nay', 'bay gio', 'dang lam', 'lam gi', 'cong viec hien tai', 'dang hoc'], ke: ['now', 'currently', 'current', 'these days', 'present'],
-      a: 'Hiện nay Xuân Ánh:<ul><li>Là <b>Trợ lý Đào tạo</b> tại TÜV SÜD Academy, Công ty TNHH TÜV SÜD Việt Nam (từ 07/2026)</li><li>Đang học <b>Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</b> tại Đại học Quốc gia Trung Chính, Đài Loan (từ 2024)</li></ul>',
-      e: 'At the moment Xuan Anh is:<ul><li>A <b>Training Assistant</b> at TÜV SÜD Academy, TÜV SÜD Vietnam (since 07/2026)</li><li>Studying for an <b>M.A. in Teaching English as a Foreign Language</b> at National Chung Cheng University, Taiwan (since 2024)</li></ul>' },
+      a: 'Hiện nay Xuân Ánh:<ul><li>Là <b>Trợ lý Đào tạo</b> (remote) tại TÜV SÜD Academy, Công ty TNHH TÜV SÜD Việt Nam (từ 07/2026)</li><li>Dạy <b>tiếng Anh 1-1</b> tự do cho học viên cá nhân (từ 2023)</li><li>Đang học <b>Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ</b> tại Đại học Quốc gia Trung Chính, Đài Loan (từ 2024)</li></ul>',
+      e: 'At the moment Xuan Anh is:<ul><li>A remote <b>Training Assistant</b> at TÜV SÜD Academy, TÜV SÜD Vietnam (since 07/2026)</li><li>Teaching <b>one-on-one English</b> as a freelancer (since 2023)</li><li>Studying for an <b>M.A. in Teaching English as a Foreign Language</b> at National Chung Cheng University, Taiwan (since 2024)</li></ul>' },
     { k: ['kinh nghiem', 'cong viec', 'lam viec', 'da lam', 'viec lam', 'nghe nghiep', 'vi tri', 'cong ty', 'lam o dau', 'bao nhieu nam'], ke: ['experience', 'work', 'job', 'jobs', 'career', 'worked', 'positions', 'employment', 'companies'],
-      a: '<b>Giảng dạy & đào tạo:</b><ul><li><b>Trợ lý Đào tạo</b> – TÜV SÜD Academy (07/2026 – nay)</li><li><b>Gia sư Tiếng Anh</b> – Trung tâm Ngôn ngữ, ĐH Quốc gia Trung Chính (2025 – 06/2026)</li><li><b>Trợ giảng IELTS</b> – Trung tâm Linh IELTS UK, Hà Nội (2023 – 2024)</li></ul><b>Kinh nghiệm khác:</b><ul><li><b>Trợ lý Văn phòng Khoa</b> – Khoa Ngoại ngữ & Văn học, ĐH Quốc gia Trung Chính (2025 – 06/2026)</li></ul>Bạn muốn biết chi tiết công việc nào?' + go('kinh-nghiem', 'Xem phần Kinh nghiệm'),
-      e: '<b>Teaching & training:</b><ul><li><b>Training Assistant</b> – TÜV SÜD Academy (07/2026 – present)</li><li><b>English Language Tutor</b> – Language Center, National Chung Cheng University (2025 – 06/2026)</li><li><b>IELTS Teaching Assistant</b> – Linh IELTS UK English Center, Hanoi (2023 – 2024)</li></ul><b>Additional experience:</b><ul><li><b>Department Office Assistant</b> – Dept. of Foreign Languages & Literature, National Chung Cheng University (2025 – 06/2026)</li></ul>Which one would you like to know more about?' + go('kinh-nghiem', 'See the Experience section') },
+      a: '<b>Giảng dạy & đào tạo:</b><ul><li><b>Trợ lý Đào tạo</b> (remote) – TÜV SÜD Academy (07/2026 – nay)</li><li><b>Giáo viên Tiếng Anh 1-1</b> (tự do) – học viên cá nhân (2023 – nay)</li><li><b>Gia sư Tiếng Anh</b> – Trung tâm Ngôn ngữ, ĐH Quốc gia Trung Chính (2025 – 06/2026)</li><li><b>Trợ giảng IELTS</b> – Trung tâm Linh IELTS UK, Hà Nội (2023 – 2024)</li></ul><b>Kinh nghiệm khác:</b><ul><li><b>Trợ lý Văn phòng Khoa</b> – Khoa Ngoại ngữ & Văn học, ĐH Quốc gia Trung Chính (2025 – 06/2026)</li></ul>Bạn muốn biết chi tiết công việc nào?' + go('kinh-nghiem', 'Xem phần Kinh nghiệm'),
+      e: '<b>Teaching & training:</b><ul><li><b>Training Assistant</b> (remote) – TÜV SÜD Academy (07/2026 – present)</li><li><b>Freelance English Teacher</b> (1-on-1) – private learners (2023 – present)</li><li><b>English Language Tutor</b> – Language Center, National Chung Cheng University (2025 – 06/2026)</li><li><b>IELTS Teaching Assistant</b> – Linh IELTS UK English Center, Hanoi (2023 – 2024)</li></ul><b>Additional experience:</b><ul><li><b>Department Office Assistant</b> – Dept. of Foreign Languages & Literature, National Chung Cheng University (2025 – 06/2026)</li></ul>Which one would you like to know more about?' + go('kinh-nghiem', 'See the Experience section') },
     { k: ['tuv', 'sud', 'tuv sud', 'dao tao doanh nghiep', 'academy'], ke: ['tuv', 'sud', 'tuv sud', 'corporate training', 'academy', 'training assistant', 'training'],
-      a: 'Tại <b>TÜV SÜD Academy</b> (07/2026 – nay), Xuân Ánh là <b>Trợ lý Đào tạo</b>:<ul><li>Điều phối các khóa đào tạo doanh nghiệp từ khâu chuẩn bị đến kết thúc: đăng ký và điểm danh học viên, phòng học, tài liệu và hậu cần cùng đơn vị tổ chức.</li><li>Hỗ trợ giảng viên trong lớp về tài liệu, quản lý thời gian và thiết bị, đảm bảo buổi học đúng tiến độ.</li><li>Là đầu mối liên hệ của học viên và đại diện khách hàng; thu thập phản hồi và lập báo cáo sau khóa học cho TÜV SÜD Academy.</li></ul>',
-      e: 'At <b>TÜV SÜD Academy</b> (07/2026 – present), Xuan Anh is a <b>Training Assistant</b>:<ul><li>Coordinate corporate training courses from set-up to wrap-up: participant registration and attendance, classrooms, materials and on-site logistics with venue partners.</li><li>Support trainers in class with materials, timekeeping and equipment so that sessions run on schedule.</li><li>Act as the first point of contact for trainees and client representatives; collect feedback and prepare post-course reports for TÜV SÜD Academy.</li></ul>' },
+      a: 'Tại <b>TÜV SÜD Academy</b> (07/2026 – nay), Xuân Ánh là <b>Trợ lý Đào tạo</b> (làm remote):<ul><li>Điều phối các khóa đào tạo doanh nghiệp từ khâu chuẩn bị đến kết thúc: đăng ký và điểm danh học viên, lịch trình và hậu cần, phối hợp với đơn vị tổ chức.</li><li>Chuẩn bị tài liệu đào tạo và tài liệu hướng dẫn học viên cho từng khóa học, đảm bảo nội dung chính xác, nhất quán và trình bày chuyên nghiệp.</li><li>Hỗ trợ giảng viên trong các buổi học về tài liệu, quản lý thời gian và kỹ thuật, đảm bảo buổi học đúng tiến độ.</li><li>Là đầu mối liên hệ của học viên và đại diện khách hàng; thu thập phản hồi và lập báo cáo sau khóa học cho TÜV SÜD Academy.</li></ul>',
+      e: 'At <b>TÜV SÜD Academy</b> (07/2026 – present), Xuan Anh is a remote <b>Training Assistant</b>:<ul><li>Coordinate corporate training courses from set-up to wrap-up: participant registration and attendance, scheduling and logistics, liaising with venue partners.</li><li>Prepare training materials and learner guides for each course, ensuring accurate, consistent and professionally formatted documents.</li><li>Support trainers during sessions with materials, timekeeping and technical setup so that sessions run on schedule.</li><li>Act as the first point of contact for trainees and client representatives; collect feedback and prepare post-course reports for TÜV SÜD Academy.</li></ul>' },
     { k: ['tro ly', 'van phong', 'hanh chinh', 'le tan', 'giay to'], ke: ['office', 'assistant', 'admin', 'administrative', 'reception', 'front desk'],
       a: 'Xuân Ánh từng là <b>Trợ lý Văn phòng Khoa</b> tại Khoa Ngoại ngữ và Văn học, ĐH Quốc gia Trung Chính (2025 – 06/2026):<ul><li>Là đầu mối tiếp nhận và giải đáp yêu cầu của giảng viên, khách và sinh viên quốc tế.</li><li>Quản lý thư điện tử và xử lý các yêu cầu hành chính của khoa một cách chuyên nghiệp.</li></ul>',
       e: 'Xuan Anh was a <b>Department Office Assistant</b> at the Department of Foreign Languages and Literature, National Chung Cheng University (2025 – 06/2026):<ul><li>Served as the front-desk contact for faculty, visitors and international students, resolving their enquiries.</li><li>Managed departmental email correspondence and handled administrative requests professionally.</li></ul>' },
     { k: ['gia su', 'kem', 'mot kem mot', 'day kem', 'day hoc', 'giang day', 'day tieng anh', 'giao vien'], ke: ['tutor', 'tutoring', 'teach', 'teaching', 'teacher', 'one on one', 'lessons'],
-      a: 'Kinh nghiệm giảng dạy của Xuân Ánh:<ul><li><b>Gia sư Tiếng Anh</b> một kèm một – Trung tâm Ngôn ngữ, ĐH Quốc gia Trung Chính (2025 – 06/2026)</li><li><b>Trợ giảng IELTS</b> – Linh IELTS UK, Hà Nội (2023 – 2024)</li><li><b>Trợ lý Đào tạo</b> – TÜV SÜD Academy (2026 – nay)</li><li><b>Giáo viên tiếng Anh trực tuyến</b> (tình nguyện) – Vten Education</li></ul>Ngoài ra Xuân Ánh có <b>Chứng chỉ Nghiệp vụ Sư phạm</b> và đang học Thạc sĩ chuyên ngành giảng dạy tiếng Anh.',
-      e: 'Teaching experience:<ul><li><b>English Language Tutor</b> (one-on-one) – Language Center, National Chung Cheng University (2025 – 06/2026)</li><li><b>IELTS Teaching Assistant</b> – Linh IELTS UK, Hanoi (2023 – 2024)</li><li><b>Training Assistant</b> – TÜV SÜD Academy (2026 – present)</li><li><b>Online English Teacher</b> (volunteer) – Vten Education</li></ul>She also holds a <b>Teaching Certificate (Pedagogy)</b> and is completing an M.A. in TEFL.' },
+      a: 'Kinh nghiệm giảng dạy của Xuân Ánh:<ul><li><b>Giáo viên Tiếng Anh 1-1</b> (tự do) – học viên cá nhân (2023 – nay)</li><li><b>Gia sư Tiếng Anh</b> một kèm một – Trung tâm Ngôn ngữ, ĐH Quốc gia Trung Chính (2025 – 06/2026)</li><li><b>Trợ giảng IELTS</b> – Linh IELTS UK, Hà Nội (2023 – 2024)</li><li><b>Trợ lý Đào tạo</b> – TÜV SÜD Academy (2026 – nay)</li><li><b>Giáo viên tiếng Anh trực tuyến</b> (tình nguyện) – Vten Education</li></ul>Ngoài ra Xuân Ánh có <b>Chứng chỉ Nghiệp vụ Sư phạm</b> và đang học Thạc sĩ chuyên ngành giảng dạy tiếng Anh.',
+      e: 'Teaching experience:<ul><li><b>Freelance English Teacher</b> (1-on-1) – private learners (2023 – present)</li><li><b>English Language Tutor</b> (one-on-one) – Language Center, National Chung Cheng University (2025 – 06/2026)</li><li><b>IELTS Teaching Assistant</b> – Linh IELTS UK, Hanoi (2023 – 2024)</li><li><b>Training Assistant</b> – TÜV SÜD Academy (2026 – present)</li><li><b>Online English Teacher</b> (volunteer) – Vten Education</li></ul>She also holds a <b>Teaching Certificate (Pedagogy)</b> and is completing an M.A. in TEFL.' },
     { k: ['ielts', 'linh', 'tro giang'], ke: ['ielts', 'linh', 'teaching assistant', 'ta'],
       a: 'Tại <b>Trung tâm Linh IELTS UK</b>, Hà Nội (2023 – 2024), Xuân Ánh là <b>Trợ giảng IELTS</b>:<ul><li>Đánh giá tiến độ và đưa ra phản hồi cá nhân hóa giúp học viên cải thiện kết quả IELTS.</li><li>Ứng dụng công cụ số và phản hồi bài viết có hỗ trợ AI vào giảng dạy.</li></ul>',
       e: 'At <b>Linh IELTS UK English Center</b>, Hanoi (2023 – 2024), Xuan Anh was an <b>IELTS Teaching Assistant</b>:<ul><li>Assessed learners\' progress and gave personalised feedback to improve their IELTS results.</li><li>Integrated digital tools and AI-assisted writing feedback into classroom practice.</li></ul>' },
