@@ -343,9 +343,9 @@
 
   /* Thành tích: thẻ lật */
   .flip-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; }
-  .flip-grid .flip { flex: 0 0 calc((100% - 4 * 18px) / 5); }
+  .flip-grid .flip { flex: 0 0 calc((100% - 2 * 18px) / 3); }
   @media (max-width: 1000px) { .flip-grid .flip { flex-basis: calc((100% - 2 * 18px) / 3); } }
-  @media (max-width: 700px) { .flip-grid .flip { flex-basis: calc((100% - 18px) / 2); } }
+  @media (max-width: 700px) { .flip-grid .flip { flex-basis: 100%; } }
   @media (max-width: 440px) { .flip-grid .flip { flex-basis: 100%; } }
   .flip { perspective: 1000px; height: 240px; cursor: pointer; }
   .flip-inner { position: relative; width: 100%; height: 100%; transition: transform .8s cubic-bezier(.34,1.4,.64,1); transform-style: preserve-3d; }
@@ -367,7 +367,25 @@
   .back .k { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85; }
   .back .v { font-weight: 800; font-size: 19px; margin: 6px 0; line-height: 1.3; }
   .back .d { font-size: 14px; opacity: .92; }
-  .flip-tip { text-align: center; color: var(--muted); font-size: 14px; margin-top: -26px; margin-bottom: 26px; }
+  .flip-tip { text-align: center; color: var(--muted); font-size: 14px; margin: -8px 0 20px; }
+  /* Thành tích: các hàng thẻ đều nhau */
+  .sub-h { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 21px; font-weight: 800; margin: 48px 0 20px; }
+  .sub-h:first-of-type { margin-top: 8px; }
+  .ach-grid { display: grid; gap: 16px; }
+  .ach-grid.four { grid-template-columns: repeat(4, 1fr); }
+  .ach-grid.three { grid-template-columns: repeat(3, 1fr); }
+  .ach { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 22px 20px; transition: transform .4s cubic-bezier(.34,1.56,.64,1), background .4s; }
+  .ach:hover { transform: translateY(-5px); }
+  .ach-ic { width: 50px; height: 50px; border-radius: 15px; display: grid; place-items: center; font-size: 26px; background: var(--brand-soft); margin-bottom: 4px; }
+  .ach-yr { font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 999px; color: var(--purple); background: color-mix(in srgb, var(--purple) 12%, transparent); }
+  .ach-t { font-weight: 800; font-size: 16px; line-height: 1.35; }
+  .ach-o { color: var(--muted); font-size: 13.5px; line-height: 1.45; margin-top: auto; }
+  .ach.hl { border: 2px solid transparent; background: linear-gradient(var(--surface), var(--surface)) padding-box, var(--g) border-box; box-shadow: var(--shadow-pop); }
+  .ach .ribbon { top: 16px; right: 16px; }
+  @media (max-width: 1000px) { .ach-grid.four { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 760px) { .ach-grid.three { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .ach-grid.four { grid-template-columns: 1fr; } }
+
   /* Giải thưởng & học bổng khác */
   .aw-head { text-align: center; font-size: 20px; font-weight: 800; margin: 44px 0 18px; }
   .aw-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
@@ -791,33 +809,37 @@
         <span class="eyebrow" data-en="🏆 Achievements &amp; leadership">🏆 Thành tích &amp; lãnh đạo</span>
         <h2 class="heading"><span data-en="Standout">Những</span> <span class="grad-text" data-en="highlights">dấu ấn</span> <span data-en="">nổi bật</span></h2>
       </div>
+      <h3 class="sub-h reveal"><span>🏆</span><span data-en="Awards">Giải thưởng</span></h3>
+      <div class="ach-grid four">
+        <div class="card ach reveal hl"><span class="ribbon" data-en="⭐ Highlight">⭐ Nổi bật</span><span class="ach-ic">🏅</span><span class="ach-yr" data-en="2025, 2026">2025, 2026</span><div class="ach-t" data-en="Outstanding International Student Award">Giải thưởng Sinh viên Quốc tế có Thành tích Xuất sắc</div><div class="ach-o" data-en="National Chung Cheng University (CCU), Taiwan">ĐH Quốc gia Trung Chính (CCU), Đài Loan</div></div>
+        <div class="card ach reveal d1"><span class="ach-ic">🌟</span><span class="ach-yr" data-en="2023">2023</span><div class="ach-t" data-en="Outstanding Student Award">Giải thưởng Sinh viên Xuất sắc</div><div class="ach-o" data-en="Foreign Languages Dept., Yersin University of Dalat">Khoa Ngoại ngữ, Đại học Yersin Đà Lạt</div></div>
+        <div class="card ach reveal d2"><span class="ach-ic">🎤</span><span class="ach-yr" data-en="2021">2021</span><div class="ach-t" data-en="Consolation Prize – Speaking Contest">Giải thưởng Khuyến khích – Cuộc thi Hùng biện tiếng Anh</div><div class="ach-o" data-en="Yersin University of Dalat">Đại học Yersin Đà Lạt</div></div>
+        <div class="card ach reveal d3"><span class="ach-ic">💡</span><span class="ach-yr" data-en="2021">2021</span><div class="ach-t" data-en="Consolation Prize – Active Writing Project, Startup Competition">Giải thưởng Khuyến khích – Dự án Active Writing, Cuộc thi Khởi nghiệp</div><div class="ach-o" data-en="Yersin University of Dalat">Đại học Yersin Đà Lạt</div></div>
+      </div>
+
+      <h3 class="sub-h reveal"><span>🎓</span><span data-en="Scholarships">Học bổng</span></h3>
+      <div class="ach-grid three">
+        <div class="card ach reveal hl"><span class="ribbon" data-en="⭐ Highlight">⭐ Nổi bật</span><span class="ach-ic">🎓</span><span class="ach-yr" data-en="2024 – Present">2024 – Nay</span><div class="ach-t" data-en="Full Scholarship for International Students">Học bổng toàn phần cho sinh viên quốc tế</div><div class="ach-o" data-en="National Chung Cheng University (CCU), Taiwan">ĐH Quốc gia Trung Chính (CCU), Đài Loan</div></div>
+        <div class="card ach reveal d1"><span class="ach-ic">📘</span><span class="ach-yr" data-en="2021 – 2022">2021 – 2022</span><div class="ach-t" data-en="Excellent Student Scholarship">Học bổng Sinh viên Xuất sắc</div><div class="ach-o" data-en="Yersin University of Dalat">Đại học Yersin Đà Lạt</div></div>
+        <div class="card ach reveal d2"><span class="ach-ic">🏛️</span><span class="ach-yr" data-en="2020">2020</span><div class="ach-t" data-en="Alexandre Yersin Scholarship">Học bổng Alexandre Yersin</div><div class="ach-o" data-en="Yersin University of Dalat">Đại học Yersin Đà Lạt</div></div>
+      </div>
+
+      <h3 class="sub-h reveal"><span>⛺</span><span data-en="Leadership">Hoạt động lãnh đạo</span></h3>
       <p class="flip-tip reveal" data-en="👆 Hover or tap a card to flip it, there is a surprise!">👆 Rê chuột hoặc chạm vào thẻ để lật, có bất ngờ đó!</p>
       <div class="flip-grid">
         <div class="flip reveal" tabindex="0">
-          <div class="flip-inner">
-            <div class="face front"><span class="ribbon" data-en="⭐ Highlight">⭐ Nổi bật</span><div class="big">🏆</div><div class="t" data-en="Outstanding International Student Award">Sinh viên Quốc tế có Thành tích Xuất sắc</div><div class="s">2025, 2026</div></div>
-            <div class="face back"><div class="k" data-en="Award">Giải thưởng</div><div class="v" data-en="Outstanding achievement">Thành tích xuất sắc</div><div class="d" data-en="Presented by National Chung Cheng University to international students.">Do Đại học Quốc gia Trung Chính trao cho sinh viên quốc tế.</div></div>
-          </div>
-        </div>
-        <div class="flip reveal d1" tabindex="0">
-          <div class="flip-inner">
-            <div class="face front"><span class="ribbon" data-en="⭐ Highlight">⭐ Nổi bật</span><div class="big">🎓</div><div class="t" data-en="Full Scholarship · CCU">Học bổng toàn phần CCU</div><div class="s" data-en="2024 – Present">2024 – Nay</div></div>
-            <div class="face back"><div class="k" data-en="Full scholarship">Học bổng toàn phần</div><div class="v" data-en="National Chung Cheng University">Đại học Quốc gia Trung Chính</div><div class="d" data-en="Full scholarship for international students in the Master&#x27;s programme.">Học bổng toàn phần dành cho sinh viên quốc tế theo học chương trình Thạc sĩ.</div></div>
-          </div>
-        </div>
-        <div class="flip reveal d2" tabindex="0">
           <div class="flip-inner">
             <div class="face front"><div class="big">❄️</div><div class="t" data-en="Team Leader, Winter English Camp">Trưởng nhóm tổ chức Trại tiếng Anh Mùa Đông</div><div class="s">01/2026</div></div>
             <div class="face back"><div class="k" data-en="Leadership">Lãnh đạo</div><div class="v" data-en="Winter English Camp">Trại tiếng Anh Mùa Đông</div><div class="d" data-en="EMI Center, College of Education, National Chung Cheng University.">Trung tâm EMI, Trường Sư phạm, Đại học Quốc gia Trung Chính.</div></div>
           </div>
         </div>
-        <div class="flip reveal d3" tabindex="0">
+        <div class="flip reveal d1" tabindex="0">
           <div class="flip-inner">
             <div class="face front"><div class="big">☀️</div><div class="t" data-en="Team Leader, Summer English Camp">Trưởng nhóm tổ chức Trại tiếng Anh Mùa Hè</div><div class="s">06/2025</div></div>
             <div class="face back"><div class="k" data-en="Leadership">Lãnh đạo</div><div class="v" data-en="Summer English Camp">Trại tiếng Anh Mùa Hè</div><div class="d" data-en="EMI Center, College of Education, National Chung Cheng University.">Trung tâm EMI, Trường Sư phạm, Đại học Quốc gia Trung Chính.</div></div>
           </div>
         </div>
-        <div class="flip reveal d4" tabindex="0">
+        <div class="flip reveal d2" tabindex="0">
           <div class="flip-inner">
             <div class="face front"><div class="big">⛺</div><div class="t" data-en="Team Leader, Summer Camp for Thai Students">Trưởng nhóm Trại hè cho sinh viên Thái Lan</div><div class="s">04 &amp; 05/2025</div></div>
             <div class="face back"><div class="k" data-en="Leadership">Lãnh đạo</div><div class="v" data-en="International summer camp">Trại hè quốc tế</div><div class="d" data-en="Hosted by National Chung Cheng University for students from Thailand.">Do Đại học Quốc gia Trung Chính tổ chức cho sinh viên Thái Lan.</div></div>
@@ -825,15 +847,7 @@
         </div>
       </div>
 
-      <h3 class="aw-head reveal" data-en="More awards &amp; scholarships">Giải thưởng &amp; học bổng khác</h3>
-      <div class="aw-grid">
-        <div class="aw reveal"><span class="aw-ic">🌟</span><div><div class="aw-t" data-en="Outstanding Student Award">Giải thưởng Sinh viên Xuất sắc</div><div class="aw-o"><span data-en="Foreign Languages Department, Yersin University of Dalat">Khoa Ngoại ngữ, Đại học Yersin Đà Lạt</span> · <span data-en="2023">2023</span></div></div></div>
-        <div class="aw reveal d1"><span class="aw-ic">🎤</span><div><div class="aw-t" data-en="Consolation Prize – Speaking Contest">Giải thưởng Khuyến khích – Cuộc thi Hùng biện tiếng Anh</div><div class="aw-o"><span data-en="Yersin University of Dalat">Đại học Yersin Đà Lạt</span> · <span data-en="2021">2021</span></div></div></div>
-        <div class="aw reveal d2"><span class="aw-ic">💡</span><div><div class="aw-t" data-en="Consolation Prize – Active Writing Project, Startup Competition">Giải thưởng Khuyến khích – Dự án Active Writing, Cuộc thi Khởi nghiệp</div><div class="aw-o"><span data-en="Yersin University of Dalat">Đại học Yersin Đà Lạt</span> · <span data-en="2021">2021</span></div></div></div>
-        <div class="aw reveal d3"><span class="aw-ic">📘</span><div><div class="aw-t" data-en="Excellent Student Scholarship">Học bổng Sinh viên Xuất sắc</div><div class="aw-o"><span data-en="Yersin University of Dalat">Đại học Yersin Đà Lạt</span> · <span data-en="2021 – 2022">2021 – 2022</span></div></div></div>
-        <div class="aw reveal"><span class="aw-ic">🏛️</span><div><div class="aw-t" data-en="Alexandre Yersin Scholarship">Học bổng Alexandre Yersin</div><div class="aw-o"><span data-en="Yersin University of Dalat">Đại học Yersin Đà Lạt</span> · <span data-en="2020">2020</span></div></div></div>
-      </div>
-
+      <h3 class="sub-h reveal"><span>💛</span><span data-en="Volunteering">Hoạt động tình nguyện</span></h3>
       <div class="vol">
         <div class="card reveal"><div class="e">💻</div><div><div class="t" data-en="Online English Teacher (volunteer)">Giáo viên tiếng Anh trực tuyến (tình nguyện)</div><div class="s">Vten Education · 2025 – 03/2026</div></div></div>
         <div class="card reveal d1"><div class="e">✍️</div><div><div class="t" data-en="English – Vietnamese Translator (volunteer)">Cộng tác viên biên dịch Anh – Việt (tình nguyện)</div><div class="s">YBOX · 08/2021 – 12/2021</div></div></div>
