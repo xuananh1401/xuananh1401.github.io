@@ -279,6 +279,7 @@
   .stat .bg-emo { position: absolute; right: -6px; bottom: -14px; font-size: 76px; opacity: .18; transform: rotate(-12deg); }
   .c-pink .num { color: var(--pink); } .c-orange .num { color: var(--orange); } .c-purple .num { color: var(--purple); } .c-teal .num { color: var(--teal); }
   .b-now { grid-column: span 2; display: flex; flex-direction: column; justify-content: center; }
+  .bento .b-now { grid-column: 1 / -1; grid-row: auto; }
   .live { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 800; color: var(--teal); text-transform: uppercase; letter-spacing: 1px; }
   .live i { width: 10px; height: 10px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 0 rgba(31,195,165,.6); animation: livepulse 1.8s infinite; }
   @keyframes livepulse { to { box-shadow: 0 0 0 12px rgba(31,195,165,0); } }
@@ -398,6 +399,17 @@
   .back .v { font-weight: 800; font-size: 19px; margin: 6px 0; line-height: 1.3; }
   .back .d { font-size: 14px; opacity: .92; }
   .flip-tip { text-align: center; color: var(--muted); font-size: 14px; margin-top: -26px; margin-bottom: 26px; }
+  /* Giải thưởng & học bổng khác */
+  .aw-head { text-align: center; font-size: 20px; font-weight: 800; margin: 44px 0 18px; }
+  .aw-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+  .aw-grid .aw { flex: 0 0 calc((100% - 2 * 14px) / 3); }
+  @media (max-width: 900px) { .aw-grid .aw { flex-basis: calc((100% - 14px) / 2); } }
+  @media (max-width: 600px) { .aw-grid .aw { flex-basis: 100%; } }
+  .aw { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); transition: transform .4s cubic-bezier(.34,1.56,.64,1), background .4s; }
+  .aw:hover { transform: translateY(-4px); }
+  .aw-ic { width: 48px; height: 48px; flex: 0 0 48px; border-radius: 14px; display: grid; place-items: center; font-size: 24px; background: var(--brand-soft); }
+  .aw-t { font-weight: 800; font-size: 15px; line-height: 1.35; }
+  .aw-o { color: var(--muted); font-size: 13px; margin-top: 2px; }
   .vol { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 22px; }
   .vol .card { padding: 22px; display: flex; gap: 16px; align-items: center; transition: transform .4s cubic-bezier(.34,1.56,.64,1), background .4s; }
   .vol .card:hover { transform: translateY(-5px) rotate(-1deg); }
@@ -638,7 +650,7 @@
   .cv-stats b { font-size: 15pt; font-weight: 900; line-height: 1; }
   .cv-stats span { font-size: 7.6pt; opacity: .95; line-height: 1.2; }
   /* Tiêu đề mục: ô biểu tượng + chữ in hoa + đường mờ */
-  .cv h2 { display: flex; align-items: center; gap: 2.4mm; font-size: 9.2pt; font-weight: 800; letter-spacing: 1.6pt; text-transform: uppercase; margin: 4.6mm 0 2.2mm; break-after: avoid; }
+  .cv h2 { display: flex; align-items: center; gap: 2.4mm; font-size: 9.2pt; font-weight: 800; letter-spacing: 1.6pt; text-transform: uppercase; margin: 4mm 0 2mm; break-after: avoid; }
   .cv h2 .ic { width: 6.2mm; height: 6.2mm; flex: 0 0 6.2mm; border-radius: 1.6mm; display: grid; place-items: center; font-size: 8.5pt; letter-spacing: 0; background: linear-gradient(135deg, #ff4d8d, #8b5cf6); }
   .cv h2::after { content: ""; flex: 1; height: .35mm; background: linear-gradient(90deg, #ffc6dc, rgba(255,198,220,0)); }
   .cv-sum { color: #3c2f52; }
@@ -654,7 +666,7 @@
   .cv-hl span { color: #6e6280; font-size: 7.8pt; }
   /* Dòng thời gian */
   .tl { margin-left: 1.5mm; padding-left: 4.6mm; border-left: .45mm solid #ffd0e2; }
-  .tl-item { position: relative; margin-bottom: 2.5mm; break-inside: avoid; display: grid; grid-template-columns: 1fr auto; column-gap: 3mm; }
+  .tl-item { position: relative; margin-bottom: 2.2mm; break-inside: avoid; display: grid; grid-template-columns: 1fr auto; column-gap: 3mm; }
   .tl-item .org, .tl-item ul { grid-column: 1 / -1; }
   .tl-item .org { margin-top: .5mm; }
   .tl-item::before { content: ""; position: absolute; left: -6.4mm; top: .9mm; width: 2.6mm; height: 2.6mm; border-radius: 50%; border: .45mm solid #e83e8c; background: #fff; }
@@ -673,7 +685,7 @@
   .cv-note { color: #6e6280; font-size: 7.8pt; margin-top: 1.6mm; }
   .cv-sec { break-inside: avoid; }
   .cv-refs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
-  .cv-ref { padding: 2.6mm 3mm; border-radius: 3mm; background: #fbf7ff; border: .3mm solid #ece4fb; break-inside: avoid; }
+  .cv-ref { padding: 2mm 3mm; line-height: 1.38; border-radius: 3mm; background: #fbf7ff; border: .3mm solid #ece4fb; break-inside: avoid; }
   .cv-ref b { display: block; font-weight: 800; font-size: 9.4pt; }
   .cv-ref em { display: block; font-style: normal; color: #e83e8c; font-weight: 700; font-size: 8pt; margin-bottom: .8mm; }
   .cv-ref span { display: block; color: #4b3a6e; font-size: 8.2pt; }
@@ -786,20 +798,20 @@
         <h2 class="heading"><span data-en="A little about">Một chút về</span> <span class="grad-text" data-en="me">mình</span></h2>
       </div>
       <div class="bento">
+        <div class="card b-now reveal">
+          <span class="live"><i></i> <span data-en="Currently">Đang làm</span></span>
+          <div class="r" data-en="Training Assistant · TÜV SÜD Academy (Remote)">Trợ lý Đào tạo · TÜV SÜD Academy (Remote)</div>
+          <div class="o" data-en="since 07/2026, while studying for a Master&#x27;s in Taiwan 🇹🇼">từ 07/2026, song song học Thạc sĩ tại Đài Loan 🇹🇼</div>
+        </div>
         <div class="card b-intro reveal">
           <div class="emo">🌷</div>
           <h3 data-en="Inspiring English learners, caring about every detail">Truyền cảm hứng học tiếng Anh, chu đáo trong từng chi tiết</h3>
           <p data-en="B.A. in English Language and full-scholarship M.A. candidate in Teaching English as a Foreign Language at National Chung Cheng University (Taiwan). Experienced in English teaching and corporate training support, from one-on-one tutoring and IELTS classes to coordinating courses at TÜV SÜD Academy, and three-time team leader of international English camps.">Cử nhân Ngôn ngữ Anh, học viên Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ (học bổng toàn phần) tại Đại học Quốc gia Trung Chính (Đài Loan). Có kinh nghiệm giảng dạy tiếng Anh và hỗ trợ đào tạo doanh nghiệp, từ gia sư một kèm một, lớp IELTS đến điều phối khóa học tại TÜV SÜD Academy, cùng 3 lần làm trưởng nhóm tổ chức trại tiếng Anh quốc tế.</p>
         </div>
-        <div class="card stat c-pink reveal d1"><div class="num" data-count="2">2</div><div class="label" data-en="Awards &amp; scholarships">Giải thưởng &amp; học bổng</div><span class="bg-emo">🏆</span></div>
+        <div class="card stat c-pink reveal d1"><div class="num" data-count="7">7</div><div class="label" data-en="Awards &amp; scholarships">Giải thưởng &amp; học bổng</div><span class="bg-emo">🏆</span></div>
         <div class="card stat c-orange reveal d2"><div class="num" data-count="4">4</div><div class="label" data-en="Teaching &amp; training roles">Vị trí giảng dạy &amp; đào tạo</div><span class="bg-emo">💼</span></div>
         <div class="card stat c-purple reveal d2"><div class="num" data-count="3">3</div><div class="label" data-en="Times as camp team leader">Lần trưởng nhóm tổ chức trại</div><span class="bg-emo">🏕️</span></div>
         <div class="card stat c-teal reveal d3"><div class="num" data-count="3">3</div><div class="label" data-en="Countries studied in">Quốc gia học tập</div><span class="bg-emo">🌏</span></div>
-        <div class="card b-now reveal d2">
-          <span class="live"><i></i> <span data-en="Currently">Đang làm</span></span>
-          <div class="r" data-en="Training Assistant · TÜV SÜD Academy">Trợ lý Đào tạo · TÜV SÜD Academy</div>
-          <div class="o" data-en="since 07/2026, while studying for a Master&#x27;s in Taiwan 🇹🇼">từ 07/2026, song song học Thạc sĩ tại Đài Loan 🇹🇼</div>
-        </div>
       </div>
     </div>
   </section>
@@ -843,6 +855,15 @@
             <div class="face back"><div class="k" data-en="Leadership">Lãnh đạo</div><div class="v" data-en="International summer camp">Trại hè quốc tế</div><div class="d" data-en="Hosted by National Chung Cheng University for students from Thailand.">Do Đại học Quốc gia Trung Chính tổ chức cho sinh viên Thái Lan.</div></div>
           </div>
         </div>
+      </div>
+
+      <h3 class="aw-head reveal" data-en="More awards &amp; scholarships">Giải thưởng &amp; học bổng khác</h3>
+      <div class="aw-grid">
+        <div class="aw reveal"><span class="aw-ic">🌟</span><div><div class="aw-t" data-en="Outstanding Student Award">Giải thưởng Sinh viên Xuất sắc</div><div class="aw-o"><span data-en="Foreign Languages Department, Yersin University of Dalat">Khoa Ngoại ngữ, Đại học Yersin Đà Lạt</span> · <span data-en="2023">2023</span></div></div></div>
+        <div class="aw reveal d1"><span class="aw-ic">🎤</span><div><div class="aw-t" data-en="Consolation Prize – Speaking Contest">Giải thưởng Khuyến khích – Cuộc thi Hùng biện tiếng Anh</div><div class="aw-o"><span data-en="Yersin University of Dalat">Đại học Yersin Đà Lạt</span> · <span data-en="2021">2021</span></div></div></div>
+        <div class="aw reveal d2"><span class="aw-ic">💡</span><div><div class="aw-t" data-en="Consolation Prize – Active Writing Project, Startup Competition">Giải thưởng Khuyến khích – Dự án Active Writing, Cuộc thi Khởi nghiệp</div><div class="aw-o"><span data-en="Yersin University of Dalat">Đại học Yersin Đà Lạt</span> · <span data-en="2021">2021</span></div></div></div>
+        <div class="aw reveal d3"><span class="aw-ic">📘</span><div><div class="aw-t" data-en="Excellent Student Scholarship">Học bổng Sinh viên Xuất sắc</div><div class="aw-o"><span data-en="Yersin University of Dalat">Đại học Yersin Đà Lạt</span> · <span data-en="2021 – 2022">2021 – 2022</span></div></div></div>
+        <div class="aw reveal"><span class="aw-ic">🏛️</span><div><div class="aw-t" data-en="Alexandre Yersin Scholarship">Học bổng Alexandre Yersin</div><div class="aw-o"><span data-en="Yersin University of Dalat">Đại học Yersin Đà Lạt</span> · <span data-en="2020">2020</span></div></div></div>
       </div>
 
       <div class="vol">
@@ -1068,7 +1089,7 @@
         </a>
       </div>
       <div class="cv-stats">
-        <div><b>2</b><span data-en="Awards &amp; scholarships">Giải thưởng &amp; học bổng</span></div>
+        <div><b>7</b><span data-en="Awards &amp; scholarships">Giải thưởng &amp; học bổng</span></div>
         <div><b>4</b><span data-en="Teaching &amp; training roles">Vị trí giảng dạy &amp; đào tạo</span></div>
         <div><b>3</b><span data-en="Camps led">Trại làm trưởng nhóm</span></div>
         <div><b>3</b><span data-en="Countries studied in">Quốc gia học tập</span></div>
@@ -1078,14 +1099,6 @@
     <div class="cv-sec">
     <h2><span class="ic">👤</span><span data-en="Profile">Giới thiệu</span></h2>
     <p class="cv-sum" data-en="B.A. in English Language and full-scholarship M.A. candidate in Teaching English as a Foreign Language at National Chung Cheng University (Taiwan). Experienced in English teaching and corporate training support, from one-on-one tutoring and IELTS classes to coordinating courses at TÜV SÜD Academy, and three-time team leader of international English camps.">Cử nhân Ngôn ngữ Anh, học viên Thạc sĩ Giảng dạy Tiếng Anh như một Ngoại ngữ (học bổng toàn phần) tại Đại học Quốc gia Trung Chính (Đài Loan). Có kinh nghiệm giảng dạy tiếng Anh và hỗ trợ đào tạo doanh nghiệp, từ gia sư một kèm một, lớp IELTS đến điều phối khóa học tại TÜV SÜD Academy, cùng 3 lần làm trưởng nhóm tổ chức trại tiếng Anh quốc tế.</p>
-    <div class="cv-str">
-      <div><em>01</em><span data-en="English teaching">Giảng dạy tiếng Anh</span></div>
-      <div><em>02</em><span data-en="One-on-one tutoring">Gia sư một kèm một</span></div>
-      <div><em>03</em><span data-en="Training coordination">Điều phối đào tạo</span></div>
-      <div><em>04</em><span data-en="Event &amp; camp leadership">Lãnh đạo sự kiện, trại</span></div>
-      <div><em>05</em><span data-en="Cross-cultural communication">Giao tiếp đa văn hóa</span></div>
-      <div><em>06</em><span data-en="Digital &amp; AI tools">Công cụ số &amp; AI</span></div>
-    </div>
     </div>
 
     <h2><span class="ic">🎓</span><span data-en="Education">Học vấn</span></h2>
@@ -1125,23 +1138,38 @@
     </div>
     </div>
 
-    <div class="cv-sec">
-    <h2><span class="ic">🏆</span><span data-en="Awards &amp; scholarships">Giải thưởng &amp; học bổng</span></h2>
-    <div class="tl">
-      <div class="tl-item now"><b data-en="Outstanding International Student Award">Giải thưởng Sinh viên Quốc tế có Thành tích Xuất sắc</b><span class="when">2025, 2026</span>
-        <span class="org" data-en="National Chung Cheng University (CCU), Taiwan">Đại học Quốc gia Trung Chính (CCU), Đài Loan</span></div>
-      <div class="tl-item now"><b data-en="Full Scholarship for International Students">Học bổng toàn phần cho sinh viên quốc tế</b><span class="when" data-en="2024 – Present">2024 – Nay</span>
-        <span class="org" data-en="National Chung Cheng University (CCU), Taiwan">Đại học Quốc gia Trung Chính (CCU), Đài Loan</span></div>
-    </div>
+    <div class="cv-2col cv-sec">
+      <div>
+        <h2><span class="ic">🏆</span><span data-en="Awards">Giải thưởng</span></h2>
+        <div class="tl">
+          <div class="tl-item now"><b data-en="Outstanding International Student Award">Giải thưởng Sinh viên Quốc tế có Thành tích Xuất sắc</b><span class="when" data-en="2025, 2026">2025, 2026</span>
+            <span class="org" data-en="National Chung Cheng University (CCU), Taiwan">Đại học Quốc gia Trung Chính (CCU), Đài Loan</span></div>
+          <div class="tl-item"><b data-en="Outstanding Student Award">Giải thưởng Sinh viên Xuất sắc</b><span class="when" data-en="2023">2023</span>
+            <span class="org" data-en="Foreign Languages Dept., Yersin University of Dalat">Khoa Ngoại ngữ, ĐH Yersin Đà Lạt</span></div>
+          <div class="tl-item"><b data-en="Consolation Prize – Speaking Contest">Giải thưởng Khuyến khích – Cuộc thi Hùng biện tiếng Anh</b><span class="when" data-en="2021">2021</span>
+            <span class="org" data-en="Yersin University of Dalat">Đại học Yersin Đà Lạt</span></div>
+          <div class="tl-item"><b data-en="Consolation Prize – Active Writing Project, Startup Competition">Giải thưởng Khuyến khích – Dự án Active Writing, Cuộc thi Khởi nghiệp</b><span class="when" data-en="2021">2021</span>
+            <span class="org" data-en="Yersin University of Dalat">Đại học Yersin Đà Lạt</span></div>
+        </div>
+      </div>
+      <div>
+        <h2><span class="ic">🎓</span><span data-en="Scholarships">Học bổng</span></h2>
+        <div class="tl">
+          <div class="tl-item now"><b data-en="Full Scholarship for International Students">Học bổng toàn phần cho sinh viên quốc tế</b><span class="when" data-en="2024 – Present">2024 – Nay</span>
+            <span class="org" data-en="National Chung Cheng University (CCU), Taiwan">Đại học Quốc gia Trung Chính (CCU), Đài Loan</span></div>
+          <div class="tl-item"><b data-en="Excellent Student Scholarship">Học bổng Sinh viên Xuất sắc</b><span class="when" data-en="2021 – 2022">2021 – 2022</span>
+            <span class="org" data-en="Yersin University of Dalat">Đại học Yersin Đà Lạt</span></div>
+          <div class="tl-item"><b data-en="Alexandre Yersin Scholarship">Học bổng Alexandre Yersin</b><span class="when" data-en="2020">2020</span>
+            <span class="org" data-en="Yersin University of Dalat">Đại học Yersin Đà Lạt</span></div>
+        </div>
+      </div>
     </div>
 
     <div class="cv-2col cv-sec">
       <div>
         <h2><span class="ic">⛺</span><span data-en="Leadership">Hoạt động lãnh đạo</span></h2>
         <div class="tl">
-          <div class="tl-item"><b data-en="Team Leader, Winter English Camp">Trưởng nhóm, Trại tiếng Anh Mùa Đông</b><span class="when">01/2026</span>
-            <span class="org" data-en="EMI Center, College of Education, CCU">Trung tâm EMI, Trường Sư phạm, CCU</span></div>
-          <div class="tl-item"><b data-en="Team Leader, Summer English Camp">Trưởng nhóm, Trại tiếng Anh Mùa Hè</b><span class="when">06/2025</span>
+          <div class="tl-item"><b data-en="Team Leader, Winter &amp; Summer English Camps">Trưởng nhóm, Trại tiếng Anh Đông &amp; Hè</b><span class="when">2025 – 2026</span>
             <span class="org" data-en="EMI Center, College of Education, CCU">Trung tâm EMI, Trường Sư phạm, CCU</span></div>
           <div class="tl-item"><b data-en="Team Leader, Summer Camp for Thai Students">Trưởng nhóm, Trại hè sinh viên Thái Lan</b><span class="when">04 &amp; 05/2025</span>
             <span class="org" data-en="National Chung Cheng University">Đại học Quốc gia Trung Chính</span></div>
@@ -1153,28 +1181,21 @@
           <div class="tl-item"><b data-en="Online English Teacher">Giáo viên tiếng Anh trực tuyến</b><span class="when">2025 – 03/2026</span>
             <span class="org">Vten Education</span></div>
           <div class="tl-item"><b data-en="English – Vietnamese Translator">Cộng tác viên biên dịch Anh – Việt</b><span class="when">08/2021 – 12/2021</span>
-            <span class="org" data-en="YBOX – information network for Vietnamese students and youth">YBOX – mạng xã hội thông tin cho học sinh, sinh viên và thanh niên Việt Nam</span></div>
+            <span class="org">YBOX</span></div>
         </div>
       </div>
     </div>
 
-    <div class="cv-2col cv-sec">
-      <div>
-        <h2><span class="ic">🌍</span><span data-en="Languages">Ngoại ngữ</span></h2>
-        <div class="cv-chipset">
+    <div class="cv-sec">
+    <h2><span class="ic">🌍</span><span data-en="Languages &amp; skills">Ngoại ngữ &amp; kỹ năng</span></h2>
+    <div class="cv-chipset">
           <span class="k"><i class="lc">EN</i><span data-en="English – Fluent">Tiếng Anh – Thành thạo</span></span>
           <span class="k"><i class="lc">VI</i><span data-en="Vietnamese – Native">Tiếng Việt – Bản ngữ</span></span>
           <span class="k"><i class="lc">中</i><span data-en="Chinese – Beginner">Tiếng Trung – Sơ cấp</span></span>
-        </div>
-      </div>
-      <div>
-        <h2><span class="ic">🛠️</span><span data-en="Skills">Kỹ năng</span></h2>
-        <div class="cv-chipset">
           <span>Microsoft Office (Word, Excel, PowerPoint)</span><span>Google Workspace (Docs, Sheets, Slides)</span>
           <span>Zoom · Google Meet · Microsoft Teams</span>
           <span data-en="AI tools for teaching">Công cụ AI trong giảng dạy</span>
-        </div>
-      </div>
+    </div>
     </div>
 
     <div class="cv-sec">
@@ -1182,11 +1203,11 @@
     <div class="cv-refs">
       <div class="cv-ref"><b data-en="Dr. Yang Min">TS. Yang Min</b><em data-en="Advisor">Giảng viên hướng dẫn</em>
         <span data-en="Associate Professor">Phó Giáo sư</span>
-        <span data-en="Dept. of Foreign Languages and Literature, National Chung Cheng University, Taiwan">Khoa Ngoại ngữ và Văn học, Đại học Quốc gia Trung Chính, Đài Loan</span>
+        <span data-en="Dept. of Foreign Languages &amp; Literature, CCU, Taiwan">Khoa Ngoại ngữ &amp; Văn học, CCU, Đài Loan</span>
         <span class="ref-mail" data-ref="1"></span></div>
       <div class="cv-ref"><b data-en="Dr. Gina Wen-Chun Chen">TS. Gina Wen-Chun Chen</b><em data-en="Supervisor">Người giám sát</em>
         <span data-en="Associate Professor">Phó Giáo sư</span>
-        <span data-en="Dept. of Foreign Languages and Literature, National Chung Cheng University, Taiwan">Khoa Ngoại ngữ và Văn học, Đại học Quốc gia Trung Chính, Đài Loan</span>
+        <span data-en="Dept. of Foreign Languages &amp; Literature, CCU, Taiwan">Khoa Ngoại ngữ &amp; Văn học, CCU, Đài Loan</span>
         <span class="ref-mail" data-ref="2"></span></div>
       <div class="cv-ref"><b data-en="Dr. Nguyen Vi Thong">TS. Nguyễn Vĩ Thông</b><em data-en="Former Advisor">Giảng viên hướng dẫn trước đây</em>
         <span data-en="Dean, Faculty of Foreign Languages">Trưởng khoa Ngoại ngữ</span>
@@ -1608,8 +1629,8 @@
       a: 'Kỹ năng chuyên môn của Xuân Ánh:<ul><li>Thành thạo <b>Microsoft Office</b> (Word, Excel, PowerPoint) và <b>Google Workspace</b> (Docs, Sheets, Slides)</li><li>Thành thạo họp trực tuyến: <b>Zoom, Google Meet, Microsoft Teams</b></li><li>Ứng dụng <b>công cụ số và AI</b> hỗ trợ giảng dạy</li><li>Giao tiếp với học viên, giảng viên, khách hàng quốc tế; tổ chức và điều phối sự kiện</li></ul>' + go('ky-nang', 'Xem phần Kỹ năng'),
       e: "Xuan Anh's skills:<ul><li>Proficient in <b>Microsoft Office</b> (Word, Excel, PowerPoint) and <b>Google Workspace</b> (Docs, Sheets, Slides)</li><li>Online meeting platforms: <b>Zoom, Google Meet, Microsoft Teams</b></li><li>Using <b>digital and AI tools</b> in teaching</li><li>Communicating with learners, faculty and international customers; organising and coordinating events</li></ul>" + go('ky-nang', 'See the Skills section') },
     { k: ['thanh tich', 'giai thuong', 'hoc bong', 'khen thuong', 'xuat sac', 'giai'], ke: ['achievement', 'achievements', 'award', 'awards', 'scholarship', 'prize', 'honors', 'honours'],
-      a: 'Thành tích của Xuân Ánh:<ul><li>🏆 <b>Giải thưởng Sinh viên Quốc tế có Thành tích Xuất sắc</b> – ĐH Quốc gia Trung Chính (2025, 2026)</li><li>🎓 <b>Học bổng toàn phần</b> – ĐH Quốc gia Trung Chính (CCU) (2024 – nay)</li></ul>' + go('thanh-tich', 'Xem phần Thành tích'),
-      e: 'Achievements:<ul><li>🏆 <b>Outstanding International Student Award</b> – National Chung Cheng University (2025, 2026)</li><li>🎓 <b>Full Scholarship</b> – National Chung Cheng University (CCU) (2024 – present)</li></ul>' + go('thanh-tich', 'See the Achievements section') },
+      a: 'Giải thưởng:<ul><li>🏅 <b>Giải thưởng Sinh viên Quốc tế có Thành tích Xuất sắc</b> – Đại học Quốc gia Trung Chính (CCU), Đài Loan (2025, 2026)</li><li>🌟 <b>Giải thưởng Sinh viên Xuất sắc</b> – Khoa Ngoại ngữ, Đại học Yersin Đà Lạt (2023)</li><li>🎤 <b>Giải thưởng Khuyến khích – Cuộc thi Hùng biện tiếng Anh</b> – Đại học Yersin Đà Lạt (2021)</li><li>💡 <b>Giải thưởng Khuyến khích – Dự án Active Writing, Cuộc thi Khởi nghiệp</b> – Đại học Yersin Đà Lạt (2021)</li></ul>Học bổng:<ul><li>🎓 <b>Học bổng toàn phần cho sinh viên quốc tế</b> – Đại học Quốc gia Trung Chính (CCU), Đài Loan (2024 – Nay)</li><li>📘 <b>Học bổng Sinh viên Xuất sắc</b> – Đại học Yersin Đà Lạt (2021 – 2022)</li><li>🏛️ <b>Học bổng Alexandre Yersin</b> – Đại học Yersin Đà Lạt (2020)</li></ul>' + go('thanh-tich', 'Xem phần Thành tích'),
+      e: 'Awards:<ul><li>🏅 <b>Outstanding International Student Award</b> – National Chung Cheng University (CCU), Taiwan (2025, 2026)</li><li>🌟 <b>Outstanding Student Award</b> – Foreign Languages Department, Yersin University of Dalat (2023)</li><li>🎤 <b>Consolation Prize – Speaking Contest</b> – Yersin University of Dalat (2021)</li><li>💡 <b>Consolation Prize – Active Writing Project, Startup Competition</b> – Yersin University of Dalat (2021)</li></ul>Scholarships:<ul><li>🎓 <b>Full Scholarship for International Students</b> – National Chung Cheng University (CCU), Taiwan (2024 – Present)</li><li>📘 <b>Excellent Student Scholarship</b> – Yersin University of Dalat (2021 – 2022)</li><li>🏛️ <b>Alexandre Yersin Scholarship</b> – Yersin University of Dalat (2020)</li></ul>' + go('thanh-tich', 'See the Achievements section') },
     { k: ['lanh dao', 'truong nhom', 'trai', 'to chuc', 'su kien', 'camp', 'quan ly', 'dan dat'], ke: ['leader', 'leadership', 'lead', 'led', 'camp', 'camps', 'event', 'events', 'organise', 'organize', 'team'],
       a: 'Xuân Ánh đã <b>3 lần làm trưởng nhóm</b>:<ul><li>❄️ Trại tiếng Anh Mùa Đông – Trung tâm EMI, ĐH Quốc gia Trung Chính (01/2026)</li><li>☀️ Trại tiếng Anh Mùa Hè – Trung tâm EMI (06/2025)</li><li>⛺ Trại hè cho sinh viên Thái Lan – ĐH Quốc gia Trung Chính (04 & 05/2025)</li></ul>',
       e: 'Xuan Anh has been <b>team leader 3 times</b>:<ul><li>❄️ Winter English Camp – EMI Center, National Chung Cheng University (01/2026)</li><li>☀️ Summer English Camp – EMI Center (06/2025)</li><li>⛺ Summer Camp for Thai Students – National Chung Cheng University (04 & 05/2025)</li></ul>' },
@@ -1623,8 +1644,8 @@
       a: 'Xuân Ánh có <b>3 người tham khảo</b> là giảng viên đại học (2 Phó Giáo sư tại ĐH Quốc gia Trung Chính và Trưởng khoa Ngoại ngữ ĐH Yersin Đà Lạt). Thông tin chi tiết sẽ được cung cấp khi có yêu cầu.',
       e: "Xuan Anh has <b>3 academic referees</b> (2 Associate Professors at National Chung Cheng University and the Dean of Foreign Languages at Yersin University of Da Lat). Details are available upon request." },
     { k: ['diem manh', 'tai sao', 'vi sao', 'phu hop', 'tuyen', 'uu diem', 'noi bat', 'manh', 'gioi'], ke: ['strength', 'strengths', 'why', 'hire', 'good at', 'best', 'strong', 'fit', 'suitable'],
-      a: 'Điểm mạnh nổi bật của Xuân Ánh:<ul><li><b>Chuyên môn giảng dạy tiếng Anh</b>: Cử nhân Ngôn ngữ Anh, Chứng chỉ Sư phạm, đang học Thạc sĩ TEFL</li><li><b>Tiếng Anh thành thạo</b>, môi trường học tập ở 3 quốc gia</li><li><b>Tổ chức & lãnh đạo</b>: 3 lần trưởng nhóm tổ chức trại tiếng Anh quốc tế</li><li><b>Được ghi nhận</b>: học bổng toàn phần và giải thưởng thành tích xuất sắc</li><li><b>Kinh nghiệm thực tế</b>: giảng dạy một kèm một, lớp IELTS và điều phối đào tạo doanh nghiệp tại TÜV SÜD Academy</li></ul>',
-      e: "Xuan Anh's key strengths:<ul><li><b>English teaching expertise</b>: B.A. in English Language, Teaching Certificate, M.A. in TEFL in progress</li><li><b>Fluent English</b>, studied in 3 countries</li><li><b>Organisation & leadership</b>: led 3 international English camps</li><li><b>Recognised</b>: full scholarship and outstanding achievement award</li><li><b>Hands-on experience</b>: one-on-one tutoring, IELTS classes and corporate training coordination at TÜV SÜD Academy</li></ul>" },
+      a: 'Điểm mạnh nổi bật của Xuân Ánh:<ul><li><b>Chuyên môn giảng dạy tiếng Anh</b>: Cử nhân Ngôn ngữ Anh, Chứng chỉ Sư phạm, đang học Thạc sĩ TEFL</li><li><b>Tiếng Anh thành thạo</b>, môi trường học tập ở 3 quốc gia</li><li><b>Tổ chức & lãnh đạo</b>: 3 lần trưởng nhóm tổ chức trại tiếng Anh quốc tế</li><li><b>Được ghi nhận</b>: 7 giải thưởng và học bổng, gồm học bổng toàn phần và giải Sinh viên Quốc tế Xuất sắc (CCU)</li><li><b>Kinh nghiệm thực tế</b>: giảng dạy một kèm một, lớp IELTS và điều phối đào tạo doanh nghiệp tại TÜV SÜD Academy</li></ul>',
+      e: "Xuan Anh's key strengths:<ul><li><b>English teaching expertise</b>: B.A. in English Language, Teaching Certificate, M.A. in TEFL in progress</li><li><b>Fluent English</b>, studied in 3 countries</li><li><b>Organisation & leadership</b>: led 3 international English camps</li><li><b>Recognised</b>: 7 awards and scholarships, including a full scholarship and the Outstanding International Student Award (CCU)</li><li><b>Hands-on experience</b>: one-on-one tutoring, IELTS classes and corporate training coordination at TÜV SÜD Academy</li></ul>" },
     { k: ['tuoi', 'sinh nam', 'ngay sinh', 'luong', 'muc luong', 'gia dinh', 'chong', 'ket hon', 'so thich', 'que', 'chieu cao'], ke: ['age', 'old', 'birthday', 'born', 'salary', 'married', 'family', 'hobby', 'hobbies', 'husband'],
       a: 'Thông tin này chưa có trong hồ sơ của Xuân Ánh nên mình không trả lời được. Bạn có thể hỏi về kinh nghiệm, học vấn, ngoại ngữ, kỹ năng hoặc thành tích nhé.',
       e: "That information isn't in Xuan Anh's profile, so I can't answer it. You can ask about her experience, education, languages, skills or achievements." },
