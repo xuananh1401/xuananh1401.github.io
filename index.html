@@ -3,16 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
 <title>Xuân Ánh ✨</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script>
   document.documentElement.classList.add('js');
-  try {
-    var t = localStorage.getItem('theme');
-    if (t) document.documentElement.setAttribute('data-theme', t);
-  } catch (e) {}
 </script>
 <style>
   :root {
@@ -35,35 +32,9 @@
     --shadow: 0 14px 40px rgba(139, 92, 246, .12);
     --shadow-pop: 0 20px 50px rgba(255, 77, 141, .25);
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #140d20;
-      --surface: #1f1630;
-      --surface-2: #2a1d40;
-      --text: #f6eefc;
-      --muted: #b4a6c9;
-      --line: #35274d;
-      --brand: #ff6ea5;
-      --brand-soft: #3a1f3f;
-      --shadow: 0 14px 40px rgba(0, 0, 0, .4);
-      --shadow-pop: 0 20px 50px rgba(255, 77, 141, .25);
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #140d20;
-    --surface: #1f1630;
-    --surface-2: #2a1d40;
-    --text: #f6eefc;
-    --muted: #b4a6c9;
-    --line: #35274d;
-    --brand: #ff6ea5;
-    --brand-soft: #3a1f3f;
-    --shadow: 0 14px 40px rgba(0, 0, 0, .4);
-    --shadow-pop: 0 20px 50px rgba(255, 77, 141, .25);
-  }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; color-scheme: light; }
   body {
     font-family: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     background: var(--bg);
@@ -126,8 +97,6 @@
   .mesh i:nth-child(1) { width: 46vw; height: 46vw; background: #ffb3cf; left: 5%; top: 5%; }
   .mesh i:nth-child(2) { width: 40vw; height: 40vw; background: #ffd29e; right: 8%; top: 18%; animation-delay: -4s; }
   .mesh i:nth-child(3) { width: 38vw; height: 38vw; background: #cdb8ff; left: 35%; bottom: 0; animation-delay: -8s; }
-  :root[data-theme="dark"] .mesh { opacity: .28; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .mesh { opacity: .28; } }
   @keyframes drift {
     0%,100% { transform: translate(0,0) scale(1); }
     33% { transform: translate(6%, -5%) scale(1.1); }
@@ -727,7 +696,6 @@
   </nav>
   <div class="nav-actions">
     <button class="icon-btn lang-btn" id="langBtn" type="button" title="English / Tiếng Việt" aria-label="Đổi ngôn ngữ">EN</button>
-    <button class="icon-btn" id="themeBtn" type="button" title="Đổi nền sáng / tối" aria-label="Đổi nền sáng / tối">🌙</button>
     <a class="icon-btn" id="cvTop" href="cv/CV-Nguyen-Thi-Xuan-Anh.pdf" download data-cv title="Download CV (PDF)" aria-label="Download CV (PDF)"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10.5 5 5 5-5"/><path d="M5 20h14"/></svg></a>
   </div>
 </header>
@@ -1234,22 +1202,6 @@
 (function () {
   var root = document.documentElement;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* Nền sáng / tối */
-  var themeBtn = document.getElementById('themeBtn');
-  function isDark() {
-    var t = root.getAttribute('data-theme');
-    if (t) return t === 'dark';
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  }
-  function syncTheme() { themeBtn.textContent = isDark() ? '☀️' : '🌙'; }
-  themeBtn.addEventListener('click', function () {
-    var next = isDark() ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch (e) {}
-    syncTheme();
-  });
-  syncTheme();
 
   /* In / PDF */
   /* Nút CV: tải file PDF theo ngôn ngữ đang xem */
